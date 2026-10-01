@@ -2,7 +2,7 @@ import './globals.css'
 
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata} from 'next'
-import {Inter, IBM_Plex_Mono} from 'next/font/google'
+import {Inter, IBM_Plex_Mono, Geist } from 'next/font/google'
 import {draftMode} from 'next/headers'
 import {toPlainText} from 'next-sanity'
 import {VisualEditing} from 'next-sanity/visual-editing'
@@ -14,8 +14,11 @@ import Header from '@/app/components/Header'
 import * as demo from '@/sanity/lib/demo'
 import {sanityFetch, SanityLive} from '@/sanity/lib/live'
 import {settingsQuery} from '@/sanity/lib/queries'
-import {resolveOpenGraphImage} from '@/sanity/lib/utils'
+import {resolveOpenGraphImage, cn } from '@/sanity/lib/utils'
 import {handleError} from '@/app/client-utils'
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 /**
  * Generate metadata for the page.
@@ -69,7 +72,7 @@ export default async function RootLayout({children}: LayoutProps<'/'>) {
   const {isEnabled: isDraftMode} = await draftMode()
 
   return (
-    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable} bg-white text-black`}>
+    <html lang="en" className={cn("bg-white", "text-black", inter.variable, ibmPlexMono.variable, "font-sans", geist.variable)}>
       <body>
         <section className="min-h-screen pt-24">
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
