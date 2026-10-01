@@ -2,7 +2,7 @@ import './globals.css'
 
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata} from 'next'
-import {Inter, IBM_Plex_Mono} from 'next/font/google'
+import {Inter, IBM_Plex_Mono, Geist } from 'next/font/google'
 import {draftMode} from 'next/headers'
 import {toPlainText} from 'next-sanity'
 import {VisualEditing} from 'next-sanity/visual-editing'
@@ -15,7 +15,11 @@ import * as demo from '@/sanity/lib/demo'
 import {sanityFetch, SanityLive} from '@/sanity/lib/live'
 import {settingsQuery} from '@/sanity/lib/queries'
 import {resolveOpenGraphImage} from '@/sanity/lib/utils'
+import {cn} from '@/lib/utils'
 import {handleError} from '@/app/client-utils'
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+
 
 /**
  * Generate metadata for the page.
@@ -69,9 +73,9 @@ export default async function RootLayout({children}: LayoutProps<'/'>) {
   const {isEnabled: isDraftMode} = await draftMode()
 
   return (
-    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable} bg-white text-black`}>
+    <html lang="en" className={cn("bg-white", "text-black", inter.variable, ibmPlexMono.variable, "font-sans", geist.variable)}>
       <body>
-        <section className="min-h-screen pt-24">
+        <section className="min-h-screen flex flex-col pt-24">
           {/* The <Toaster> component is responsible for rendering toast notifications used in /app/client-utils.ts and /app/components/DraftModeToast.tsx */}
           <Toaster />
           {isDraftMode && (
@@ -84,7 +88,7 @@ export default async function RootLayout({children}: LayoutProps<'/'>) {
           {/* The <SanityLive> component is responsible for making all sanityFetch calls in your application live, so should always be rendered. */}
           <SanityLive onError={handleError} />
           <Header />
-          <main className="">{children}</main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </section>
         <SpeedInsights />
