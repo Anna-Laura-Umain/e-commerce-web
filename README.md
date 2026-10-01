@@ -52,3 +52,13 @@ Merge and delete the branch
 Based on [sanity-template-nextjs-clean](https://github.com/sanity-io/sanity-template-nextjs-clean).
 The original template README is in `docs/template-readme.md`.
 The project brief is in `docs/Sanity_&_NextJS_e-commerce_store_(intern_case).pdf`. 
+
+
+### Updating types after a schema change
+Whenever a schema in `studio/` changes, regenerate the TypeScript types so the frontend knows about the new fields:
+1. From `studio/`, extract the schema to the project root:
+   `npx sanity schema extract --path=../sanity.schema.json`
+2. From `frontend/`, generate types:
+   `npx sanity typegen generate`
+This updates `frontend/sanity.types.ts`, which is used by the frontend queries and components.
+Both `sanity.schema.json` and `sanity.types.ts` are committed together with the schema change.

@@ -16,6 +16,14 @@ export const settings = defineType({
   icon: CogIcon,
   fields: [
     defineField({
+      name: 'navigation',
+      title: 'Navigation',
+      type: 'array',
+      of: [
+        {type: 'reference', to: [{type: 'page'}]},
+      ]
+    }),
+    defineField({
       name: 'title',
       description: 'This field is the title of your blog.',
       title: 'Title',
