@@ -51,4 +51,4 @@ Merge and delete the branch
 ## Credits
 Based on [sanity-template-nextjs-clean](https://github.com/sanity-io/sanity-template-nextjs-clean).
 The original template README is in `docs/template-readme.md`.
-The priject brief is in `docs/Sanity_&_NextJS_e-commerce_store_(intern_case).pdf`. 
+The project brief is in `docs/Sanity_&_NextJS_e-commerce_store_(intern_case).pdf`. 
