@@ -22,6 +22,44 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  hero?: {
+    heading?: string
+    text?: string
+    image?: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt?: string
+      _type: 'image'
+    }
+    ctaLabel?: string
+    ctaHref?: string
+  }
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top?: number
+  bottom?: number
+  left?: number
+  right?: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x?: number
+  y?: number
+  height?: number
+  width?: number
+}
+
 export type Coffee = {
   _id: string
   _type: 'coffee'
@@ -41,22 +79,6 @@ export type Coffee = {
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
 }
 
 export type PageReference = {
@@ -183,22 +205,6 @@ export type Product = {
     crop?: SanityImageCrop
     _type: 'image'
   }
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
 }
 
 export type Settings = {
@@ -555,9 +561,10 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Coffee
+  | HomePage
   | SanityImageCrop
   | SanityImageHotspot
+  | Coffee
   | PageReference
   | PostReference
   | Link
@@ -896,6 +903,31 @@ export type ProductQueryResult = {
   available: boolean | null
 } | null
 
+// Source: sanity/lib/queries.ts
+// Variable: homePageQuery
+// Query: *[_type == "homePage" && _id == "homePage"][0]{  hero{    heading,    text,    ctaLabel,    ctaHref,    image{      ...,      alt,      asset->{        _id,        metadata { lqip }      }    }  }}
+export type HomePageQueryResult = {
+  hero: {
+    heading: string | null
+    text: string | null
+    ctaLabel: string | null
+    ctaHref: string | null
+    image: {
+      asset: {
+        _id: string
+        metadata: {
+          lqip: string | null
+        } | null
+      } | null
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt: string | null
+      _type: 'image'
+    } | null
+  } | null
+} | null
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
@@ -909,5 +941,6 @@ declare module '@sanity/client' {
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
     '*[\n  _type == "product"\n  && _id == $id\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
+    '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    heading,\n    text,\n    ctaLabel,\n    ctaHref,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
   }
 }
