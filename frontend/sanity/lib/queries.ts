@@ -106,3 +106,17 @@ export const pagesSlugs = defineQuery(`
   *[_type == "page" && defined(slug.current)]
   {"slug": slug.current}
 `)
+
+
+export const productQuery = defineQuery(`*[
+  _type == "product"
+  && _id == $id
+][0]{
+  _id,
+  name,
+  origin,
+  roastLevel,
+  flavorNotes,
+  price,
+  available
+}`)
