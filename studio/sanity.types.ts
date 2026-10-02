@@ -164,12 +164,54 @@ export type Button = {
   link?: Link
 }
 
+export type Product = {
+  _id: string
+  _type: 'product'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name: string
+  origin: string
+  roastLevel: string
+  flavorNotes?: Array<string>
+  price: number
+  available?: boolean
+  image?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
 export type Settings = {
   _id: string
   _type: 'settings'
   _createdAt: string
   _updatedAt: string
   _rev: string
+  navigation?: Array<
+    {
+      _key: string
+    } & PageReference
+  >
   title: string
   description?: Array<{
     children?: Array<{
@@ -524,6 +566,9 @@ export type AllSanitySchemaTypes =
   | BlockContentTextOnly
   | BlockContent
   | Button
+  | Product
+  | SanityImageCrop
+  | SanityImageHotspot
   | Settings
   | Page
   | PersonReference

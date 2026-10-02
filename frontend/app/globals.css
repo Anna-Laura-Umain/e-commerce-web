@@ -28,6 +28,7 @@
   margin: 0 auto;
   padding: 0 2rem;
 }
+/* shared page width and side padding. use this class for inner wrappers */
 
 @custom-variant dark (&:where(.dark, .dark *));
 

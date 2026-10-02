@@ -14,13 +14,15 @@
     "dev": "sanity dev",
     "sanity:typegen": "sanity schema extract --enforce-required-fields --path ../sanity.schema.json && sanity typegen generate",
     "start": "sanity start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "generate:coffee": "tsx scripts/generate-coffee.ts"
   },
   "dependencies": {
     "@sanity/assist": "^6.0.7",
     "@sanity/icons": "^3.7.4",
     "@sanity/vision": "^5.31.1",
     "date-fns": "^4.4.0",
+    "dotenv": "^17.4.2",
     "pluralize-esm": "^9.0.5",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -30,6 +32,7 @@
     "styled-components": "^6.4.2"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
     "@sanity/eslint-config-studio": "^6.0.0",
     "@types/react": "^19.2.16",
     "typescript": "^5.9.3"

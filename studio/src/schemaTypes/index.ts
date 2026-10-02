@@ -19,6 +19,7 @@ export const schemaTypes = [
   page,
   post,
   person,
+  product,
   // Objects
   button,
   blockContent,
