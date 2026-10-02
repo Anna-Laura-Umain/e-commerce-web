@@ -1,0 +1,262 @@
+[
+  {
+    "_id": "04d67cd4-9ad2-4cc2-879a-3efb7f63124f",
+    "name": "Colombian Supremo",
+    "origin": "Ethiopia",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Vanilla",
+      "Floral"
+    ],
+    "price": 24.58,
+    "available": true
+  },
+  {
+    "_id": "9fbfc801-9703-4f00-943b-b0d9fd5aa52c",
+    "name": "Ethiopian Yirgacheffe",
+    "origin": "Costa Rica",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Blueberry",
+      "Jasmine",
+      "Floral"
+    ],
+    "price": 19.34,
+    "available": false
+  },
+  {
+    "_id": "5657b592-005d-4e65-9766-292a3d701117",
+    "name": "Kenyan AA",
+    "origin": "Guatemala",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Caramel",
+      "Citrus",
+      "Hazelnut",
+      "Vanilla"
+    ],
+    "price": 34.49,
+    "available": false
+  },
+  {
+    "_id": "858c39cd-c1fb-40fc-b273-710d83f18da9",
+    "name": "Guatemala Antigua",
+    "origin": "Costa Rica",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Almond",
+      "Caramel"
+    ],
+    "price": 20.67,
+    "available": true
+  },
+  {
+    "_id": "7a1e8dfe-742d-41e4-bfb1-9dac22a94eae",
+    "name": "Brazilian Santos",
+    "origin": "Guatemala",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Blueberry",
+      "Hazelnut"
+    ],
+    "price": 34.38,
+    "available": false
+  },
+  {
+    "_id": "7c43de22-6907-470b-9fe9-7af8d7331571",
+    "name": "Kenyan AA",
+    "origin": "Brazil",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Jasmine",
+      "Blueberry"
+    ],
+    "price": 18.82,
+    "available": false
+  },
+  {
+    "_id": "5e1fedd9-a548-43c2-b86b-f0efde074505",
+    "name": "Costa Rica Tarrazu",
+    "origin": "Ethiopia",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Jasmine",
+      "Almond",
+      "Caramel"
+    ],
+    "price": 25.07,
+    "available": true
+  },
+  {
+    "_id": "091d796e-a2f2-4390-8e76-61c06c52dbbb",
+    "name": "Brazilian Santos",
+    "origin": "Ethiopia",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Berry",
+      "Vanilla"
+    ],
+    "price": 23.67,
+    "available": true
+  },
+  {
+    "_id": "a329af6c-bce5-4c6f-8433-4769792ad731",
+    "name": "Colombian Supremo",
+    "origin": "Guatemala",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Berry",
+      "Caramel",
+      "Chocolate",
+      "Hazelnut"
+    ],
+    "price": 29.33,
+    "available": false
+  },
+  {
+    "_id": "3992b770-53cb-45ce-b759-2c6cb0b2ab50",
+    "name": "Colombian Supremo",
+    "origin": "Kenya",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Vanilla",
+      "Blueberry",
+      "Jasmine"
+    ],
+    "price": 30.45,
+    "available": false
+  },
+  {
+    "_id": "ec615e08-fd3d-4bc3-abd3-c2758b7e5388",
+    "name": "Kenyan AA",
+    "origin": "Brazil",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Caramel",
+      "Jasmine",
+      "Almond"
+    ],
+    "price": 23.82,
+    "available": false
+  },
+  {
+    "_id": "c62c4b65-7cbc-4bdb-8920-2fedcdc302db",
+    "name": "Colombian Supremo",
+    "origin": "Guatemala",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Hazelnut",
+      "Blueberry",
+      "Vanilla",
+      "Almond"
+    ],
+    "price": 10.94,
+    "available": false
+  },
+  {
+    "_id": "1120b99e-5871-4857-a5e5-b07351c56602",
+    "name": "Guatemala Antigua",
+    "origin": "Brazil",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Blueberry",
+      "Almond"
+    ],
+    "price": 23.75,
+    "available": false
+  },
+  {
+    "_id": "da74a40d-b249-4b8c-8a5b-5a4de484158d",
+    "name": "Guatemala Antigua",
+    "origin": "Ethiopia",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Floral",
+      "Blueberry",
+      "Hazelnut",
+      "Citrus"
+    ],
+    "price": 15.86,
+    "available": false
+  },
+  {
+    "_id": "ba589322-e725-4579-834f-5836d6e81f1f",
+    "name": "Ethiopian Yirgacheffe",
+    "origin": "Ethiopia",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Blueberry",
+      "Citrus",
+      "Vanilla"
+    ],
+    "price": 31.51,
+    "available": false
+  },
+  {
+    "_id": "d3a1ea94-d60d-41f8-b755-b8c301192725",
+    "name": "Colombian Supremo",
+    "origin": "Costa Rica",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Floral",
+      "Blueberry",
+      "Chocolate"
+    ],
+    "price": 17.82,
+    "available": false
+  },
+  {
+    "_id": "8429ecf7-e341-46ac-82a2-c9419642f222",
+    "name": "Colombian Supremo",
+    "origin": "Brazil",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Floral",
+      "Hazelnut",
+      "Almond",
+      "Vanilla"
+    ],
+    "price": 25.51,
+    "available": true
+  },
+  {
+    "_id": "8380be48-9201-47bf-9b75-82b1258fb94b",
+    "name": "Colombian Supremo",
+    "origin": "Brazil",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Jasmine",
+      "Chocolate",
+      "Caramel"
+    ],
+    "price": 33.82,
+    "available": false
+  },
+  {
+    "_id": "4eeb9604-28b5-408a-81f8-67440f182969",
+    "name": "Ethiopian Yirgacheffe",
+    "origin": "Guatemala",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Floral",
+      "Citrus",
+      "Jasmine",
+      "Almond"
+    ],
+    "price": 28.46,
+    "available": true
+  },
+  {
+    "_id": "e92886ea-bd37-4381-a8de-b3c8e57786d3",
+    "name": "Costa Rica Tarrazu",
+    "origin": "Costa Rica",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Blueberry",
+      "Caramel",
+      "Citrus"
+    ],
+    "price": 16.99,
+    "available": false
+  }
+]
