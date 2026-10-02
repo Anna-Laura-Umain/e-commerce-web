@@ -3,9 +3,9 @@ import Link from 'next/link'
 import {sanityFetch} from '@/sanity/lib/live'
 import {morePostsQuery, allPostsQuery} from '@/sanity/lib/queries'
 import {AllPostsQueryResult} from '@/sanity.types'
-import DateComponent from '@/app/components/Date'
-import OnBoarding from '@/app/components/Onboarding'
-import Avatar from '@/app/components/Avatar'
+import DateComponent from '@/components/Date'
+import OnBoarding from '@/components/Onboarding'
+import Avatar from '@/components/Avatar'
 import {dataAttr} from '@/sanity/lib/utils'
 
 const Post = ({post}: {post: AllPostsQueryResult[number]}) => {
