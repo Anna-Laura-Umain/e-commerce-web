@@ -1,11 +1,27 @@
 import Link from 'next/link'
-import {settingsQuery} from '@/sanity/lib/queries'
-import {sanityFetch} from '@/sanity/lib/live'
+import { settingsQuery } from '@/sanity/lib/queries'
+import { sanityFetch } from '@/sanity/lib/live'
 import { Heart, ShoppingBag } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu"
+
+const shopLinks = [
+  // { label: 'Shop', href: '/shop' },
+  { label: 'Coffe', href: '/shop/coffee' },
+  { label: 'Tea', href: '/shop/tea' }
+]
+
+
 export default async function Header() {
-  const {data: settings} = await sanityFetch({
+  const { data: settings } = await sanityFetch({
     query: settingsQuery,
   })
 
@@ -19,18 +35,33 @@ export default async function Header() {
             </span>
           </Link>
 
-          <nav className="flex gap-6">
-            {/* link for future catalog-page defined in code*/}
-            <Link href="/shop" className="flex gap-6 hover:underline">
-              Shop
-            </Link> 
-            {/* editor-managed navigation items -> in studio under Setting -> Navigation */}
-            {settings?.navigation?.map((navItem) => (
-              <Link key={navItem._id} href={`/${navItem.slug}`}>
-                {navItem.name}
-              </Link>
-            ))}
-          </nav>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-40 gap-1 p-2">
+                    {shopLinks.map((link) => (
+                      <li key={link.href}>
+                        <NavigationMenuLink render={<Link href={link.href} />}>
+                          {link.label}
+                        </NavigationMenuLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+
+              {/* Editor-managed links: Studio → Settings → Navigation */}
+              {settings?.navigation?.map((navItem) => (
+                <NavigationMenuItem key={navItem._id}>
+                  <NavigationMenuLink render={<Link href={`/${navItem.slug}`} />}>
+                    {navItem.name}
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
 
           <div className="flex gap-4">
             <Button variant="ghost" size="icon">
