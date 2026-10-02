@@ -1,8 +1,8 @@
 import {PortableTextBlock} from 'next-sanity'
 
-import ResolvedLink from '@/app/components/ResolvedLink'
-import PortableText from '@/app/components/PortableText'
-import Image from '@/app/components/SanityImage'
+import ResolvedLink from '@/components/ResolvedLink'
+import PortableText from '@/components/PortableText'
+import Image from '@/components/SanityImage'
 import {stegaClean} from '@sanity/client/stega'
 import {ExtractPageBuilderType} from '@/sanity/lib/types'
 

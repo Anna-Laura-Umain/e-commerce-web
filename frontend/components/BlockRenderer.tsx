@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Cta from '@/app/components/Cta'
-import Info from '@/app/components/InfoSection'
+import Cta from '@/components/Cta'
+import Info from '@/components/InfoSection'
 import {dataAttr} from '@/sanity/lib/utils'
 import {PageBuilderSection} from '@/sanity/lib/types'
 
