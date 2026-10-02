@@ -3,7 +3,6 @@ import './globals.css'
 import {SpeedInsights} from '@vercel/speed-insights/next'
 import type {Metadata} from 'next'
 import {Inter, IBM_Plex_Mono, Geist } from 'next/font/google'
-import {Inter, IBM_Plex_Mono, Geist } from 'next/font/google'
 import {draftMode} from 'next/headers'
 import {toPlainText} from 'next-sanity'
 import {VisualEditing} from 'next-sanity/visual-editing'
@@ -21,8 +20,6 @@ import {handleError} from '@/app/client-utils'
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 
 /**

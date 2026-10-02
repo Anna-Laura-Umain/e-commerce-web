@@ -185,22 +185,6 @@ export type Product = {
   }
 }
 
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
-}
-
 export type Settings = {
   _id: string
   _type: 'settings'
@@ -567,8 +551,6 @@ export type AllSanitySchemaTypes =
   | BlockContent
   | Button
   | Product
-  | SanityImageCrop
-  | SanityImageHotspot
   | Settings
   | Page
   | PersonReference
