@@ -1,0 +1,283 @@
+[
+  {
+    "_id": "tea-1",
+    "name": "Netherlands Herbal Tea",
+    "origin": "South Sudan",
+    "oxidationLevel": "Medium",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Sweet",
+      "Earthy"
+    ],
+    "price": 183,
+    "available": false
+  },
+  {
+    "_id": "tea-2",
+    "name": "Bahrain Black Tea",
+    "origin": "Bosnia and Herzegovina",
+    "oxidationLevel": "Medium",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Fruity",
+      "Smoky",
+      "Earthy"
+    ],
+    "price": 133,
+    "available": true
+  },
+  {
+    "_id": "tea-3",
+    "name": "Argentina Green Tea",
+    "origin": "Tanzania",
+    "oxidationLevel": "Low",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Floral",
+      "Earthy",
+      "Fresh",
+      "Nutty"
+    ],
+    "price": 208,
+    "available": true
+  },
+  {
+    "_id": "tea-4",
+    "name": "Faroe Islands White Tea",
+    "origin": "Georgia",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Nutty",
+      "Floral"
+    ],
+    "price": 187,
+    "available": true
+  },
+  {
+    "_id": "tea-5",
+    "name": "Martinique Herbal Tea",
+    "origin": "Guinea",
+    "oxidationLevel": "Low",
+    "teaType": "White",
+    "flavorNotes": [
+      "Nutty",
+      "Fresh",
+      "Smoky"
+    ],
+    "price": 88,
+    "available": true
+  },
+  {
+    "_id": "tea-6",
+    "name": "Iran Green Tea",
+    "origin": "Indonesia",
+    "oxidationLevel": "High",
+    "teaType": "Herbal",
+    "flavorNotes": [
+      "Nutty",
+      "Smoky"
+    ],
+    "price": 107,
+    "available": true
+  },
+  {
+    "_id": "tea-7",
+    "name": "Slovakia Black Tea",
+    "origin": "Greece",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Earthy",
+      "Sweet",
+      "Nutty",
+      "Fresh"
+    ],
+    "price": 111,
+    "available": true
+  },
+  {
+    "_id": "tea-8",
+    "name": "Iceland Green Tea",
+    "origin": "Kenya",
+    "oxidationLevel": "High",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Fresh",
+      "Nutty",
+      "Sweet",
+      "Floral"
+    ],
+    "price": 142,
+    "available": true
+  },
+  {
+    "_id": "tea-9",
+    "name": "Falkland Islands (Malvinas) Herbal Tea",
+    "origin": "Botswana",
+    "oxidationLevel": "High",
+    "teaType": "Herbal",
+    "flavorNotes": [
+      "Nutty",
+      "Earthy"
+    ],
+    "price": 192,
+    "available": false
+  },
+  {
+    "_id": "tea-10",
+    "name": "Slovakia Oolong Tea",
+    "origin": "Republic of Korea",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Earthy",
+      "Citrus"
+    ],
+    "price": 149,
+    "available": true
+  },
+  {
+    "_id": "tea-11",
+    "name": "Mauritania Green Tea",
+    "origin": "Lao People's Democratic Republic",
+    "oxidationLevel": "High",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Floral",
+      "Fruity",
+      "Sweet",
+      "Earthy"
+    ],
+    "price": 210,
+    "available": true
+  },
+  {
+    "_id": "tea-12",
+    "name": "Gibraltar Green Tea",
+    "origin": "Palau",
+    "oxidationLevel": "Medium",
+    "teaType": "White",
+    "flavorNotes": [
+      "Fruity",
+      "Sweet",
+      "Floral",
+      "Fresh"
+    ],
+    "price": 190,
+    "available": true
+  },
+  {
+    "_id": "tea-13",
+    "name": "Sweden White Tea",
+    "origin": "Bahrain",
+    "oxidationLevel": "Low",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Nutty",
+      "Fruity",
+      "Earthy",
+      "Citrus"
+    ],
+    "price": 113,
+    "available": true
+  },
+  {
+    "_id": "tea-14",
+    "name": "Nepal Green Tea",
+    "origin": "Christmas Island",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Citrus",
+      "Earthy",
+      "Nutty"
+    ],
+    "price": 158,
+    "available": true
+  },
+  {
+    "_id": "tea-15",
+    "name": "North Macedonia Green Tea",
+    "origin": "Iceland",
+    "oxidationLevel": "Low",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Floral",
+      "Earthy",
+      "Nutty"
+    ],
+    "price": 136,
+    "available": true
+  },
+  {
+    "_id": "tea-16",
+    "name": "Anguilla Herbal Tea",
+    "origin": "Barbados",
+    "oxidationLevel": "High",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Floral",
+      "Citrus",
+      "Nutty"
+    ],
+    "price": 84,
+    "available": true
+  },
+  {
+    "_id": "tea-17",
+    "name": "Lao People's Democratic Republic Black Tea",
+    "origin": "Tonga",
+    "oxidationLevel": "Low",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Fresh",
+      "Smoky",
+      "Earthy"
+    ],
+    "price": 147,
+    "available": false
+  },
+  {
+    "_id": "tea-18",
+    "name": "Democratic People's Republic of Korea Green Tea",
+    "origin": "Bolivia",
+    "oxidationLevel": "High",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Earthy",
+      "Sweet",
+      "Fresh",
+      "Nutty"
+    ],
+    "price": 200,
+    "available": true
+  },
+  {
+    "_id": "tea-19",
+    "name": "Gibraltar Herbal Tea",
+    "origin": "Saint Kitts and Nevis",
+    "oxidationLevel": "Medium",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Nutty",
+      "Citrus",
+      "Fresh"
+    ],
+    "price": 159,
+    "available": true
+  },
+  {
+    "_id": "tea-20",
+    "name": "Congo White Tea",
+    "origin": "Cuba",
+    "oxidationLevel": "Low",
+    "teaType": "White",
+    "flavorNotes": [
+      "Floral",
+      "Nutty"
+    ],
+    "price": 84,
+    "available": false
+  }
+]

@@ -22,9 +22,9 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
-export type Coffee = {
+export type Tea = {
   _id: string
-  _type: 'coffee'
+  _type: 'tea'
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -37,7 +37,8 @@ export type Coffee = {
   }
   name?: string
   origin?: string
-  roastLevel?: string
+  oxidationLevel?: string
+  teaType?: string
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
@@ -57,6 +58,27 @@ export type SanityImageHotspot = {
   y: number
   height: number
   width: number
+}
+
+export type Coffee = {
+  _id: string
+  _type: 'coffee'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  image?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  name?: string
+  origin?: string
+  roastLevel?: string
+  flavorNotes?: Array<string>
+  price?: number
+  available?: boolean
 }
 
 export type PageReference = {
@@ -162,27 +184,6 @@ export type Button = {
   _type: 'button'
   buttonText?: string
   link?: Link
-}
-
-export type Product = {
-  _id: string
-  _type: 'product'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  name: string
-  origin: string
-  roastLevel: string
-  flavorNotes?: Array<string>
-  price: number
-  available?: boolean
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
 }
 
 export type Settings = {
@@ -539,9 +540,10 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Coffee
+  | Tea
   | SanityImageCrop
   | SanityImageHotspot
+  | Coffee
   | PageReference
   | PostReference
   | Link
@@ -550,7 +552,6 @@ export type AllSanitySchemaTypes =
   | BlockContentTextOnly
   | BlockContent
   | Button
-  | Product
   | Settings
   | Page
   | PersonReference
