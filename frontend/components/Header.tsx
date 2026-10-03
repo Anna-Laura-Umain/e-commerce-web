@@ -15,7 +15,7 @@ import {
 
 const shopLinks = [
   // { label: 'Shop', href: '/shop' },
-  { label: 'Coffe', href: '/shop/coffee' },
+  { label: 'Coffee', href: '/shop/coffee' },
   { label: 'Tea', href: '/shop/tea' }
 ]
 

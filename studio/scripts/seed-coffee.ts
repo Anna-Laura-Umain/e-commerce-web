@@ -28,7 +28,7 @@ async function seed() {
   for (const coffee of coffees) {
     await client.createOrReplace({ // createOrReplace - sanity' method 
       _id: coffee._id,
-      _type: 'product',
+      _type: 'coffee',
 
       name: coffee.name,
       origin: coffee.origin,

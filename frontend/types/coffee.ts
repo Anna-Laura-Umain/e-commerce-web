@@ -6,10 +6,5 @@ export type Coffee = {
     flavorNotes: string[];
     price: number;
     available: boolean;
-    image: {
-        asset: {
-            _id: string;
-            url: string;
-        }
-    };
+    
 };
