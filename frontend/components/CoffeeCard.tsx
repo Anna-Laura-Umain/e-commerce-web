@@ -20,7 +20,7 @@ export default function CoffeeCardItem( {coffee} : CoffeeProps): JSX.Element {
   return(
     <Card className="mx-auto w-72 overflow-hidden pt-0"> 
       <Image 
-        src={coffee.image.asset.url}
+        src="/images/Ethiopia_._Shopify_Product_Image_Coffee_bag.jpg"
         alt={coffee.name}
         width={280}
         height={220}

@@ -85,7 +85,7 @@ export type Link = {
 export type CallToAction = {
   _type: 'callToAction'
   eyebrow?: string
-  heading?: string
+  heading: string
   body?: BlockContentTextOnly
   button?: Button
   image?: {
@@ -170,11 +170,11 @@ export type Product = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  name?: string
-  origin?: string
-  roastLevel?: string
+  name: string
+  origin: string
+  roastLevel: string
   flavorNotes?: Array<string>
-  price?: number
+  price: number
   available?: boolean
   image?: {
     asset?: SanityImageAssetReference
@@ -183,22 +183,6 @@ export type Product = {
     crop?: SanityImageCrop
     _type: 'image'
   }
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
 }
 
 export type Settings = {
@@ -212,7 +196,7 @@ export type Settings = {
       _key: string
     } & PageReference
   >
-  title?: string
+  title: string
   description?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -252,9 +236,9 @@ export type Page = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  name?: string
-  slug?: Slug
-  heading?: string
+  name: string
+  slug: Slug
+  heading: string
   subheading?: string
   pageBuilder?: Array<
     | ({
@@ -279,8 +263,8 @@ export type Post = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
-  slug?: Slug
+  title: string
+  slug: Slug
   content?: BlockContent
   excerpt?: string
   coverImage?: {
@@ -301,9 +285,9 @@ export type Person = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  firstName?: string
-  lastName?: string
-  picture?: {
+  firstName: string
+  lastName: string
+  picture: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
@@ -315,7 +299,7 @@ export type Person = {
 
 export type Slug = {
   _type: 'slug'
-  current?: string
+  current: string
   source?: string
 }
 
@@ -366,7 +350,7 @@ export type AssistInstructionContextReference = {
 
 export type SanityAssistInstructionContext = {
   _type: 'sanity.assist.instruction.context'
-  reference?: AssistInstructionContextReference
+  reference: AssistInstructionContextReference
 }
 
 export type AssistInstructionContext = {
@@ -394,7 +378,7 @@ export type AssistInstructionContext = {
 
 export type SanityAssistInstructionUserInput = {
   _type: 'sanity.assist.instruction.userInput'
-  message?: string
+  message: string
   description?: string
 }
 
@@ -477,9 +461,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: 'sanity.imageDimensions'
-  height?: number
-  width?: number
-  aspectRatio?: number
+  height: number
+  width: number
+  aspectRatio: number
 }
 
 export type SanityImageMetadata = {
@@ -505,14 +489,14 @@ export type SanityFileAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
   uploadId?: string
-  path?: string
-  url?: string
+  path: string
+  url: string
   source?: SanityAssetSourceData
 }
 
@@ -534,14 +518,14 @@ export type SanityImageAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
   uploadId?: string
-  path?: string
-  url?: string
+  path: string
+  url: string
   metadata?: SanityImageMetadata
   source?: SanityAssetSourceData
 }
@@ -606,10 +590,10 @@ export type SettingsQueryResult = {
   _rev: string
   navigation: Array<{
     _id: string
-    name: string | null
-    slug: string | null
+    name: string
+    slug: string
   }> | null
-  title?: string
+  title: string
   description?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -649,16 +633,16 @@ export type SettingsQueryResult = {
 export type GetPageQueryResult = {
   _id: string
   _type: 'page'
-  name: string | null
-  slug: Slug | null
-  heading: string | null
+  name: string
+  slug: Slug
+  heading: string
   subheading: string | null
   pageBuilder: Array<
     | {
         _key: string
         _type: 'callToAction'
         eyebrow?: string
-        heading?: string
+        heading: string
         body?: BlockContentTextOnly
         button: {
           _type: 'button'
@@ -729,12 +713,12 @@ export type GetPageQueryResult = {
 // Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
 export type SitemapDataResult = Array<
   | {
-      slug: string | null
+      slug: string
       _type: 'page'
       _updatedAt: string
     }
   | {
-      slug: string | null
+      slug: string
       _type: 'post'
       _updatedAt: string
     }
@@ -746,8 +730,8 @@ export type SitemapDataResult = Array<
 export type AllPostsQueryResult = Array<{
   _id: string
   status: 'draft' | 'published'
-  title: string | 'Untitled'
-  slug: string | null
+  title: string
+  slug: string
   excerpt: string | null
   coverImage: {
     asset?: SanityImageAssetReference
@@ -759,8 +743,8 @@ export type AllPostsQueryResult = Array<{
   } | null
   date: string
   author: {
-    firstName: string | null
-    lastName: string | null
+    firstName: string
+    lastName: string
     picture: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -768,7 +752,7 @@ export type AllPostsQueryResult = Array<{
       crop?: SanityImageCrop
       alt?: string
       _type: 'image'
-    } | null
+    }
   } | null
 }>
 
@@ -778,8 +762,8 @@ export type AllPostsQueryResult = Array<{
 export type MorePostsQueryResult = Array<{
   _id: string
   status: 'draft' | 'published'
-  title: string | 'Untitled'
-  slug: string | null
+  title: string
+  slug: string
   excerpt: string | null
   coverImage: {
     asset?: SanityImageAssetReference
@@ -791,8 +775,8 @@ export type MorePostsQueryResult = Array<{
   } | null
   date: string
   author: {
-    firstName: string | null
-    lastName: string | null
+    firstName: string
+    lastName: string
     picture: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -800,7 +784,7 @@ export type MorePostsQueryResult = Array<{
       crop?: SanityImageCrop
       alt?: string
       _type: 'image'
-    } | null
+    }
   } | null
 }>
 
@@ -843,8 +827,8 @@ export type PostQueryResult = {
   > | null
   _id: string
   status: 'draft' | 'published'
-  title: string | 'Untitled'
-  slug: string | null
+  title: string
+  slug: string
   excerpt: string | null
   coverImage: {
     asset?: SanityImageAssetReference
@@ -856,8 +840,8 @@ export type PostQueryResult = {
   } | null
   date: string
   author: {
-    firstName: string | null
-    lastName: string | null
+    firstName: string
+    lastName: string
     picture: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -865,7 +849,7 @@ export type PostQueryResult = {
       crop?: SanityImageCrop
       alt?: string
       _type: 'image'
-    } | null
+    }
   } | null
 } | null
 
@@ -873,14 +857,14 @@ export type PostQueryResult = {
 // Variable: postPagesSlugs
 // Query: *[_type == "post" && defined(slug.current)]  {"slug": slug.current}
 export type PostPagesSlugsResult = Array<{
-  slug: string | null
+  slug: string
 }>
 
 // Source: sanity/lib/queries.ts
 // Variable: pagesSlugs
 // Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
 export type PagesSlugsResult = Array<{
-  slug: string | null
+  slug: string
 }>
 
 // Source: sanity/lib/queries.ts
@@ -888,11 +872,11 @@ export type PagesSlugsResult = Array<{
 // Query: *[  _type == "product"  && _id == $id][0]{  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
 export type ProductQueryResult = {
   _id: string
-  name: string | null
-  origin: string | null
-  roastLevel: string | null
+  name: string
+  origin: string
+  roastLevel: string
   flavorNotes: Array<string> | null
-  price: number | null
+  price: number
   available: boolean | null
 } | null
 
