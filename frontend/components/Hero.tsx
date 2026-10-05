@@ -1,7 +1,8 @@
-import SanityImage from '@/components/SanityImage'
 import Link from 'next/link'
-import type { HomePageQueryResult } from '@/sanity.types'
+import { ArrowRight } from 'lucide-react'
+import SanityImage from '@/components/SanityImage'
 import { DefaultHeroImage } from '@/components/DefaultHeroImage'
+import type { HomePageQueryResult } from '@/sanity.types'
 
 type HeroProps = {
     hero: NonNullable<HomePageQueryResult>['hero']
@@ -32,7 +33,7 @@ export default function Hero({ hero }: HeroProps) {
     const heading = hero?.heading ?? 'Tea and coffee, freshly picked for you'
 
     return (
-        <section className="relative isolate h-[70vh] min-h-120 flex items-start">
+        <section className="relative isolate h-[80vh] min-h-120 flex items-start pt-16 md:items-center md:pt-0">
             {image?.asset?._id ? (
                 <SanityImage
                     id={image.asset._id}
@@ -48,25 +49,39 @@ export default function Hero({ hero }: HeroProps) {
                     fetchPriority="high"
                     className="absolute inset-0 w-full h-full object-cover -z-10"
                 />
-            ) : <DefaultHeroImage />
-            }
+            ) : (
+                <DefaultHeroImage />
+            )}
 
             <div className="container">
-                <div className="w-1/2">
-                    <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-black">
+                <div className="md:w-1/2 lg:w-5/12">
+                    <p className="text-xs font-medium uppercase tracking-[0.25em] text-amber-900/70">
+                        Small-batch tea & coffee
+                    </p>
+
+                    <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tighter text-balance bg-linear-to-br from-stone-900 to-amber-900 bg-clip-text text-transparent">
                         {heading}
                     </h1>
+
                     {hero?.text && (
-                        <p className="mt-6 text-lg text-neutral-700 max-w-md">{hero.text}</p>
+                        <p className="mt-6 max-w-md text-lg leading-relaxed text-stone-600">{hero.text}</p>
                     )}
-                    {hero?.ctaLabel && hero?.ctaHref && (
+
+                    <div className="mt-10 flex flex-wrap gap-3">
                         <Link
-                            href={hero.ctaHref}
-                            className="inline-block mt-8 bg-black text-white px-8 py-3 rounded-full hover:bg-neutral-800 transition-colors"
+                            href="/shop/tea"
+                            className="group inline-flex items-center gap-2 rounded-full bg-stone-900 px-7 py-3 text-sm font-medium text-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
                         >
-                            {hero.ctaLabel}
+                            Shop tea
+                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
                         </Link>
-                    )}
+                        <Link
+                            href="/shop/coffee"
+                            className="group inline-flex items-center gap-2 rounded-full border border-stone-900 bg-white px-7 py-3 text-sm font-medium text-stone-900 transition hover:-translate-y-0.5 hover:bg-stone-900 hover:text-white"            >
+                            Shop coffee
+                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

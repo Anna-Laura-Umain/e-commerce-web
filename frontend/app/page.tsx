@@ -14,6 +14,7 @@ export default async function HomePage() {
   return (
    <main>
       <Hero hero={homePage?.hero ?? null}/>
+      {/*todo: maybe add swiper with product examples*/}
    </main>
   )
 }
