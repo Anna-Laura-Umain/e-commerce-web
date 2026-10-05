@@ -33,7 +33,7 @@ export default function Hero({ hero }: HeroProps) {
     const heading = hero?.heading ?? 'Tea and coffee, freshly picked for you'
 
     return (
-        <section className="relative isolate h-[80vh] min-h-120 flex items-start pt-16 md:items-center md:pt-0">
+        <section className="relative isolate  min-h-120 flex items-start pt-16  pb-16 sm:items-center">
             {image?.asset?._id ? (
                 <SanityImage
                     id={image.asset._id}
@@ -53,8 +53,8 @@ export default function Hero({ hero }: HeroProps) {
                 <DefaultHeroImage />
             )}
 
-            <div className="container">
-                <div className="md:w-1/2 lg:w-5/12">
+            <div className="container w-full">
+                <div className=" rounded-2xl bg-white/70 p-6  backdrop-blur-sm">
                     <p className="text-xs font-medium uppercase tracking-[0.25em] text-amber-900/70">
                         Small-batch tea & coffee
                     </p>
