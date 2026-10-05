@@ -1,12 +1,15 @@
 import { create } from 'zustand'
 import { Coffee } from '@/types/coffee'
+import { persist } from 'zustand/middleware'
 
 type FavoriteStore = {
   favorites: Coffee[]
   toggleFavorite: (coffee: Coffee) => void
 };
 
-export const useFavoriteStore = create<FavoriteStore>((set) => ({
+export const useFavoriteStore = create<FavoriteStore>()(
+  persist(
+  (set) => ({
     favorites: [],
 
     toggleFavorite: (coffee) =>
@@ -25,4 +28,7 @@ export const useFavoriteStore = create<FavoriteStore>((set) => ({
         favorites: updatedFavorites,
       };
     }),
-}));
+}),
+{
+  name: 'favorite-coffees', // unique name for the storage
+}))
