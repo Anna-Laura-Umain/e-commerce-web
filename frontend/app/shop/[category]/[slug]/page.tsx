@@ -1,20 +1,21 @@
 import { notFound } from 'next/navigation'
 import { sanityFetch } from '@/sanity/lib/live'
 import { productQuery } from '@/sanity/lib/queries'
+import { Coffee } from '@/types/coffee'
 
 
-// TODO: switch to slug and filter by productType once they are in the schema
+//Use [slug] instead of [id] in the path and query to fetch the product by slug instead of id.
 
 export default async function ProductPage({
   params,
 }: {
-  params: Promise<{ type: string; id: string }>
+  params: Promise<{ category: string; slug: string }>
 }) {
-  const { id } = await params
+  const { slug } = await params
   const { data: product } = await sanityFetch({
     query: productQuery,
-    params: { id },
-  })
+    params: { slug },
+  }) as { data: Coffee | null }
   if (!product) {
     notFound()
   }
