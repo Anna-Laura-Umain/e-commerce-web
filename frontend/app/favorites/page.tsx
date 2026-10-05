@@ -11,7 +11,7 @@ export default function FavoritesPage() {
 
   return (
     <main className="container py-12">
-      <h1 className="mb-8 text-3xl font-bold">Favorites</h1>
+      <h1 className="heading-display mb-8 text-4xl text-center">Favorites</h1>
 
       {favorites.length === 0 ? (
         <p>You have no favorites yet.</p>

@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { settingsQuery } from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/live'
-import { Heart, ShoppingBag } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { CartLink } from '@/components/CartLink'
 
 import {
   NavigationMenu,
@@ -14,7 +15,6 @@ import {
 } from "@/components/ui/navigation-menu"
 
 const shopLinks = [
-  // { label: 'Shop', href: '/shop' },
   { label: 'Coffee', href: '/shop/coffee' },
   { label: 'Tea', href: '/shop/tea' }
 ]
@@ -68,9 +68,7 @@ export default async function Header() {
               <Link href="/favorites" className="flex items-center gap-2"><Heart /></Link>
             </Button>
             <Button variant="ghost" size="icon">
-              <Link href="/cart" className="flex items-center gap-2">
-                <ShoppingBag />
-              </Link>
+                <CartLink />
             </Button>
           </div>
         </div>

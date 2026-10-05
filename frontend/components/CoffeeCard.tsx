@@ -4,13 +4,13 @@ import { Coffee } from "../types/coffee";
 import type { JSX } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { AddToCartButton } from "./AddToCartButton";
 import { Heart } from "lucide-react";
 import { useFavoriteStore } from "@/store/useFavoriteStore";
 
@@ -39,7 +39,7 @@ const favorites = useFavoriteStore((state) => state.favorites);
         alt={coffee.name}
         width={280}
         height={220}
-        className="aspect-[4/3] w-full object-cover"
+        className="aspect-4/3 w-full object-cover"
       />
 
       <button
@@ -48,9 +48,8 @@ const favorites = useFavoriteStore((state) => state.favorites);
         onClick={() => toggleFavorite(coffee)}
       >
         <Heart
-          className={`h-6 w-6 ${
-            isFavorite ? "fill-red-500 text-red-500" : "text-black"
-          }`}
+          className={`h-6 w-6 ${isFavorite ? "fill-red-500 text-red-500" : "text-black"
+            }`}
         />
       </button>
 
@@ -76,9 +75,8 @@ const favorites = useFavoriteStore((state) => state.favorites);
 
           <div className="flex items-center gap-2 text-xs">
             <span
-              className={`h-2 w-2 rounded-full ${
-                coffee.available ? "bg-green-500" : "bg-red-500"
-              }`}
+              className={`h-2 w-2 rounded-full ${coffee.available ? "bg-green-500" : "bg-red-500"
+                }`}
             />
 
             <span>
@@ -100,9 +98,13 @@ const favorites = useFavoriteStore((state) => state.favorites);
       </CardHeader>
 
       <CardFooter>
-        <Button className="w-full">
-          Add to Cart
-        </Button>
+        <AddToCartButton
+          id={coffee._id}
+          name={coffee.name}
+          price={coffee.price}
+          available={coffee.available}
+          className="w-full"
+        />
       </CardFooter>
 
     </Card>

@@ -1,0 +1,90 @@
+'use client'
+
+import Link from 'next/link'
+import {Minus, Plus, Trash2} from 'lucide-react'
+import {Button} from '@/components/ui/button'
+import {useMounted} from '@/hooks/use-mounted'
+import { useCartStore } from '@/store/useCartStore'
+
+export function CartView() {
+  const items = useCartStore((state) => state.items)
+  const setQuantity = useCartStore((state) => state.setQuantity)
+  const removeItem = useCartStore((state) => state.removeItem)
+  const clear = useCartStore((state) => state.clear)
+
+  const mounted = useMounted()
+  if (!mounted) return null
+
+  if (items.length === 0) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-16 text-center">
+        <p className="text-lg text-muted-foreground">Your cart is empty.</p>
+        <Link
+          href="/"
+          className="inline-block max-w-2xs rounded-full bg-stone-900 px-7 py-3 text-sm font-medium text-white"
+        >
+          Continue shopping
+        </Link>
+      </div>
+    )
+  }
+
+  const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+
+  return (
+    <div className="grid gap-10 lg:grid-cols-3">
+      <ul className="divide-y lg:col-span-2">
+        {items.map((item) => (
+          <li key={item.id} className="flex items-center justify-between gap-4 py-6">
+            <div>
+              <p className="font-semibold">{item.name}</p>
+              <p className="text-sm text-muted-foreground">SEK {item.price}</p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="icon"
+                aria-label="Decrease quantity"
+                onClick={() => setQuantity(item.id, item.quantity - 1)}
+              >
+                <Minus />
+              </Button>
+              <span className="w-8 text-center">{item.quantity}</span>
+              <Button
+                variant="outline"
+                size="icon"
+                aria-label="Increase quantity"
+                onClick={() => setQuantity(item.id, item.quantity + 1)}
+              >
+                <Plus />
+              </Button>
+            </div>
+
+            <p className="w-24 text-right font-medium">SEK {item.price * item.quantity}</p>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={`Remove ${item.name}`}
+              onClick={() => removeItem(item.id)}
+            >
+              <Trash2 />
+            </Button>
+          </li>
+        ))}
+      </ul>
+
+      <aside className="h-fit rounded-lg border p-6">
+        <div className="flex justify-between text-lg font-semibold">
+          <span>Subtotal</span>
+          <span>SEK {subtotal}</span>
+        </div>
+        <Button className="mt-6 w-full">Checkout</Button>
+        <Button variant="ghost" className="mt-2 w-full" onClick={clear}>
+          Clear cart
+        </Button>
+      </aside>
+    </div>
+  )
+}
