@@ -16,7 +16,7 @@ export default function FavoritesPage() {
       {favorites.length === 0 ? (
         <p>You have no favorites yet.</p>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="heading-display grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {favorites.map((coffee: Coffee) => (
             <CoffeeCardItem key={coffee._id} coffee={coffee} />
           ))}

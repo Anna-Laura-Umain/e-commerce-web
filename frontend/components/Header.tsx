@@ -65,7 +65,7 @@ export default async function Header() {
 
           <div className="flex gap-4">
             <Button variant="ghost" size="icon">
-              <Link href="/favourites" className="flex items-center gap-2"><Heart /></Link>
+              <Link href="/favorites" className="flex items-center gap-2"><Heart /></Link>
             </Button>
             <Button variant="ghost" size="icon">
               <Link href="/cart" className="flex items-center gap-2">
