@@ -60,28 +60,6 @@ export type SanityImageHotspot = {
   width: number
 }
 
-export type HomePage = {
-  _id: string
-  _type: 'homePage'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  hero?: {
-    heading: string
-    text?: string
-    image?: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt: string
-      _type: 'image'
-    }
-    ctaLabel?: string
-    ctaHref?: string
-  }
-}
-
 export type Coffee = {
   _id: string
   _type: 'coffee'
@@ -565,7 +543,6 @@ export type AllSanitySchemaTypes =
   | Tea
   | SanityImageCrop
   | SanityImageHotspot
-  | HomePage
   | Coffee
   | PageReference
   | PostReference
