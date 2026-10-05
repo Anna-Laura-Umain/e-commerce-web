@@ -23,9 +23,7 @@ export type SanityImageAssetReference = {
 }
 
 export type Tea = {
-export type Tea = {
   _id: string
-  _type: 'tea'
   _type: 'tea'
   _createdAt: string
   _updatedAt: string
@@ -60,27 +58,6 @@ export type SanityImageHotspot = {
   y: number
   height: number
   width: number
-}
-
-export type Coffee = {
-  _id: string
-  _type: 'coffee'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
-  name?: string
-  origin?: string
-  roastLevel?: string
-  flavorNotes?: Array<string>
-  price?: number
-  available?: boolean
 }
 
 export type Coffee = {
