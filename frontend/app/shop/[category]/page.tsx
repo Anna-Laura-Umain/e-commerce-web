@@ -3,6 +3,7 @@ import { sanityFetch } from '@/sanity/lib/live'
 import CoffeeCard from '@/components/CoffeeCard'
 import { Coffee } from '@/types/coffee'
 
+
 const PRODUCT_TYPES = ['tea', 'coffee']
 
 const coffeeQuery = `*[_type == "coffee"]{
@@ -18,8 +19,9 @@ const coffeeQuery = `*[_type == "coffee"]{
 export default async function ShopCategoryPage({
   params,
 }: {
-  params: Promise<{ category: string }>
-}) {
+  params: Promise<{ category: string}>
+}) 
+{
   const { category } = await params
 
   if (!PRODUCT_TYPES.includes(category)) {
