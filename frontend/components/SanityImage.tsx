@@ -1,3 +1,5 @@
+'use client'
+
 import {SanityImage, type WrapperProps} from 'sanity-image'
 
 import {dataset, projectId} from '@/sanity/lib/api'
