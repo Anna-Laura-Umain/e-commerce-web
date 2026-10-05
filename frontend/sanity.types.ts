@@ -23,12 +23,8 @@ export type SanityImageAssetReference = {
 }
 
 export type Tea = {
-export type Tea = {
-export type HomePage = {
   _id: string
   _type: 'tea'
-  _type: 'tea'
-  _type: 'homePage'
   _createdAt: string
   _updatedAt: string
   _rev: string
