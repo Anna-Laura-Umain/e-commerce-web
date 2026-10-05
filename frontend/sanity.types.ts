@@ -23,8 +23,10 @@ export type SanityImageAssetReference = {
 }
 
 export type Tea = {
+export type Tea = {
 export type HomePage = {
   _id: string
+  _type: 'tea'
   _type: 'tea'
   _type: 'homePage'
   _createdAt: string
@@ -74,6 +76,27 @@ export type SanityImageHotspot = {
   y: number
   height: number
   width: number
+}
+
+export type Coffee = {
+  _id: string
+  _type: 'coffee'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  image?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  name?: string
+  origin?: string
+  roastLevel?: string
+  flavorNotes?: Array<string>
+  price?: number
+  available?: boolean
 }
 
 export type Coffee = {
@@ -909,7 +932,7 @@ export type PagesSlugsResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: productQuery
-// Query: *[  _type == "product"  && _id == $id][0]{  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
+// Query: *[  _type == "product"  && slug.current == $slug][0]{  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
 export type ProductQueryResult = null
 
 // Source: sanity/lib/queries.ts
@@ -949,7 +972,7 @@ declare module '@sanity/client' {
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
-    '*[\n  _type == "product"\n  && _id == $id\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
+    '*[\n  _type == "product"\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
     '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    heading,\n    text,\n    ctaLabel,\n    ctaHref,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
   }
 }

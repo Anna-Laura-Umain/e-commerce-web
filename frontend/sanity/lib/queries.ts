@@ -110,7 +110,7 @@ export const pagesSlugs = defineQuery(`
 
 export const productQuery = defineQuery(`*[
   _type == "product"
-  && _id == $id
+  && slug.current == $slug
 ][0]{
   _id,
   name,
