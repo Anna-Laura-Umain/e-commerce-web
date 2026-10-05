@@ -1,31 +1,55 @@
-import {Coffee} from "../types/coffee";
-import type {JSX} from "react";
+"use client";
+
+import { Coffee } from "../types/coffee";
+import type { JSX } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-
+} from "@/components/ui/card";
+import { Heart } from "lucide-react";
 
 type CoffeeProps = {
   coffee: Coffee;
 };
 
+export default function CoffeeCardItem({
+  coffee,
+}: CoffeeProps): JSX.Element {
 
-export default function CoffeeCardItem( {coffee} : CoffeeProps): JSX.Element {
-  return(
-    <Card className="mx-auto w-72 overflow-hidden pt-0"> 
-      <Image 
-        src={coffee.image.asset.url}
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  function toggleFavorite() {
+    setIsFavorite(prevFav => !prevFav);
+  }
+
+  return (
+    <Card className="relative mx-auto w-72 overflow-hidden pt-0">
+
+      <Image
+        src="/images/Ethiopia_._Shopify_Product_Image_Coffee_bag.jpg"
         alt={coffee.name}
         width={280}
         height={220}
         className="aspect-[4/3] w-full object-cover"
-      /> 
+      />
+
+      <button
+        className="absolute right-4 top-4 rounded-full bg-white p-2 shadow"
+        aria-label="Add to favorites"
+        onClick={toggleFavorite}
+      >
+        <Heart
+          className={`h-6 w-6 ${
+            isFavorite ? "fill-red-500 text-red-500" : "text-black"
+          }`}
+        />
+      </button>
 
       <CardHeader className="space-y-4 p-2">
         <div className="flex items-start justify-between gap-4">
@@ -73,9 +97,11 @@ export default function CoffeeCardItem( {coffee} : CoffeeProps): JSX.Element {
       </CardHeader>
 
       <CardFooter>
-        <Button className="w-full">Add to Cart</Button>
+        <Button className="w-full">
+          Add to Cart
+        </Button>
       </CardFooter>
-      </Card>
-    ) 
-  
+
+    </Card>
+  );
 }

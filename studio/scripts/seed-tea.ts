@@ -2,11 +2,13 @@ import fs from 'fs' // module fs works with files
 import path from 'path'
 import {client} from './sanityClient'
 
-type Coffee = {
+
+type Tea = {
   _id: string
   name: string
   origin: string
-  roastLevel: string
+  oxidationLevel: string
+  teaType: string
   flavorNotes: string[]
   price: number
   available: boolean
@@ -15,30 +17,31 @@ type Coffee = {
 const filePath = path.join(
   process.cwd(),
   'mock-data',
-  'coffees.json',
+  'teas.json',
 )
 
-const coffees: Coffee[] = JSON.parse(
+const teas: Tea[] = JSON.parse(
   fs.readFileSync(filePath, 'utf-8'), // read & parse json
 )
 
 async function seed() {
-  console.log(`Found ${coffees.length} coffees`) 
+  console.log(`Found ${teas.length} teas`) 
 
-  for (const coffee of coffees) {
+  for (const tea of teas) {
     await client.createOrReplace({ // createOrReplace - sanity' method 
-      _id: coffee._id,
-      _type: 'coffee',
+      _id: tea._id,
+      _type: 'tea',
 
-      name: coffee.name,
-      origin: coffee.origin,
-      roastLevel: coffee.roastLevel,
-      flavorNotes: coffee.flavorNotes,
-      price: coffee.price,
-      available: coffee.available,
+      name: tea.name,
+      origin: tea.origin,
+      oxidationLevel: tea.oxidationLevel,
+      teaType: tea.teaType,
+      flavorNotes: tea.flavorNotes,
+      price: tea.price,
+      available: tea.available,
     })
 
-    console.log(`Created: ${coffee.name}`)
+    console.log(`Created: ${tea.name}`)
   }
 
   console.log('Seed completed!')
