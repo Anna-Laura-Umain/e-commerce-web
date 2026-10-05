@@ -22,9 +22,9 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
-export type Coffee = {
+export type Tea = {
   _id: string
-  _type: 'coffee'
+  _type: 'tea'
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -37,7 +37,8 @@ export type Coffee = {
   }
   name?: string
   origin?: string
-  roastLevel?: string
+  oxidationLevel?: string
+  teaType?: string
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
@@ -57,6 +58,27 @@ export type SanityImageHotspot = {
   y: number
   height: number
   width: number
+}
+
+export type Coffee = {
+  _id: string
+  _type: 'coffee'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  image?: {
+    asset?: SanityImageAssetReference
+    media?: unknown
+    hotspot?: SanityImageHotspot
+    crop?: SanityImageCrop
+    _type: 'image'
+  }
+  name?: string
+  origin?: string
+  roastLevel?: string
+  flavorNotes?: Array<string>
+  price?: number
+  available?: boolean
 }
 
 export type PageReference = {
@@ -162,27 +184,6 @@ export type Button = {
   _type: 'button'
   buttonText?: string
   link?: Link
-}
-
-export type Product = {
-  _id: string
-  _type: 'product'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  name: string
-  origin: string
-  roastLevel: string
-  flavorNotes?: Array<string>
-  price: number
-  available?: boolean
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
 }
 
 export type Settings = {
@@ -539,9 +540,10 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Coffee
+  | Tea
   | SanityImageCrop
   | SanityImageHotspot
+  | Coffee
   | PageReference
   | PostReference
   | Link
@@ -550,7 +552,6 @@ export type AllSanitySchemaTypes =
   | BlockContentTextOnly
   | BlockContent
   | Button
-  | Product
   | Settings
   | Page
   | PersonReference
@@ -869,16 +870,8 @@ export type PagesSlugsResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: productQuery
-// Query: *[  _type == "product"  && _id == $id][0]{  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
-export type ProductQueryResult = {
-  _id: string
-  name: string
-  origin: string
-  roastLevel: string
-  flavorNotes: Array<string> | null
-  price: number
-  available: boolean | null
-} | null
+// Query: *[  _type == "product"  && slug.current == $slug][0]{  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
+export type ProductQueryResult = null
 
 // Query TypeMap
 import '@sanity/client'
@@ -892,6 +885,6 @@ declare module '@sanity/client' {
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
-    '*[\n  _type == "product"\n  && _id == $id\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
+    '*[\n  _type == "product"\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
   }
 }
