@@ -28,6 +28,10 @@
   margin: 0 auto;
   padding: 0 2rem;
 }
+
+@utility heading-display {
+  @apply font-semibold leading-[1.05] tracking-tighter text-balance bg-linear-to-br from-stone-900 to-amber-900 bg-clip-text text-transparent;
+}
 /* shared page width and side padding. use this class for inner wrappers */
 
 @custom-variant dark (&:where(.dark, .dark *));

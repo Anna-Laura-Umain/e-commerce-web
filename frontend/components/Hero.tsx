@@ -59,7 +59,7 @@ export default function Hero({ hero }: HeroProps) {
                         Small-batch tea & coffee
                     </p>
 
-                    <h1 className="mt-4 text-4xl md:text-5xl lg:text-6xl font-semibold leading-[1.05] tracking-tighter text-balance bg-linear-to-br from-stone-900 to-amber-900 bg-clip-text text-transparent">
+                    <h1 className="mt-4 heading-display text-4xl md:text-5xl lg:text-6xl">
                         {heading}
                     </h1>
 
