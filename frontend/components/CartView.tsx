@@ -12,7 +12,6 @@ export function CartView() {
   const removeItem = useCartStore((state) => state.removeItem)
   const clear = useCartStore((state) => state.clear)
 
-  // localStorage is only available in the browser, so render after mount
   const mounted = useMounted()
   if (!mounted) return null
 
