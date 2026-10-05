@@ -1,16 +1,21 @@
 
+import { sanityFetch } from '@/sanity/lib/live'
+import { homePageQuery } from '@/sanity/lib/queries'
+import  Hero  from '@/components/Hero'
 
-export default function Page() {
-return (
-  
-  <main>
-    <h1 className="text-3xl font-bold text-center p-20">Welcome to the Home Page !</h1>
-  </main>
-  
-)
-  
+
+
+export default async function HomePage() {
+  const { data: homePage } = await sanityFetch({
+    query: homePageQuery,
+  })
+
+
+  return (
+   <main>
+      <Hero hero={homePage?.hero ?? null}/>
+      {/*todo: maybe add swiper with product examples*/}
+   </main>
+  )
 }
 
-
-    
-  

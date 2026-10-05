@@ -120,3 +120,20 @@ export const productQuery = defineQuery(`*[
   price,
   available
 }`)
+
+export const homePageQuery = defineQuery(`*[_type == "homePage" && _id == "homePage"][0]{
+  hero{
+    heading,
+    text,
+    ctaLabel,
+    ctaHref,
+    image{
+      ...,
+      alt,
+      asset->{
+        _id,
+        metadata { lqip }
+      }
+    }
+  }
+}`)
