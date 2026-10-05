@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { AddToCartButton } from "./AddToCartButton";
 import { Heart } from "lucide-react";
 
 type CoffeeProps = {
@@ -36,7 +37,7 @@ export default function CoffeeCardItem({
         alt={coffee.name}
         width={280}
         height={220}
-        className="aspect-[4/3] w-full object-cover"
+        className="aspect-4/3 w-full object-cover"
       />
 
       <button
@@ -45,9 +46,8 @@ export default function CoffeeCardItem({
         onClick={toggleFavorite}
       >
         <Heart
-          className={`h-6 w-6 ${
-            isFavorite ? "fill-red-500 text-red-500" : "text-black"
-          }`}
+          className={`h-6 w-6 ${isFavorite ? "fill-red-500 text-red-500" : "text-black"
+            }`}
         />
       </button>
 
@@ -73,9 +73,8 @@ export default function CoffeeCardItem({
 
           <div className="flex items-center gap-2 text-xs">
             <span
-              className={`h-2 w-2 rounded-full ${
-                coffee.available ? "bg-green-500" : "bg-red-500"
-              }`}
+              className={`h-2 w-2 rounded-full ${coffee.available ? "bg-green-500" : "bg-red-500"
+                }`}
             />
 
             <span>
@@ -97,9 +96,13 @@ export default function CoffeeCardItem({
       </CardHeader>
 
       <CardFooter>
-        <Button className="w-full">
-          Add to Cart
-        </Button>
+        <AddToCartButton
+          id={coffee._id}
+          name={coffee.name}
+          price={coffee.price}
+          available={coffee.available}
+          className="w-full"
+        />
       </CardFooter>
 
     </Card>
