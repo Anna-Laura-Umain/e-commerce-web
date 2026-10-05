@@ -137,3 +137,23 @@ export const homePageQuery = defineQuery(`*[_type == "homePage" && _id == "homeP
     }
   }
 }`)
+
+export const coffeeListQuery = defineQuery(`*[_type == "coffee"] | order(name asc){
+  _id,
+  name,
+  origin,
+  roastLevel,
+  flavorNotes,
+  price,
+  available
+}`)
+
+export const teaListQuery = defineQuery(`*[_type == "tea"] | order(name asc){
+  _id,
+  name,
+  origin,
+  oxidationLevel,
+  flavorNotes,
+  price,
+  available
+}`)

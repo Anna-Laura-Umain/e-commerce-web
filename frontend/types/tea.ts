@@ -7,5 +7,4 @@ export type Tea = {
     flavorNotes: string[];
     price: number;
     available: boolean;
-    
 };
