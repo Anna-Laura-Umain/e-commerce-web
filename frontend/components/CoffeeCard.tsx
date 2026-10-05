@@ -2,7 +2,6 @@
 
 import { Coffee } from "../types/coffee";
 import type { JSX } from "react";
-import { useState } from "react";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -13,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { AddToCartButton } from "./AddToCartButton";
 import { Heart } from "lucide-react";
+import { useFavoriteStore } from "@/store/useFavoriteStore";
 
 type CoffeeProps = {
   coffee: Coffee;
@@ -22,11 +22,14 @@ export default function CoffeeCardItem({
   coffee,
 }: CoffeeProps): JSX.Element {
 
-  const [isFavorite, setIsFavorite] = useState(false);
+const favorites = useFavoriteStore((state) => state.favorites);
+  const toggleFavorite = useFavoriteStore((state) => state.toggleFavorite);
 
-  function toggleFavorite() {
-    setIsFavorite(prevFav => !prevFav);
-  }
+  const isFavorite = favorites.some(
+    (favorite) => favorite._id === coffee._id
+  );
+
+  
 
   return (
     <Card className="relative mx-auto w-72 overflow-hidden pt-0">
@@ -41,8 +44,8 @@ export default function CoffeeCardItem({
 
       <button
         className="absolute right-4 top-4 rounded-full bg-white p-2 shadow"
-        aria-label="Add to favorites"
-        onClick={toggleFavorite}
+        aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+        onClick={() => toggleFavorite(coffee)}
       >
         <Heart
           className={`h-6 w-6 ${isFavorite ? "fill-red-500 text-red-500" : "text-black"
