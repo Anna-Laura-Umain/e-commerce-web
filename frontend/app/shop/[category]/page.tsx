@@ -1,60 +1,40 @@
-import { notFound } from 'next/navigation'
-import { sanityFetch } from '@/sanity/lib/live'
-import CoffeeCard from '@/components/CoffeeCard'
-import { Coffee } from '@/types/coffee'
-
-
-const PRODUCT_TYPES = ['tea', 'coffee']
-
-const coffeeQuery = `*[_type == "coffee"]{
-  _id,
-  name,
-  origin,
-  roastLevel,
-  flavorNotes,
-  price,
-  available
-}`
+import {notFound} from 'next/navigation'
+import {sanityFetch} from '@/sanity/lib/live'
+import {coffeeListQuery, teaListQuery} from '@/sanity/lib/queries'
+import ProductCard from '@/components/ProductCard'
+import type {Product} from '@/types/product'
 
 export default async function ShopCategoryPage({
   params,
 }: {
-  params: Promise<{ category: string}>
-}) 
-{
-  const { category } = await params
+  params: Promise<{category: string}>
+}) {
+  const {category} = await params
 
-  if (!PRODUCT_TYPES.includes(category)) {
+  if (category !== 'coffee' && category !== 'tea') {
     notFound()
   }
 
-  if (category === 'coffee') {
-    const { data } = await sanityFetch({
-      query: coffeeQuery,
-    })
+  const isCoffee = category === 'coffee'
+  const title = isCoffee ? 'Coffee' : 'Tea'
+  const query = isCoffee ? coffeeListQuery : teaListQuery
 
-    const coffeeData = data as Coffee[]
+  const {data} = await sanityFetch({query})
 
-    return (
-      <main className="container py-12">
-        <h1 className="mb-8 text-3xl font-bold">Coffee</h1>
-
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {coffeeData.map((coffee) => (
-            <CoffeeCard
-              key={coffee._id}
-              coffee={coffee}
-            />
-          ))}
-        </div>
-      </main>
-    )
-  }
+  // TODO: replace the cast with generated types
+  const products = data as Product[]
 
   return (
     <main className="container py-12">
-      <h1 className="text-3xl font-bold">Tea</h1>
-      <p className="mt-4">Coming soon</p>
+      <h1 className="mb-8 heading-display text-3xl md:text-4xl text-center">{title}</h1>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))}
+      </div>
     </main>
   )
 }
+
+// moved queries to frontend/sanity/lib/queries.ts

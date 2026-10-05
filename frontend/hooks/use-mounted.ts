@@ -2,6 +2,7 @@ import {useSyncExternalStore} from 'react'
 
 const subscribe = () => () => {}
 
+// ai reccomendation:
 // false on the server, true in the browser.
 // Use it before reading data from localStorage to avoid hydration errors.
 export function useMounted() {

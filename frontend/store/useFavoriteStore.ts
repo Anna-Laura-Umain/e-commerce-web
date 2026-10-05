@@ -1,34 +1,29 @@
-import { create } from 'zustand'
-import { Coffee } from '@/types/coffee'
-import { persist } from 'zustand/middleware'
+import {create} from 'zustand'
+import {persist} from 'zustand/middleware'
+import type {Product} from '@/types/product'
 
 type FavoriteStore = {
-  favorites: Coffee[]
-  toggleFavorite: (coffee: Coffee) => void
-};
+  favorites: Product[]
+  toggleFavorite: (product: Product) => void
+}
 
 export const useFavoriteStore = create<FavoriteStore>()(
   persist(
-  (set) => ({
-    favorites: [],
+    (set) => ({
+      favorites: [],
 
-    toggleFavorite: (coffee) =>
-    set((state) => {
-      const alreadyFavorite = state.favorites.some(
-        (favorite) => favorite._id === coffee._id
-      );
+      // Adds the product if it's not in favorites, removes it if it is
+      toggleFavorite: (product) =>
+        set((state) => {
+          const alreadyFavorite = state.favorites.some((favorite) => favorite._id === product._id)
 
-      const updatedFavorites = alreadyFavorite
-    ? state.favorites.filter((favorite) => favorite._id !== coffee._id)
-    : [...state.favorites, coffee];
-      console.log(updatedFavorites)
-
-
-      return {
-        favorites: updatedFavorites,
-      };
+          return {
+            favorites: alreadyFavorite
+              ? state.favorites.filter((favorite) => favorite._id !== product._id)
+              : [...state.favorites, product],
+          }
+        }),
     }),
-}),
-{
-  name: 'favorite-coffees', // unique name for the storage
-}))
+    {name: 'leaf-bean-favorites'}, // key in localStorage
+  ),
+)
