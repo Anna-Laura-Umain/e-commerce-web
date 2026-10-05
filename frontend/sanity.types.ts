@@ -28,20 +28,6 @@ export type Tea = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  hero?: {
-    heading?: string
-    text?: string
-    image?: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt?: string
-      _type: 'image'
-    }
-    ctaLabel?: string
-    ctaHref?: string
-  }
   image?: {
     asset?: SanityImageAssetReference
     media?: unknown
@@ -60,10 +46,10 @@ export type Tea = {
 
 export type SanityImageCrop = {
   _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
+  top: number
+  bottom: number
+  left: number
+  right: number
 }
 
 export type SanityImageHotspot = {
@@ -74,25 +60,26 @@ export type SanityImageHotspot = {
   width: number
 }
 
-export type Coffee = {
+export type HomePage = {
   _id: string
-  _type: 'coffee'
+  _type: 'homePage'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
+  hero?: {
+    heading: string
+    text?: string
+    image?: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt: string
+      _type: 'image'
+    }
+    ctaLabel?: string
+    ctaHref?: string
   }
-  name?: string
-  origin?: string
-  roastLevel?: string
-  flavorNotes?: Array<string>
-  price?: number
-  available?: boolean
 }
 
 export type Coffee = {
@@ -219,27 +206,6 @@ export type Button = {
   _type: 'button'
   buttonText?: string
   link?: Link
-}
-
-export type Product = {
-  _id: string
-  _type: 'product'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  name?: string
-  origin?: string
-  roastLevel?: string
-  flavorNotes?: Array<string>
-  price?: number
-  available?: boolean
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
 }
 
 export type Settings = {
@@ -597,10 +563,9 @@ export type Geopoint = {
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | Tea
-  | HomePage
   | SanityImageCrop
   | SanityImageHotspot
-  | Coffee
+  | HomePage
   | Coffee
   | PageReference
   | PostReference
@@ -936,7 +901,7 @@ export type ProductQueryResult = null
 // Query: *[_type == "homePage" && _id == "homePage"][0]{  hero{    heading,    text,    ctaLabel,    ctaHref,    image{      ...,      alt,      asset->{        _id,        metadata { lqip }      }    }  }}
 export type HomePageQueryResult = {
   hero: {
-    heading: string | null
+    heading: string
     text: string | null
     ctaLabel: string | null
     ctaHref: string | null
@@ -950,7 +915,7 @@ export type HomePageQueryResult = {
       media?: unknown
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
-      alt: string | null
+      alt: string
       _type: 'image'
     } | null
   } | null

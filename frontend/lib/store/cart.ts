@@ -21,7 +21,6 @@ export const useCart = create<CartState>()(
     (set) => ({
       items: [],
 
-      // If the product is already in the cart, increase its quantity
       addItem: (item, quantity = 1) =>
         set((state) => {
           const existing = state.items.find((i) => i.id === item.id)
@@ -38,7 +37,6 @@ export const useCart = create<CartState>()(
       removeItem: (id) =>
         set((state) => ({items: state.items.filter((i) => i.id !== id)})),
 
-      // Quantity 0 or less removes the item
       setQuantity: (id, quantity) =>
         set((state) => ({
           items:
