@@ -14,7 +14,6 @@ import {
 } from "@/components/ui/navigation-menu"
 
 const shopLinks = [
-  // { label: 'Shop', href: '/shop' },
   { label: 'Coffee', href: '/shop/coffee' },
   { label: 'Tea', href: '/shop/tea' }
 ]

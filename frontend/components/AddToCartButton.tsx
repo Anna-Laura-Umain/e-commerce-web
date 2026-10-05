@@ -2,7 +2,8 @@
 
 import {useState} from 'react'
 import {Button} from '@/components/ui/button'
-import {useCart} from '@/lib/store/cart'
+import {useCartStore} from '@/store/useCartStore'
+
 
 type AddToCartButtonProps = {
   id: string
@@ -13,7 +14,7 @@ type AddToCartButtonProps = {
 }
 
 export function AddToCartButton({id, name, price, available, className}: AddToCartButtonProps) {
-  const addItem = useCart((state) => state.addItem)
+  const addItem = useCartStore((state) => state.addItem)
   const [added, setAdded] = useState(false)
 
   function handleClick() {
