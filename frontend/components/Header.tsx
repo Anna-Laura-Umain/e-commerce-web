@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { settingsQuery } from '@/sanity/lib/queries'
 import { sanityFetch } from '@/sanity/lib/live'
-import { Heart, ShoppingBag } from 'lucide-react'
+import { Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { CartLink } from '@/components/CartLink'
 
