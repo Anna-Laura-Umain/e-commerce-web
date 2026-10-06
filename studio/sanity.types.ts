@@ -22,42 +22,28 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
+export type Image1 = {
+  asset?: SanityImageAssetReference
+  media?: unknown // Unable to locate the referenced type "media1" in schema
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
+  _type: 'image'
+}
+
 export type Tea = {
   _id: string
   _type: 'tea'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
+  image?: Image1
   name?: string
   origin?: string
-  oxidationLevel?: string
-  teaType?: string
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
+  oxidationLevel?: string
+  teaType?: string
 }
 
 export type HomePage = {
@@ -82,25 +68,35 @@ export type HomePage = {
   }
 }
 
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
+}
+
 export type Coffee = {
   _id: string
   _type: 'coffee'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
+  image?: Image1
   name?: string
   origin?: string
-  roastLevel?: string
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
+  roastLevel?: string
 }
 
 export type PageReference = {
@@ -562,10 +558,11 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
+  | Image1
   | Tea
+  | HomePage
   | SanityImageCrop
   | SanityImageHotspot
-  | HomePage
   | Coffee
   | PageReference
   | PostReference
