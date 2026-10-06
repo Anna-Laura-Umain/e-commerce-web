@@ -39,9 +39,12 @@ export type Tea = {
   image?: Image1
   name?: string
   origin?: string
-  favorNotes?: Array<string>
+  flavorNotes?: Array<string>
   price?: number
   available?: boolean
+  description?: string
+  processingMethod?: string
+  brewingInstructions?: string
   oxidationLevel?: string
   teaType?: string
 }
@@ -93,9 +96,12 @@ export type Coffee = {
   image?: Image1
   name?: string
   origin?: string
-  favorNotes?: Array<string>
+  flavorNotes?: Array<string>
   price?: number
   available?: boolean
+  description?: string
+  processingMethod?: string
+  brewingInstructions?: string
   roastLevel?: string
 }
 
@@ -926,7 +932,7 @@ export type CoffeeListQueryResult = Array<{
   name: string | null
   origin: string | null
   roastLevel: string | null
-  flavorNotes: null
+  flavorNotes: Array<string> | null
   price: number | null
   available: boolean | null
 }>
@@ -939,7 +945,7 @@ export type TeaListQueryResult = Array<{
   name: string | null
   origin: string | null
   oxidationLevel: string | null
-  flavorNotes: null
+  flavorNotes: Array<string> | null
   price: number | null
   available: boolean | null
 }>
