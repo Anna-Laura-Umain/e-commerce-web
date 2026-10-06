@@ -1,10 +1,6 @@
-export type Tea = {
-    _id: string;
-    name: string;
-    origin: string;
+import { SharedProduct } from './sharedProduct';
+
+export type Tea = SharedProduct & {
     oxidationLevel: string;
     teaType: string;
-    flavorNotes: string[];
-    price: number;
-    available: boolean;
 };
