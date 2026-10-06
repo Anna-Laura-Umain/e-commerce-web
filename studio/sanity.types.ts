@@ -42,6 +42,9 @@ export type Tea = {
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
+  description?: string
+  processingMethod?: string
+  brewingInstructions?: string
   oxidationLevel?: string
   teaType?: string
 }
@@ -96,6 +99,9 @@ export type Coffee = {
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
+  description?: string
+  processingMethod?: string
+  brewingInstructions?: string
   roastLevel?: string
 }
 
