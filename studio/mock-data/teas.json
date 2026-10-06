@@ -1,283 +1,340 @@
 [
   {
     "_id": "tea-1",
-    "name": "Netherlands Herbal Tea",
-    "origin": "South Sudan",
-    "oxidationLevel": "Medium",
-    "teaType": "Black",
+    "name": "Ecuador Moroccan Mint Tea",
+    "origin": "Nigeria",
+    "oxidationLevel": "Low",
+    "teaType": "Herbal",
     "flavorNotes": [
-      "Sweet",
-      "Earthy"
+      "Earthy",
+      "Citrus"
     ],
-    "price": 183,
-    "available": false
+    "price": 218,
+    "available": false,
+    "description": "Rich and robust, perfect for a morning boost.",
+    "processingMethod": "Fermented",
+    "brewingInstructions": "Steep for 3–4 minutes at 90°C."
   },
   {
     "_id": "tea-2",
-    "name": "Bahrain Black Tea",
-    "origin": "Bosnia and Herzegovina",
-    "oxidationLevel": "Medium",
-    "teaType": "Black",
+    "name": "Guernsey Japanese Sencha",
+    "origin": "Lithuania",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
     "flavorNotes": [
-      "Fruity",
-      "Smoky",
-      "Earthy"
+      "Floral",
+      "Earthy",
+      "Sweet"
     ],
-    "price": 133,
-    "available": true
+    "price": 101,
+    "available": false,
+    "description": "Bright and lively, ideal for an afternoon pick-me-up.",
+    "processingMethod": "Steamed",
+    "brewingInstructions": "Use loose leaves for best flavor."
   },
   {
     "_id": "tea-3",
-    "name": "Argentina Green Tea",
-    "origin": "Tanzania",
+    "name": "Tokelau Moroccan Mint Tea",
+    "origin": "Mayotte",
     "oxidationLevel": "Low",
-    "teaType": "Oolong",
+    "teaType": "Herbal",
     "flavorNotes": [
-      "Floral",
-      "Earthy",
-      "Fresh",
-      "Nutty"
+      "Fruity",
+      "Sweet",
+      "Smoky"
     ],
-    "price": 208,
-    "available": true
+    "price": 83,
+    "available": true,
+    "description": "Bright and lively, ideal for an afternoon pick-me-up.",
+    "processingMethod": "Fermented",
+    "brewingInstructions": "Steep in hot water for 2-3 minutes."
   },
   {
     "_id": "tea-4",
-    "name": "Faroe Islands White Tea",
-    "origin": "Georgia",
+    "name": "Lao People's Democratic Republic Taiwan High Mountain Oolong",
+    "origin": "South Sudan",
     "oxidationLevel": "Medium",
     "teaType": "Oolong",
     "flavorNotes": [
+      "Citrus",
+      "Fresh",
       "Nutty",
-      "Floral"
+      "Fruity"
     ],
-    "price": 187,
-    "available": true
+    "price": 192,
+    "available": false,
+    "description": "A complex tea with layers of flavor and aroma.",
+    "processingMethod": "Fermented",
+    "brewingInstructions": "Steep for 3–4 minutes at 90°C."
   },
   {
     "_id": "tea-5",
-    "name": "Martinique Herbal Tea",
-    "origin": "Guinea",
-    "oxidationLevel": "Low",
-    "teaType": "White",
+    "name": "Turkmenistan Taiwan High Mountain Oolong",
+    "origin": "Hong Kong",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
     "flavorNotes": [
       "Nutty",
-      "Fresh",
-      "Smoky"
+      "Earthy",
+      "Floral",
+      "Fresh"
     ],
     "price": 88,
-    "available": true
+    "available": false,
+    "description": "Bright and lively, ideal for an afternoon pick-me-up.",
+    "processingMethod": "Sun-dried",
+    "brewingInstructions": "Steep for 2–3 minutes at 80°C."
   },
   {
     "_id": "tea-6",
-    "name": "Iran Green Tea",
-    "origin": "Indonesia",
-    "oxidationLevel": "High",
-    "teaType": "Herbal",
-    "flavorNotes": [
-      "Nutty",
-      "Smoky"
-    ],
-    "price": 107,
-    "available": true
-  },
-  {
-    "_id": "tea-7",
-    "name": "Slovakia Black Tea",
-    "origin": "Greece",
-    "oxidationLevel": "Low",
-    "teaType": "Green",
-    "flavorNotes": [
-      "Earthy",
-      "Sweet",
-      "Nutty",
-      "Fresh"
-    ],
-    "price": 111,
-    "available": true
-  },
-  {
-    "_id": "tea-8",
-    "name": "Iceland Green Tea",
-    "origin": "Kenya",
-    "oxidationLevel": "High",
-    "teaType": "Black",
-    "flavorNotes": [
-      "Fresh",
-      "Nutty",
-      "Sweet",
-      "Floral"
-    ],
-    "price": 142,
-    "available": true
-  },
-  {
-    "_id": "tea-9",
-    "name": "Falkland Islands (Malvinas) Herbal Tea",
-    "origin": "Botswana",
-    "oxidationLevel": "High",
-    "teaType": "Herbal",
-    "flavorNotes": [
-      "Nutty",
-      "Earthy"
-    ],
-    "price": 192,
-    "available": false
-  },
-  {
-    "_id": "tea-10",
-    "name": "Slovakia Oolong Tea",
-    "origin": "Republic of Korea",
-    "oxidationLevel": "Low",
-    "teaType": "Green",
-    "flavorNotes": [
-      "Earthy",
-      "Citrus"
-    ],
-    "price": 149,
-    "available": true
-  },
-  {
-    "_id": "tea-11",
-    "name": "Mauritania Green Tea",
-    "origin": "Lao People's Democratic Republic",
-    "oxidationLevel": "High",
-    "teaType": "Black",
-    "flavorNotes": [
-      "Floral",
-      "Fruity",
-      "Sweet",
-      "Earthy"
-    ],
-    "price": 210,
-    "available": true
-  },
-  {
-    "_id": "tea-12",
-    "name": "Gibraltar Green Tea",
-    "origin": "Palau",
-    "oxidationLevel": "Medium",
-    "teaType": "White",
-    "flavorNotes": [
-      "Fruity",
-      "Sweet",
-      "Floral",
-      "Fresh"
-    ],
-    "price": 190,
-    "available": true
-  },
-  {
-    "_id": "tea-13",
-    "name": "Sweden White Tea",
-    "origin": "Bahrain",
-    "oxidationLevel": "Low",
-    "teaType": "Black",
-    "flavorNotes": [
-      "Nutty",
-      "Fruity",
-      "Earthy",
-      "Citrus"
-    ],
-    "price": 113,
-    "available": true
-  },
-  {
-    "_id": "tea-14",
-    "name": "Nepal Green Tea",
-    "origin": "Christmas Island",
-    "oxidationLevel": "Medium",
-    "teaType": "Oolong",
-    "flavorNotes": [
-      "Citrus",
-      "Earthy",
-      "Nutty"
-    ],
-    "price": 158,
-    "available": true
-  },
-  {
-    "_id": "tea-15",
-    "name": "North Macedonia Green Tea",
-    "origin": "Iceland",
-    "oxidationLevel": "Low",
-    "teaType": "Oolong",
-    "flavorNotes": [
-      "Floral",
-      "Earthy",
-      "Nutty"
-    ],
-    "price": 136,
-    "available": true
-  },
-  {
-    "_id": "tea-16",
-    "name": "Anguilla Herbal Tea",
-    "origin": "Barbados",
-    "oxidationLevel": "High",
-    "teaType": "Green",
-    "flavorNotes": [
-      "Floral",
-      "Citrus",
-      "Nutty"
-    ],
-    "price": 84,
-    "available": true
-  },
-  {
-    "_id": "tea-17",
-    "name": "Lao People's Democratic Republic Black Tea",
-    "origin": "Tonga",
-    "oxidationLevel": "Low",
-    "teaType": "Black",
-    "flavorNotes": [
-      "Fresh",
-      "Smoky",
-      "Earthy"
-    ],
-    "price": 147,
-    "available": false
-  },
-  {
-    "_id": "tea-18",
-    "name": "Democratic People's Republic of Korea Green Tea",
-    "origin": "Bolivia",
-    "oxidationLevel": "High",
-    "teaType": "Black",
-    "flavorNotes": [
-      "Earthy",
-      "Sweet",
-      "Fresh",
-      "Nutty"
-    ],
-    "price": 200,
-    "available": true
-  },
-  {
-    "_id": "tea-19",
-    "name": "Gibraltar Herbal Tea",
-    "origin": "Saint Kitts and Nevis",
-    "oxidationLevel": "Medium",
-    "teaType": "Black",
-    "flavorNotes": [
-      "Nutty",
-      "Citrus",
-      "Fresh"
-    ],
-    "price": 159,
-    "available": true
-  },
-  {
-    "_id": "tea-20",
-    "name": "Congo White Tea",
+    "name": "Belize Silver Needle White Tea",
     "origin": "Cuba",
     "oxidationLevel": "Low",
     "teaType": "White",
     "flavorNotes": [
-      "Floral",
-      "Nutty"
+      "Fruity",
+      "Earthy",
+      "Fresh",
+      "Smoky"
     ],
-    "price": 84,
-    "available": false
+    "price": 229,
+    "available": true,
+    "description": "Rich and robust, perfect for a morning boost.",
+    "processingMethod": "Pan-fired",
+    "brewingInstructions": "Steep for 3–4 minutes at 90°C."
+  },
+  {
+    "_id": "tea-7",
+    "name": "Sierra Leone Assam Black Tea",
+    "origin": "Portugal",
+    "oxidationLevel": "High",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Fresh",
+      "Floral"
+    ],
+    "price": 247,
+    "available": false,
+    "description": "Bright and lively, ideal for an afternoon pick-me-up.",
+    "processingMethod": "Sun-dried",
+    "brewingInstructions": "Steep in hot water for 2-3 minutes."
+  },
+  {
+    "_id": "tea-8",
+    "name": "Maldives Moroccan Mint Tea",
+    "origin": "Comoros",
+    "oxidationLevel": "Low",
+    "teaType": "Herbal",
+    "flavorNotes": [
+      "Sweet",
+      "Floral"
+    ],
+    "price": 124,
+    "available": true,
+    "description": "Smooth and mellow with a hint of sweetness.",
+    "processingMethod": "Steamed",
+    "brewingInstructions": "Steep for 3–4 minutes at 90°C."
+  },
+  {
+    "_id": "tea-9",
+    "name": "Northern Mariana Islands Taiwan High Mountain Oolong",
+    "origin": "Egypt",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Fruity",
+      "Smoky"
+    ],
+    "price": 243,
+    "available": false,
+    "description": "Smooth and mellow with a hint of sweetness.",
+    "processingMethod": "Rolled",
+    "brewingInstructions": "Steep for 4–5 minutes at 95°C."
+  },
+  {
+    "_id": "tea-10",
+    "name": "Guernsey Moroccan Mint Tea",
+    "origin": "Nigeria",
+    "oxidationLevel": "Low",
+    "teaType": "Herbal",
+    "flavorNotes": [
+      "Earthy",
+      "Floral",
+      "Sweet"
+    ],
+    "price": 183,
+    "available": false,
+    "description": "A complex tea with layers of flavor and aroma.",
+    "processingMethod": "Rolled",
+    "brewingInstructions": "Steep in hot water for 2-3 minutes."
+  },
+  {
+    "_id": "tea-11",
+    "name": "Tajikistan Taiwan High Mountain Oolong",
+    "origin": "Bulgaria",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Nutty",
+      "Fruity",
+      "Earthy"
+    ],
+    "price": 198,
+    "available": true,
+    "description": "Smooth and mellow with a hint of sweetness.",
+    "processingMethod": "Steamed",
+    "brewingInstructions": "Steep for 2–3 minutes at 80°C."
+  },
+  {
+    "_id": "tea-12",
+    "name": "Honduras Silver Needle White Tea",
+    "origin": "Guadeloupe",
+    "oxidationLevel": "Low",
+    "teaType": "White",
+    "flavorNotes": [
+      "Fruity",
+      "Citrus",
+      "Smoky"
+    ],
+    "price": 201,
+    "available": false,
+    "description": "Rich and robust, perfect for a morning boost.",
+    "processingMethod": "Fermented",
+    "brewingInstructions": "Steep for 2–3 minutes at 80°C."
+  },
+  {
+    "_id": "tea-13",
+    "name": "Hungary Japanese Sencha",
+    "origin": "Australia",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Nutty",
+      "Fruity"
+    ],
+    "price": 144,
+    "available": false,
+    "description": "Rich and robust, perfect for a morning boost.",
+    "processingMethod": "Rolled",
+    "brewingInstructions": "Steep in hot water for 2-3 minutes."
+  },
+  {
+    "_id": "tea-14",
+    "name": "Svalbard & Jan Mayen Islands Japanese Sencha",
+    "origin": "Martinique",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Sweet",
+      "Fruity",
+      "Earthy",
+      "Floral"
+    ],
+    "price": 95,
+    "available": false,
+    "description": "Bright and lively, ideal for an afternoon pick-me-up.",
+    "processingMethod": "Pan-fired",
+    "brewingInstructions": "Steep in hot water for 2-3 minutes."
+  },
+  {
+    "_id": "tea-15",
+    "name": "Saint Barthélemy Taiwan High Mountain Oolong",
+    "origin": "Isle of Man",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Floral",
+      "Earthy",
+      "Smoky",
+      "Citrus"
+    ],
+    "price": 152,
+    "available": true,
+    "description": "Rich and robust, perfect for a morning boost.",
+    "processingMethod": "Rolled",
+    "brewingInstructions": "Adjust steeping time based on taste preference."
+  },
+  {
+    "_id": "tea-16",
+    "name": "Morocco Japanese Sencha",
+    "origin": "Turkey",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Earthy",
+      "Citrus"
+    ],
+    "price": 114,
+    "available": false,
+    "description": "A delicate tea with a light and refreshing flavor.",
+    "processingMethod": "Fermented",
+    "brewingInstructions": "Use loose leaves for best flavor."
+  },
+  {
+    "_id": "tea-17",
+    "name": "Cuba Assam Black Tea",
+    "origin": "Kuwait",
+    "oxidationLevel": "High",
+    "teaType": "Black",
+    "flavorNotes": [
+      "Floral",
+      "Fruity"
+    ],
+    "price": 250,
+    "available": false,
+    "description": "A delicate tea with a light and refreshing flavor.",
+    "processingMethod": "Rolled",
+    "brewingInstructions": "Steep for 4–5 minutes at 95°C."
+  },
+  {
+    "_id": "tea-18",
+    "name": "Barbados Japanese Sencha",
+    "origin": "Northern Mariana Islands",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Citrus",
+      "Floral"
+    ],
+    "price": 217,
+    "available": true,
+    "description": "Smooth and mellow with a hint of sweetness.",
+    "processingMethod": "Fermented",
+    "brewingInstructions": "Steep for 4–5 minutes at 95°C."
+  },
+  {
+    "_id": "tea-19",
+    "name": "Virgin Islands, U.S. Japanese Sencha",
+    "origin": "Serbia",
+    "oxidationLevel": "Low",
+    "teaType": "Green",
+    "flavorNotes": [
+      "Earthy",
+      "Smoky",
+      "Fresh"
+    ],
+    "price": 190,
+    "available": true,
+    "description": "Rich and robust, perfect for a morning boost.",
+    "processingMethod": "Steamed",
+    "brewingInstructions": "Steep for 4–5 minutes at 95°C."
+  },
+  {
+    "_id": "tea-20",
+    "name": "Congo Taiwan High Mountain Oolong",
+    "origin": "Malawi",
+    "oxidationLevel": "Medium",
+    "teaType": "Oolong",
+    "flavorNotes": [
+      "Fruity",
+      "Citrus",
+      "Floral",
+      "Fresh"
+    ],
+    "price": 233,
+    "available": false,
+    "description": "Smooth and mellow with a hint of sweetness.",
+    "processingMethod": "Pan-fired",
+    "brewingInstructions": "Steep for 4–5 minutes at 95°C."
   }
 ]

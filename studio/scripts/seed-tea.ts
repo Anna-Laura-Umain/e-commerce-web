@@ -12,6 +12,9 @@ type Tea = {
   flavorNotes: string[]
   price: number
   available: boolean
+  description: string
+  processingMethod: string
+  brewingInstructions: string
 }
 // find coffees.json
 const filePath = path.join(
@@ -29,16 +32,10 @@ async function seed() {
 
   for (const tea of teas) {
     await client.createOrReplace({ // createOrReplace - sanity' method 
-      _id: tea._id,
+      ...tea,
       _type: 'tea',
 
-      name: tea.name,
-      origin: tea.origin,
-      oxidationLevel: tea.oxidationLevel,
-      teaType: tea.teaType,
-      flavorNotes: tea.flavorNotes,
-      price: tea.price,
-      available: tea.available,
+     
     })
 
     console.log(`Created: ${tea.name}`)
