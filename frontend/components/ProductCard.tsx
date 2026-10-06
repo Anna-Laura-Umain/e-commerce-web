@@ -14,9 +14,10 @@ import type { Product } from '@/types/product'
 
 type ProductCardProps = {
     product: Product
+    category: string
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, category }: ProductCardProps) {
     const mounted = useMounted()
     const isFavorite = useFavoriteStore((state) =>
         state.favorites.some((favorite) => favorite._id === product._id),
@@ -29,6 +30,7 @@ export default function ProductCard({ product }: ProductCardProps) {
     return (
         <Card className="relative mx-auto w-72 overflow-hidden pt-0">
             {/* TODO: use the product image from Sanity */}
+        <Link href={`/shop/${category}/product/${product._id}`}>
             <Image
                 src="/images/Ethiopia_._Shopify_Product_Image_Coffee_bag.jpg"
                 alt={product.name}
@@ -37,15 +39,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 className="aspect-4/3 w-full object-cover"
             />
 
-            <button
-                className="absolute right-4 top-4 rounded-full bg-white p-2 shadow"
-                aria-label={showAsFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                onClick={() => toggleFavorite(product)}
-            >
-                <Heart
-                    className={`h-6 w-6 ${showAsFavorite ? 'fill-red-500 text-red-500' : 'text-black'}`}
-                />
-            </button>
+           
 
             <CardHeader className="space-y-4 p-2">
                 <div className="flex items-start justify-between gap-4">
@@ -72,11 +66,20 @@ export default function ProductCard({ product }: ProductCardProps) {
                         ))}
                     </ul>
                 </div>
+                 </CardHeader>
+            </Link>
+             <button
+                className="absolute right-4 top-4 rounded-full bg-white p-2 shadow"
+                aria-label={showAsFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                onClick={() => toggleFavorite(product)}
+            >
+                <Heart
+                    className={`h-6 w-6 ${showAsFavorite ? 'fill-red-500 text-red-500' : 'text-black'}`}
+                />
+            </button>
 
-                <Link href='#'>
-                    <Button className='bg-olive-600 cursor-pointer'>Show more</Button></Link>
-
-            </CardHeader>
+           
+            
 
             <CardFooter>
                 <AddToCartButton
