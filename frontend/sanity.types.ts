@@ -67,8 +67,17 @@ export type HomePage = {
   _updatedAt: string
   _rev: string
   hero?: {
+    eyebrow?: string
     heading?: string
     text?: string
+    primaryButton?: {
+      label?: string
+      href?: string
+    }
+    secondaryButton?: {
+      label?: string
+      href?: string
+    }
     image?: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -77,8 +86,6 @@ export type HomePage = {
       alt?: string
       _type: 'image'
     }
-    ctaLabel?: string
-    ctaHref?: string
   }
 }
 
@@ -893,18 +900,46 @@ export type PagesSlugsResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: productQuery
-// Query: *[  _type == "product"  && slug.current == $slug][0]{  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
-export type ProductQueryResult = null
+// Query: *[  _type in ["coffee", "tea"]  && slug.current == $slug][0]{  _id,  name,  origin,  roastLevel,  oxidationLevel,  flavorNotes,  price,  available}
+export type ProductQueryResult =
+  | {
+      _id: string
+      name: string | null
+      origin: string | null
+      roastLevel: string | null
+      oxidationLevel: null
+      flavorNotes: Array<string> | null
+      price: number | null
+      available: boolean | null
+    }
+  | {
+      _id: string
+      name: string | null
+      origin: string | null
+      roastLevel: null
+      oxidationLevel: string | null
+      flavorNotes: Array<string> | null
+      price: number | null
+      available: boolean | null
+    }
+  | null
 
 // Source: sanity/lib/queries.ts
 // Variable: homePageQuery
-// Query: *[_type == "homePage" && _id == "homePage"][0]{  hero{    heading,    text,    ctaLabel,    ctaHref,    image{      ...,      alt,      asset->{        _id,        metadata { lqip }      }    }  }}
+// Query: *[_type == "homePage" && _id == "homePage"][0]{  hero{    eyebrow,    heading,    text,    primaryButton,    secondaryButton,    image{      ...,      alt,      asset->{        _id,        metadata { lqip }      }    }  }}
 export type HomePageQueryResult = {
   hero: {
+    eyebrow: string | null
     heading: string | null
     text: string | null
-    ctaLabel: string | null
-    ctaHref: string | null
+    primaryButton: {
+      label?: string
+      href?: string
+    } | null
+    secondaryButton: {
+      label?: string
+      href?: string
+    } | null
     image: {
       asset: {
         _id: string
@@ -959,8 +994,8 @@ declare module '@sanity/client' {
     '\n  *[_type == "post" && slug.current == $slug] [0] {\n    content[]{\n    ...,\n    markDefs[]{\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n    }\n  },\n    \n  _id,\n  "status": select(_originalId in path("drafts.**") => "draft", "published"),\n  "title": coalesce(title, "Untitled"),\n  "slug": slug.current,\n  excerpt,\n  coverImage,\n  "date": coalesce(date, _updatedAt),\n  "author": author->{firstName, lastName, picture},\n\n  }\n': PostQueryResult
     '\n  *[_type == "post" && defined(slug.current)]\n  {"slug": slug.current}\n': PostPagesSlugsResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
-    '*[\n  _type == "product"\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
-    '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    heading,\n    text,\n    ctaLabel,\n    ctaHref,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
+    '*[\n  _type in ["coffee", "tea"]\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
+    '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    eyebrow,\n    heading,\n    text,\n    primaryButton,\n    secondaryButton,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
     '*[_type == "coffee"] | order(name asc){\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': CoffeeListQueryResult
     '*[_type == "tea"] | order(name asc){\n  _id,\n  name,\n  origin,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': TeaListQueryResult
   }

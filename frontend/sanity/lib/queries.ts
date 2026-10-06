@@ -109,13 +109,14 @@ export const pagesSlugs = defineQuery(`
 
 
 export const productQuery = defineQuery(`*[
-  _type == "product"
+  _type in ["coffee", "tea"]
   && slug.current == $slug
 ][0]{
   _id,
   name,
   origin,
   roastLevel,
+  oxidationLevel,
   flavorNotes,
   price,
   available
@@ -123,10 +124,11 @@ export const productQuery = defineQuery(`*[
 
 export const homePageQuery = defineQuery(`*[_type == "homePage" && _id == "homePage"][0]{
   hero{
+    eyebrow,
     heading,
     text,
-    ctaLabel,
-    ctaHref,
+    primaryButton,
+    secondaryButton,
     image{
       ...,
       alt,

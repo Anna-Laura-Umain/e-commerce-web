@@ -25,7 +25,7 @@ export const settings = defineType({
     }),
     defineField({
       name: 'title',
-      description: 'This field is the title of your blog.',
+      description: 'Store name, shown in the header and browser tab.',
       title: 'Title',
       type: 'string',
       initialValue: demo.title,
@@ -33,7 +33,7 @@ export const settings = defineType({
     }),
     defineField({
       name: 'description',
-      description: 'Used on the Homepage',
+      description: 'Short text for search engines and link previews. Not shown on the page.',
       title: 'Description',
       type: 'array',
       initialValue: demo.description,
@@ -127,7 +127,7 @@ export const settings = defineType({
       name: 'ogImage',
       title: 'Open Graph Image',
       type: 'image',
-      description: 'Displayed on social cards and search engine results.',
+      description: 'Displayed on social cards and search engine results (shown in document metadata).',
       options: {
         hotspot: true,
         aiAssist: {

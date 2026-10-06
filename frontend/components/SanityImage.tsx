@@ -1,3 +1,4 @@
+//  do not delete
 'use client'
 
 import {SanityImage, type WrapperProps} from 'sanity-image'
