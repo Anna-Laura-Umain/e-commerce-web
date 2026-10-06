@@ -9,7 +9,7 @@ import { AddToCartButton } from '@/components/AddToCartButton'
 import { useFavoriteStore } from '@/store/useFavoriteStore'
 import { useMounted } from '@/hooks/use-mounted'
 import { getProductDetail } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { FavoriteButton } from './FavoriteButton'
 import type { Product } from '@/types/product'
 
 type ProductCardProps = {
@@ -18,16 +18,10 @@ type ProductCardProps = {
 }
 
 export default function ProductCard({ product, category }: ProductCardProps) {
-    const mounted = useMounted()
-    const isFavorite = useFavoriteStore((state) =>
-        state.favorites.some((favorite) => favorite._id === product._id),
-    )
-    const toggleFavorite = useFavoriteStore((state) => state.toggleFavorite)
-
-    // Favorites come from localStorage, so show them only in the browser
-    const showAsFavorite = mounted && isFavorite
+    
 
     return (
+
         <Card className="relative mx-auto w-72 overflow-hidden pt-0">
             {/* TODO: use the product image from Sanity */}
         <Link href={`/shop/${category}/product/${product._id}`}>
@@ -68,15 +62,10 @@ export default function ProductCard({ product, category }: ProductCardProps) {
                 </div>
                  </CardHeader>
             </Link>
-             <button
-                className="absolute right-4 top-4 rounded-full bg-white p-2 shadow"
-                aria-label={showAsFavorite ? 'Remove from favorites' : 'Add to favorites'}
-                onClick={() => toggleFavorite(product)}
-            >
-                <Heart
-                    className={`h-6 w-6 ${showAsFavorite ? 'fill-red-500 text-red-500' : 'text-black'}`}
-                />
-            </button>
+            <FavoriteButton 
+                product={product}
+                className="absolute right-4 top-4"
+            />
 
            
             
