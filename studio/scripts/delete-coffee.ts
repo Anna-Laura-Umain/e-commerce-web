@@ -1,3 +1,7 @@
+// This is temporary script to delete all coffee documents from Sanity Studio. 
+//save it now in case we need to delete all coffee documents again in the future.
+// run this script with 'npx tsx scripts/generate-coffee.ts' USE WITH CAUTION!
+
 import { client } from './sanityClient'
 
 async function deleteCoffees() {
