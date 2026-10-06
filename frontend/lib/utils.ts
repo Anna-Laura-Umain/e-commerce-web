@@ -6,3 +6,7 @@ export function getProductDetail(product: Product) {
   if ('roastLevel' in product) return `${product.roastLevel} roast`
   return `${product.oxidationLevel} oxidation`
 }
+
+export function formatPrice(value: number) {
+  return value.toLocaleString('en', {maximumFractionDigits: 2})
+}
