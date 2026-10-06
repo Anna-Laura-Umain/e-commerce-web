@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link'
-import {Minus, Plus, Trash2} from 'lucide-react'
-import {Button} from '@/components/ui/button'
-import {useMounted} from '@/hooks/use-mounted'
+import { Minus, Plus, Trash2 } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { useMounted } from '@/hooks/use-mounted'
 import { useCartStore } from '@/store/useCartStore'
+import {formatPrice} from '@/lib/utils'
 
 export function CartView() {
   const items = useCartStore((state) => state.items)
@@ -33,10 +34,10 @@ export function CartView() {
 
   return (
     <div className="grid gap-10 lg:grid-cols-3">
-      <ul className="divide-y lg:col-span-2">
+      <ul className="min-w-0 divide-y lg:col-span-2">
         {items.map((item) => (
-          <li key={item.id} className="flex items-center justify-between gap-4 py-6">
-            <div>
+          <li key={item.id} className="flex flex-wrap items-center gap-x-4 gap-y-3 py-6">
+            <div className="min-w-0 basis-full sm:basis-auto sm:flex-1">
               <p className="font-semibold">{item.name}</p>
               <p className="text-sm text-muted-foreground">SEK {item.price}</p>
             </div>
@@ -61,7 +62,9 @@ export function CartView() {
               </Button>
             </div>
 
-            <p className="w-24 text-right font-medium">SEK {item.price * item.quantity}</p>
+            <p className="ml-auto text-right font-medium sm:ml-0 sm:w-24">
+              SEK {item.price * item.quantity}
+            </p>
 
             <Button
               variant="ghost"
@@ -78,7 +81,8 @@ export function CartView() {
       <aside className="h-fit rounded-lg border p-6">
         <div className="flex justify-between text-lg font-semibold">
           <span>Subtotal</span>
-          <span>SEK {subtotal}</span>
+          <span>{formatPrice(subtotal)}</span>
+          <span>SEK</span>
         </div>
         <Button className="mt-6 w-full">Checkout</Button>
         <Button variant="ghost" className="mt-2 w-full" onClick={clear}>
