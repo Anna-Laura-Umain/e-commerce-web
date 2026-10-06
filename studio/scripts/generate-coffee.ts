@@ -3,30 +3,27 @@ import fs from 'fs'
 import path from 'path'
 
 const coffeeProducts = [
-  {
-    name: 'Colombian Supremo',
-    origin: 'Colombia',
-  },
-  {
-    name: 'Ethiopian Yirgacheffe',
-    origin: 'Ethiopia',
-  },
-  {
-    name: 'Kenyan AA',
-    origin: 'Kenya',
-  },
-  {
-    name: 'Guatemala Antigua',
-    origin: 'Guatemala',
-  },
-  {
-    name: 'Brazilian Santos',
-    origin: 'Brazil',
-  },
-  {
-    name: 'Costa Rica Tarrazu',
-    origin: 'Costa Rica',
-  },
+  { name: 'Colombian Supremo', origin: 'Colombia' },
+  { name: 'Ethiopian Yirgacheffe', origin: 'Ethiopia' },
+  { name: 'Kenyan AA', origin: 'Kenya' },
+  { name: 'Guatemala Antigua', origin: 'Guatemala' },
+  { name: 'Brazilian Santos', origin: 'Brazil' },
+  { name: 'Costa Rica Tarrazu', origin: 'Costa Rica' },
+  { name: 'Sumatra Mandheling', origin: 'Indonesia' },
+  { name: 'Panama Boquete', origin: 'Panama' },
+  { name: 'Rwanda Bourbon', origin: 'Rwanda' },
+  { name: 'Peru Organic', origin: 'Peru' },
+  { name: 'Mexico Chiapas', origin: 'Mexico' },
+  { name: 'Honduras Marcala', origin: 'Honduras' },
+  { name: 'El Salvador Pacamara', origin: 'El Salvador' },
+  { name: 'Nicaragua Jinotega', origin: 'Nicaragua' },
+  { name: 'Tanzania Peaberry', origin: 'Tanzania' },
+  { name: 'Papua New Guinea Sigri', origin: 'Papua New Guinea' },
+  { name: 'Java Estate', origin: 'Indonesia' },
+  { name: 'Burundi Kayanza', origin: 'Burundi' },
+  { name: 'Bolivia Caranavi', origin: 'Bolivia' },
+  { name: 'India Monsooned Malabar', origin: 'India' },
+
 ]
 
 const flavorNotes = [
@@ -63,10 +60,9 @@ const descriptions = [
   'A rich coffee with a full body and lingering finish.',
 ]
 
-const coffees = Array.from({length: 20}, () => {
-  const product = faker.helpers.arrayElement(coffeeProducts)
+const coffees = coffeeProducts.map((product) => {
   return {
-    _id: faker.string.uuid(),
+    _id: `coffee-${product.name.toLowerCase().replaceAll(' ', '-')}`,
     name: product.name,
     origin: product.origin,
     roastLevel: faker.helpers.arrayElement(roastLevels),

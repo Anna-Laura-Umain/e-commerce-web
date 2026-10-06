@@ -159,3 +159,21 @@ export const teaListQuery = defineQuery(`*[_type == "tea"] | order(name asc){
   price,
   available
 }`)
+
+export const productDetailQuery = defineQuery(`
+  *[_type == $category && _id == $id][0]{
+    _id,
+    _type,
+    name,
+    origin,
+    flavorNotes,
+    price,
+    available,
+    description,
+    processingMethod,
+    brewingInstructions,
+    roastLevel,
+    oxidationLevel,
+    teaType
+  }
+`)

@@ -22,42 +22,31 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: 'sanity.imageAsset'
 }
 
+export type Image1 = {
+  asset?: SanityImageAssetReference
+  media?: unknown // Unable to locate the referenced type "media1" in schema
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
+  _type: 'image'
+}
+
 export type Tea = {
   _id: string
   _type: 'tea'
   _createdAt: string
   _updatedAt: string
   _rev: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
+  image?: Image1
   name?: string
   origin?: string
-  oxidationLevel?: string
-  teaType?: string
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
+  description?: string
+  processingMethod?: string
+  brewingInstructions?: string
+  oxidationLevel?: string
+  teaType?: string
 }
 
 export type HomePage = {
@@ -68,25 +57,41 @@ export type HomePage = {
   _rev: string
   hero?: {
     eyebrow?: string
-    heading?: string
+    heading: string
     text?: string
     primaryButton?: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     }
     secondaryButton?: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     }
     image?: {
       asset?: SanityImageAssetReference
       media?: unknown
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
-      alt?: string
+      alt: string
       _type: 'image'
     }
   }
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
 }
 
 export type Coffee = {
@@ -95,19 +100,16 @@ export type Coffee = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  image?: {
-    asset?: SanityImageAssetReference
-    media?: unknown
-    hotspot?: SanityImageHotspot
-    crop?: SanityImageCrop
-    _type: 'image'
-  }
+  image?: Image1
   name?: string
   origin?: string
-  roastLevel?: string
   flavorNotes?: Array<string>
   price?: number
   available?: boolean
+  description?: string
+  processingMethod?: string
+  brewingInstructions?: string
+  roastLevel?: string
 }
 
 export type PageReference = {
@@ -136,7 +138,7 @@ export type Link = {
 export type CallToAction = {
   _type: 'callToAction'
   eyebrow?: string
-  heading?: string
+  heading: string
   body?: BlockContentTextOnly
   button?: Button
   image?: {
@@ -226,7 +228,7 @@ export type Settings = {
       _key: string
     } & PageReference
   >
-  title?: string
+  title: string
   description?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -266,9 +268,9 @@ export type Page = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  name?: string
-  slug?: Slug
-  heading?: string
+  name: string
+  slug: Slug
+  heading: string
   subheading?: string
   pageBuilder?: Array<
     | ({
@@ -293,8 +295,8 @@ export type Post = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  title?: string
-  slug?: Slug
+  title: string
+  slug: Slug
   content?: BlockContent
   excerpt?: string
   coverImage?: {
@@ -315,9 +317,9 @@ export type Person = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  firstName?: string
-  lastName?: string
-  picture?: {
+  firstName: string
+  lastName: string
+  picture: {
     asset?: SanityImageAssetReference
     media?: unknown
     hotspot?: SanityImageHotspot
@@ -329,7 +331,7 @@ export type Person = {
 
 export type Slug = {
   _type: 'slug'
-  current?: string
+  current: string
   source?: string
 }
 
@@ -380,7 +382,7 @@ export type AssistInstructionContextReference = {
 
 export type SanityAssistInstructionContext = {
   _type: 'sanity.assist.instruction.context'
-  reference?: AssistInstructionContextReference
+  reference: AssistInstructionContextReference
 }
 
 export type AssistInstructionContext = {
@@ -408,7 +410,7 @@ export type AssistInstructionContext = {
 
 export type SanityAssistInstructionUserInput = {
   _type: 'sanity.assist.instruction.userInput'
-  message?: string
+  message: string
   description?: string
 }
 
@@ -491,9 +493,9 @@ export type SanityImagePalette = {
 
 export type SanityImageDimensions = {
   _type: 'sanity.imageDimensions'
-  height?: number
-  width?: number
-  aspectRatio?: number
+  height: number
+  width: number
+  aspectRatio: number
 }
 
 export type SanityImageMetadata = {
@@ -519,14 +521,14 @@ export type SanityFileAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
   uploadId?: string
-  path?: string
-  url?: string
+  path: string
+  url: string
   source?: SanityAssetSourceData
 }
 
@@ -548,14 +550,14 @@ export type SanityImageAsset = {
   title?: string
   description?: string
   altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
+  sha1hash: string
+  extension: string
+  mimeType: string
+  size: number
+  assetId: string
   uploadId?: string
-  path?: string
-  url?: string
+  path: string
+  url: string
   metadata?: SanityImageMetadata
   source?: SanityAssetSourceData
 }
@@ -569,10 +571,11 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
+  | Image1
   | Tea
+  | HomePage
   | SanityImageCrop
   | SanityImageHotspot
-  | HomePage
   | Coffee
   | PageReference
   | PostReference
@@ -621,10 +624,10 @@ export type SettingsQueryResult = {
   _rev: string
   navigation: Array<{
     _id: string
-    name: string | null
-    slug: string | null
+    name: string
+    slug: string
   }> | null
-  title?: string
+  title: string
   description?: Array<{
     children?: Array<{
       marks?: Array<string>
@@ -664,16 +667,16 @@ export type SettingsQueryResult = {
 export type GetPageQueryResult = {
   _id: string
   _type: 'page'
-  name: string | null
-  slug: Slug | null
-  heading: string | null
+  name: string
+  slug: Slug
+  heading: string
   subheading: string | null
   pageBuilder: Array<
     | {
         _key: string
         _type: 'callToAction'
         eyebrow?: string
-        heading?: string
+        heading: string
         body?: BlockContentTextOnly
         button: {
           _type: 'button'
@@ -744,12 +747,12 @@ export type GetPageQueryResult = {
 // Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
 export type SitemapDataResult = Array<
   | {
-      slug: string | null
+      slug: string
       _type: 'page'
       _updatedAt: string
     }
   | {
-      slug: string | null
+      slug: string
       _type: 'post'
       _updatedAt: string
     }
@@ -761,8 +764,8 @@ export type SitemapDataResult = Array<
 export type AllPostsQueryResult = Array<{
   _id: string
   status: 'draft' | 'published'
-  title: string | 'Untitled'
-  slug: string | null
+  title: string
+  slug: string
   excerpt: string | null
   coverImage: {
     asset?: SanityImageAssetReference
@@ -774,8 +777,8 @@ export type AllPostsQueryResult = Array<{
   } | null
   date: string
   author: {
-    firstName: string | null
-    lastName: string | null
+    firstName: string
+    lastName: string
     picture: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -783,7 +786,7 @@ export type AllPostsQueryResult = Array<{
       crop?: SanityImageCrop
       alt?: string
       _type: 'image'
-    } | null
+    }
   } | null
 }>
 
@@ -793,8 +796,8 @@ export type AllPostsQueryResult = Array<{
 export type MorePostsQueryResult = Array<{
   _id: string
   status: 'draft' | 'published'
-  title: string | 'Untitled'
-  slug: string | null
+  title: string
+  slug: string
   excerpt: string | null
   coverImage: {
     asset?: SanityImageAssetReference
@@ -806,8 +809,8 @@ export type MorePostsQueryResult = Array<{
   } | null
   date: string
   author: {
-    firstName: string | null
-    lastName: string | null
+    firstName: string
+    lastName: string
     picture: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -815,7 +818,7 @@ export type MorePostsQueryResult = Array<{
       crop?: SanityImageCrop
       alt?: string
       _type: 'image'
-    } | null
+    }
   } | null
 }>
 
@@ -858,8 +861,8 @@ export type PostQueryResult = {
   > | null
   _id: string
   status: 'draft' | 'published'
-  title: string | 'Untitled'
-  slug: string | null
+  title: string
+  slug: string
   excerpt: string | null
   coverImage: {
     asset?: SanityImageAssetReference
@@ -871,8 +874,8 @@ export type PostQueryResult = {
   } | null
   date: string
   author: {
-    firstName: string | null
-    lastName: string | null
+    firstName: string
+    lastName: string
     picture: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -880,7 +883,7 @@ export type PostQueryResult = {
       crop?: SanityImageCrop
       alt?: string
       _type: 'image'
-    } | null
+    }
   } | null
 } | null
 
@@ -888,14 +891,14 @@ export type PostQueryResult = {
 // Variable: postPagesSlugs
 // Query: *[_type == "post" && defined(slug.current)]  {"slug": slug.current}
 export type PostPagesSlugsResult = Array<{
-  slug: string | null
+  slug: string
 }>
 
 // Source: sanity/lib/queries.ts
 // Variable: pagesSlugs
 // Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
 export type PagesSlugsResult = Array<{
-  slug: string | null
+  slug: string
 }>
 
 // Source: sanity/lib/queries.ts
@@ -930,15 +933,15 @@ export type ProductQueryResult =
 export type HomePageQueryResult = {
   hero: {
     eyebrow: string | null
-    heading: string | null
+    heading: string
     text: string | null
     primaryButton: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     } | null
     secondaryButton: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     } | null
     image: {
       asset: {
@@ -950,7 +953,7 @@ export type HomePageQueryResult = {
       media?: unknown
       hotspot?: SanityImageHotspot
       crop?: SanityImageCrop
-      alt: string | null
+      alt: string
       _type: 'image'
     } | null
   } | null
@@ -982,6 +985,183 @@ export type TeaListQueryResult = Array<{
   available: boolean | null
 }>
 
+// Source: sanity/lib/queries.ts
+// Variable: productDetailQuery
+// Query: *[_type == $category && _id == $id][0]{    _id,    _type,    name,    origin,    flavorNotes,    price,    available,    description,    processingMethod,    brewingInstructions,    roastLevel,    oxidationLevel,    teaType  }
+export type ProductDetailQueryResult =
+  | {
+      _id: string
+      _type: 'assist.instruction.context'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'coffee'
+      name: string | null
+      origin: string | null
+      flavorNotes: Array<string> | null
+      price: number | null
+      available: boolean | null
+      description: string | null
+      processingMethod: string | null
+      brewingInstructions: string | null
+      roastLevel: string | null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'homePage'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'page'
+      name: string
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'person'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'post'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'sanity.fileAsset'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: string | null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'sanity.imageAsset'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: string | null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'settings'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: Array<{
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal'
+        listItem?: never
+        markDefs?: Array<{
+          linkType?: 'href' | 'page' | 'post'
+          href?: string
+          page?: PageReference
+          post?: PostReference
+          openInNewTab?: boolean
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }> | null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'tea'
+      name: string | null
+      origin: string | null
+      flavorNotes: Array<string> | null
+      price: number | null
+      available: boolean | null
+      description: string | null
+      processingMethod: string | null
+      brewingInstructions: string | null
+      roastLevel: null
+      oxidationLevel: string | null
+      teaType: string | null
+    }
+  | null
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
@@ -998,5 +1178,6 @@ declare module '@sanity/client' {
     '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    eyebrow,\n    heading,\n    text,\n    primaryButton,\n    secondaryButton,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
     '*[_type == "coffee"] | order(name asc){\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': CoffeeListQueryResult
     '*[_type == "tea"] | order(name asc){\n  _id,\n  name,\n  origin,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': TeaListQueryResult
+    '\n  *[_type == $category && _id == $id][0]{\n    _id,\n    _type,\n    name,\n    origin,\n    flavorNotes,\n    price,\n    available,\n    description,\n    processingMethod,\n    brewingInstructions,\n    roastLevel,\n    oxidationLevel,\n    teaType\n  }\n': ProductDetailQueryResult
   }
 }

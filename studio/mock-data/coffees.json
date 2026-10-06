@@ -1,323 +1,322 @@
 [
   {
-    "_id": "ee59247c-0cba-4ce8-b15e-2f8c8449fbbc",
-    "name": "Brazilian Santos",
-    "origin": "Brazil",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Jasmine",
-      "Floral",
-      "Hazelnut"
-    ],
-    "price": 30.5,
-    "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Recommended for French press."
-  },
-  {
-    "_id": "f0a8064c-e0fc-4503-a7d9-1a02a8bf1017",
+    "_id": "coffee-colombian-supremo",
     "name": "Colombian Supremo",
     "origin": "Colombia",
-    "roastLevel": "Light",
-    "flavorNotes": [
-      "Chocolate",
-      "Berry",
-      "Jasmine"
-    ],
-    "price": 26.35,
-    "available": true,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Honey",
-    "brewingInstructions": "Ideal for filter coffee."
-  },
-  {
-    "_id": "75397a1d-588b-453f-96b0-124ab4e721f4",
-    "name": "Guatemala Antigua",
-    "origin": "Guatemala",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Blueberry",
-      "Chocolate"
-    ],
-    "price": 28.77,
-    "available": false,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Washed",
-    "brewingInstructions": "Works well for espresso."
-  },
-  {
-    "_id": "86531756-80c9-4b81-99cc-e75a87f90b83",
-    "name": "Guatemala Antigua",
-    "origin": "Guatemala",
-    "roastLevel": "Light",
-    "flavorNotes": [
-      "Chocolate",
-      "Berry",
-      "Citrus",
-      "Blueberry"
-    ],
-    "price": 29.65,
-    "available": false,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Ideal for filter coffee."
-  },
-  {
-    "_id": "7e3ddfbf-87dd-44a1-a36c-d6824e0ebb67",
-    "name": "Colombian Supremo",
-    "origin": "Colombia",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Citrus",
-      "Jasmine"
-    ],
-    "price": 16.48,
-    "available": true,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Ideal for filter coffee."
-  },
-  {
-    "_id": "02ed7d17-7b1c-4b09-934c-2979e8741754",
-    "name": "Costa Rica Tarrazu",
-    "origin": "Costa Rica",
-    "roastLevel": "Light",
-    "flavorNotes": [
-      "Hazelnut",
-      "Floral",
-      "Vanilla"
-    ],
-    "price": 22.02,
-    "available": false,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Best suited for pour-over."
-  },
-  {
-    "_id": "36818b92-a8b2-4f03-ad9d-1146a7bfc99c",
-    "name": "Kenyan AA",
-    "origin": "Kenya",
-    "roastLevel": "Light",
-    "flavorNotes": [
-      "Almond",
-      "Citrus",
-      "Vanilla",
-      "Floral"
-    ],
-    "price": 25.04,
-    "available": true,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Honey",
-    "brewingInstructions": "Works well for espresso."
-  },
-  {
-    "_id": "7dbe93a1-20bb-42c8-8737-19b0b6316ad1",
-    "name": "Costa Rica Tarrazu",
-    "origin": "Costa Rica",
-    "roastLevel": "Light",
-    "flavorNotes": [
-      "Floral",
-      "Caramel",
-      "Blueberry",
-      "Vanilla"
-    ],
-    "price": 11.82,
-    "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Recommended for French press."
-  },
-  {
-    "_id": "71afae49-05d9-439e-85d8-fd73b17e831b",
-    "name": "Brazilian Santos",
-    "origin": "Brazil",
-    "roastLevel": "Medium",
-    "flavorNotes": [
-      "Hazelnut",
-      "Berry",
-      "Almond"
-    ],
-    "price": 31.13,
-    "available": true,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Honey",
-    "brewingInstructions": "Recommended for French press."
-  },
-  {
-    "_id": "052c0562-e1cb-4cef-b936-0b813bb00620",
-    "name": "Colombian Supremo",
-    "origin": "Colombia",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Citrus",
-      "Floral",
-      "Almond",
-      "Vanilla"
-    ],
-    "price": 24.88,
-    "available": false,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Washed",
-    "brewingInstructions": "Best suited for pour-over."
-  },
-  {
-    "_id": "aa9f5bcb-28df-471c-843f-6be3d8777ee2",
-    "name": "Costa Rica Tarrazu",
-    "origin": "Costa Rica",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Almond",
-      "Hazelnut",
-      "Jasmine",
-      "Berry"
-    ],
-    "price": 29.69,
-    "available": true,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Honey",
-    "brewingInstructions": "Recommended for French press."
-  },
-  {
-    "_id": "37abd90b-3eef-4f6a-9487-d8b3d8d9d8f3",
-    "name": "Colombian Supremo",
-    "origin": "Colombia",
-    "roastLevel": "Medium",
-    "flavorNotes": [
-      "Chocolate",
-      "Almond"
-    ],
-    "price": 11.64,
-    "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Best suited for pour-over."
-  },
-  {
-    "_id": "73c79379-7e1d-44b6-8579-ca971a02c563",
-    "name": "Brazilian Santos",
-    "origin": "Brazil",
     "roastLevel": "Light",
     "flavorNotes": [
       "Caramel",
-      "Floral",
-      "Hazelnut"
+      "Vanilla"
     ],
-    "price": 21.01,
-    "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Washed",
-    "brewingInstructions": "Recommended for French press."
+    "price": 30.79,
+    "available": false,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Works well for espresso."
   },
   {
-    "_id": "290b9bfd-af9a-46dc-b013-325ddcc4cc70",
+    "_id": "coffee-ethiopian-yirgacheffe",
     "name": "Ethiopian Yirgacheffe",
     "origin": "Ethiopia",
     "roastLevel": "Dark",
     "flavorNotes": [
-      "Blueberry",
-      "Hazelnut",
-      "Floral",
-      "Vanilla"
+      "Almond",
+      "Citrus"
     ],
-    "price": 14.75,
-    "available": false,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Ideal for filter coffee."
-  },
-  {
-    "_id": "9c7042dd-37c9-4ea4-a03e-e139e07e3d4a",
-    "name": "Colombian Supremo",
-    "origin": "Colombia",
-    "roastLevel": "Medium",
-    "flavorNotes": [
-      "Caramel",
-      "Blueberry",
-      "Berry"
-    ],
-    "price": 11.76,
-    "available": true,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Washed",
-    "brewingInstructions": "Best suited for pour-over."
-  },
-  {
-    "_id": "a472a37d-92a6-487c-bf68-6f8e098ae00e",
-    "name": "Colombian Supremo",
-    "origin": "Colombia",
-    "roastLevel": "Light",
-    "flavorNotes": [
-      "Floral",
-      "Citrus",
-      "Caramel"
-    ],
-    "price": 23.59,
+    "price": 31.6,
     "available": true,
     "description": "A rich coffee with a full body and lingering finish.",
     "processingMethod": "Honey",
     "brewingInstructions": "Best suited for pour-over."
   },
   {
-    "_id": "b569e436-c30f-4702-bd8b-f8b685ef32ab",
+    "_id": "coffee-kenyan-aa",
     "name": "Kenyan AA",
     "origin": "Kenya",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Jasmine",
+      "Berry"
+    ],
+    "price": 22.53,
+    "available": false,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Washed",
+    "brewingInstructions": "Best suited for pour-over."
+  },
+  {
+    "_id": "coffee-guatemala-antigua",
+    "name": "Guatemala Antigua",
+    "origin": "Guatemala",
     "roastLevel": "Light",
     "flavorNotes": [
       "Hazelnut",
-      "Chocolate"
+      "Jasmine",
+      "Citrus",
+      "Floral"
     ],
-    "price": 16.74,
-    "available": false,
+    "price": 34.8,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Works well for espresso."
+  },
+  {
+    "_id": "coffee-brazilian-santos",
+    "name": "Brazilian Santos",
+    "origin": "Brazil",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Vanilla",
+      "Hazelnut",
+      "Caramel"
+    ],
+    "price": 33.85,
+    "available": true,
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Washed",
+    "brewingInstructions": "Best suited for pour-over."
+  },
+  {
+    "_id": "coffee-costa-rica-tarrazu",
+    "name": "Costa Rica Tarrazu",
+    "origin": "Costa Rica",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Caramel",
+      "Hazelnut",
+      "Jasmine",
+      "Almond"
+    ],
+    "price": 22.52,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Best suited for pour-over."
+  },
+  {
+    "_id": "coffee-sumatra-mandheling",
+    "name": "Sumatra Mandheling",
+    "origin": "Indonesia",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Blueberry",
+      "Berry",
+      "Citrus",
+      "Caramel"
+    ],
+    "price": 27.75,
+    "available": true,
     "description": "A rich coffee with a full body and lingering finish.",
     "processingMethod": "Natural",
     "brewingInstructions": "Recommended for French press."
   },
   {
-    "_id": "a8f5acf7-678c-498b-b873-dc406741af42",
-    "name": "Guatemala Antigua",
-    "origin": "Guatemala",
+    "_id": "coffee-panama-boquete",
+    "name": "Panama Boquete",
+    "origin": "Panama",
     "roastLevel": "Light",
     "flavorNotes": [
-      "Almond",
+      "Citrus",
+      "Berry",
+      "Almond"
+    ],
+    "price": 20.82,
+    "available": false,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Best suited for pour-over."
+  },
+  {
+    "_id": "coffee-rwanda-bourbon",
+    "name": "Rwanda Bourbon",
+    "origin": "Rwanda",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Caramel",
+      "Almond"
+    ],
+    "price": 12.47,
+    "available": true,
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Ideal for filter coffee."
+  },
+  {
+    "_id": "coffee-peru-organic",
+    "name": "Peru Organic",
+    "origin": "Peru",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Floral",
       "Caramel",
       "Jasmine"
     ],
-    "price": 29.04,
+    "price": 28.76,
+    "available": true,
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Works well for espresso."
+  },
+  {
+    "_id": "coffee-mexico-chiapas",
+    "name": "Mexico Chiapas",
+    "origin": "Mexico",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Almond",
+      "Chocolate",
+      "Caramel",
+      "Blueberry"
+    ],
+    "price": 26.03,
     "available": true,
     "description": "A bright and aromatic coffee with layered sweetness.",
     "processingMethod": "Washed",
     "brewingInstructions": "Works well for espresso."
   },
   {
-    "_id": "7186304a-3349-4174-96d2-44e896dafb28",
-    "name": "Guatemala Antigua",
-    "origin": "Guatemala",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Blueberry",
-      "Citrus"
-    ],
-    "price": 18.27,
-    "available": false,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Best suited for pour-over."
-  },
-  {
-    "_id": "7b675775-6f99-4e71-af72-c9a3ba5b7e63",
-    "name": "Costa Rica Tarrazu",
-    "origin": "Costa Rica",
+    "_id": "coffee-honduras-marcala",
+    "name": "Honduras Marcala",
+    "origin": "Honduras",
     "roastLevel": "Medium",
     "flavorNotes": [
-      "Berry",
-      "Floral",
-      "Jasmine"
+      "Almond",
+      "Chocolate",
+      "Vanilla",
+      "Blueberry"
     ],
-    "price": 31.39,
+    "price": 10.51,
     "available": false,
     "description": "A rich coffee with a full body and lingering finish.",
     "processingMethod": "Honey",
+    "brewingInstructions": "Recommended for French press."
+  },
+  {
+    "_id": "coffee-el-salvador-pacamara",
+    "name": "El Salvador Pacamara",
+    "origin": "El Salvador",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Caramel",
+      "Almond",
+      "Hazelnut",
+      "Floral"
+    ],
+    "price": 29.6,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Recommended for French press."
+  },
+  {
+    "_id": "coffee-nicaragua-jinotega",
+    "name": "Nicaragua Jinotega",
+    "origin": "Nicaragua",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Jasmine",
+      "Citrus",
+      "Berry"
+    ],
+    "price": 25.33,
+    "available": true,
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Works well for espresso."
+  },
+  {
+    "_id": "coffee-tanzania-peaberry",
+    "name": "Tanzania Peaberry",
+    "origin": "Tanzania",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Caramel",
+      "Citrus",
+      "Floral",
+      "Jasmine"
+    ],
+    "price": 12.32,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Natural",
     "brewingInstructions": "Ideal for filter coffee."
+  },
+  {
+    "_id": "coffee-papua-new-guinea-sigri",
+    "name": "Papua New Guinea Sigri",
+    "origin": "Papua New Guinea",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Chocolate",
+      "Vanilla"
+    ],
+    "price": 31.77,
+    "available": true,
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Works well for espresso."
+  },
+  {
+    "_id": "coffee-java-estate",
+    "name": "Java Estate",
+    "origin": "Indonesia",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Floral",
+      "Jasmine"
+    ],
+    "price": 24.03,
+    "available": false,
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Works well for espresso."
+  },
+  {
+    "_id": "coffee-burundi-kayanza",
+    "name": "Burundi Kayanza",
+    "origin": "Burundi",
+    "roastLevel": "Dark",
+    "flavorNotes": [
+      "Vanilla",
+      "Jasmine",
+      "Blueberry"
+    ],
+    "price": 24.5,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Natural",
+    "brewingInstructions": "Recommended for French press."
+  },
+  {
+    "_id": "coffee-bolivia-caranavi",
+    "name": "Bolivia Caranavi",
+    "origin": "Bolivia",
+    "roastLevel": "Medium",
+    "flavorNotes": [
+      "Floral",
+      "Citrus"
+    ],
+    "price": 28.6,
+    "available": false,
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Best suited for pour-over."
+  },
+  {
+    "_id": "coffee-india-monsooned-malabar",
+    "name": "India Monsooned Malabar",
+    "origin": "India",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Vanilla",
+      "Almond",
+      "Floral"
+    ],
+    "price": 33.63,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Recommended for French press."
   }
 ]
