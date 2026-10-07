@@ -1,6 +1,5 @@
 'use client'
 
-import {useState} from 'react'
 import {Button} from '@/components/ui/button'
 import {useCartStore} from '@/store/useCartStore'
 
@@ -15,11 +14,14 @@ type AddToCartButtonProps = {
 
 export function AddToCartButton({id, name, price, available, className}: AddToCartButtonProps) {
   const addItem = useCartStore((state) => state.addItem)
-  const [added, setAdded] = useState(false)
+  const items = useCartStore((state) => state.items)
+
+  const added = items.some((item) => item.id === id)
 
   function handleClick() {
-    addItem({id, name, price})
-    setAdded(prevAdded => !prevAdded)
+    if (!added){
+    addItem({id, name, price})}
+    
     
   }
 
