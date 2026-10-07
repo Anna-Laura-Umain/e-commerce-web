@@ -6,7 +6,7 @@ import { client } from './sanityClient'
 
 async function deleteCoffees() {
   const ids = await client.fetch<string[]>(
-    `*[_type == "coffee"]._id`
+    `*[_type == "tea"]._id`
   )
 
   for (const id of ids) {

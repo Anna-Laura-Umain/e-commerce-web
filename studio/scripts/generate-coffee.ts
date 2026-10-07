@@ -2,6 +2,9 @@ import {faker} from '@faker-js/faker'
 import fs from 'fs'
 import path from 'path'
 
+
+
+
 const coffeeProducts = [
   { name: 'Colombian Supremo', origin: 'Colombia' },
   { name: 'Ethiopian Yirgacheffe', origin: 'Ethiopia' },
@@ -61,8 +64,10 @@ const descriptions = [
 ]
 
 const coffees = coffeeProducts.map((product) => {
+  
+
   return {
-    _id: `coffee-${product.name.toLowerCase().replaceAll(' ', '-')}`,
+    _id: `coffee-${product.name.toLowerCase().replaceAll(' ', '-')}}`,
     name: product.name,
     origin: product.origin,
     roastLevel: faker.helpers.arrayElement(roastLevels),
