@@ -56,8 +56,17 @@ export type HomePage = {
   _updatedAt: string
   _rev: string
   hero?: {
+    eyebrow?: string
     heading: string
     text?: string
+    primaryButton?: {
+      label: string
+      href: string
+    }
+    secondaryButton?: {
+      label: string
+      href: string
+    }
     image?: {
       asset?: SanityImageAssetReference
       media?: unknown
@@ -66,8 +75,6 @@ export type HomePage = {
       alt: string
       _type: 'image'
     }
-    ctaLabel?: string
-    ctaHref?: string
   }
 }
 

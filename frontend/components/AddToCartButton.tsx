@@ -19,12 +19,15 @@ export function AddToCartButton({id, name, price, available, className}: AddToCa
 
   function handleClick() {
     addItem({id, name, price})
-    setAdded(true)
-    setTimeout(() => setAdded(false), 1500)
+    setAdded(prevAdded => !prevAdded)
+    
   }
 
   return (
-    <Button onClick={handleClick} disabled={!available} className={className}>
+    <Button 
+      onClick={handleClick} 
+      disabled={!available} 
+      className={className}>
       {added ? 'Added ✓' : 'Add to Cart'}
     </Button>
   )

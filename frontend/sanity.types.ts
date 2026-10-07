@@ -60,12 +60,12 @@ export type HomePage = {
     heading: string
     text?: string
     primaryButton?: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     }
     secondaryButton?: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     }
     image?: {
       asset?: SanityImageAssetReference
@@ -936,12 +936,12 @@ export type HomePageQueryResult = {
     heading: string
     text: string | null
     primaryButton: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     } | null
     secondaryButton: {
-      label?: string
-      href?: string
+      label: string
+      href: string
     } | null
     image: {
       asset: {
@@ -985,6 +985,183 @@ export type TeaListQueryResult = Array<{
   available: boolean | null
 }>
 
+// Source: sanity/lib/queries.ts
+// Variable: productDetailQuery
+// Query: *[_type == $category && _id == $id][0]{    _id,    _type,    name,    origin,    flavorNotes,    price,    available,    description,    processingMethod,    brewingInstructions,    roastLevel,    oxidationLevel,    teaType  }
+export type ProductDetailQueryResult =
+  | {
+      _id: string
+      _type: 'assist.instruction.context'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'coffee'
+      name: string | null
+      origin: string | null
+      flavorNotes: Array<string> | null
+      price: number | null
+      available: boolean | null
+      description: string | null
+      processingMethod: string | null
+      brewingInstructions: string | null
+      roastLevel: string | null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'homePage'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'page'
+      name: string
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'person'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'post'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'sanity.fileAsset'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: string | null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'sanity.imageAsset'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: string | null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'settings'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: Array<{
+        children?: Array<{
+          marks?: Array<string>
+          text?: string
+          _type: 'span'
+          _key: string
+        }>
+        style?: 'normal'
+        listItem?: never
+        markDefs?: Array<{
+          linkType?: 'href' | 'page' | 'post'
+          href?: string
+          page?: PageReference
+          post?: PostReference
+          openInNewTab?: boolean
+          _type: 'link'
+          _key: string
+        }>
+        level?: number
+        _type: 'block'
+        _key: string
+      }> | null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
+      _type: 'tea'
+      name: string | null
+      origin: string | null
+      flavorNotes: Array<string> | null
+      price: number | null
+      available: boolean | null
+      description: string | null
+      processingMethod: string | null
+      brewingInstructions: string | null
+      roastLevel: null
+      oxidationLevel: string | null
+      teaType: string | null
+    }
+  | null
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
@@ -1001,5 +1178,6 @@ declare module '@sanity/client' {
     '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    eyebrow,\n    heading,\n    text,\n    primaryButton,\n    secondaryButton,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
     '*[_type == "coffee"] | order(name asc){\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': CoffeeListQueryResult
     '*[_type == "tea"] | order(name asc){\n  _id,\n  name,\n  origin,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': TeaListQueryResult
+    '\n  *[_type == $category && _id == $id][0]{\n    _id,\n    _type,\n    name,\n    origin,\n    flavorNotes,\n    price,\n    available,\n    description,\n    processingMethod,\n    brewingInstructions,\n    roastLevel,\n    oxidationLevel,\n    teaType\n  }\n': ProductDetailQueryResult
   }
 }
