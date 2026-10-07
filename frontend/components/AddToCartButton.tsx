@@ -14,15 +14,17 @@ type AddToCartButtonProps = {
 
 export function AddToCartButton({id, name, price, available, className}: AddToCartButtonProps) {
   const addItem = useCartStore((state) => state.addItem)
+  const removeItem = useCartStore((state) => state.removeItem)
   const items = useCartStore((state) => state.items)
 
-  const added = items.some((item) => item.id === id)
+  let added = items.some((item) => item.id === id)
 
   function handleClick() {
-    if (!added){
-    addItem({id, name, price})}
-    
-    
+    if (!added) {
+      addItem({id, name, price})
+    } else {
+      removeItem(id)
+    }
   }
 
   return (
