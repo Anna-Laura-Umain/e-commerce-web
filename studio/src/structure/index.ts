@@ -1,4 +1,4 @@
-import { CogIcon, HomeIcon } from "@sanity/icons";
+import { CogIcon, HomeIcon, FilterIcon } from "@sanity/icons";
 import type { StructureBuilder, StructureResolver } from "sanity/structure";
 import pluralize from "pluralize-esm";
 
@@ -8,7 +8,12 @@ import pluralize from "pluralize-esm";
  * Learn more: https://www.sanity.io/docs/structure-builder-introduction
  */
 
-const DISABLED_TYPES = ["settings", "homePage", "assist.instruction.context"];
+const DISABLED_TYPES = [
+  "settings",
+  "homePage",
+  "shopFilters",
+  "assist.instruction.context",
+];
 
 export const structure: StructureResolver = (S: StructureBuilder) =>
   S.list()
@@ -26,6 +31,10 @@ export const structure: StructureResolver = (S: StructureBuilder) =>
         .title("Home Page")
         .child(S.document().schemaType("homePage").documentId("homePage"))
         .icon(HomeIcon),
+      S.listItem()
+        .title("shopFilters")
+        .child(S.document().schemaType("shopFilters").documentId("shopFilters"))
+        .icon(FilterIcon),
       S.divider(),
       S.listItem()
         .title("Site Settings")

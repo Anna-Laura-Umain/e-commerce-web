@@ -1,13 +1,17 @@
 import {Suspense} from 'react'
 import {notFound} from 'next/navigation'
 import {sanityFetch} from '@/sanity/lib/live'
-import {coffeeListQuery, teaListQuery} from '@/sanity/lib/queries'
+import {coffeeListQuery, shopFiltersQuery, teaListQuery} from '@/sanity/lib/queries'
 import ProductCard from '@/components/ProductCard'
-import { ProductFilters }from '@/components/ProductFilters'
+import ProductFilters, {type FilterGroup, type FilterOption} from '@/components/ProductFilters'
 import {getProductLevel} from '@/lib/utils'
 import type {Product} from '@/types/product'
 
 type SearchParams = Record<string, string | string[] | undefined>
+type FilterField = 'origin' | 'level' | 'inStock'
+type FilterSetting = {field: FilterField; label: string}
+
+const knownFields: FilterField[] = ['origin', 'level', 'inStock']
 
 // A URL value can be missing, a single string, or several strings
 function toArray(value: string | string[] | undefined): string[] {
@@ -15,9 +19,9 @@ function toArray(value: string | string[] | undefined): string[] {
   return Array.isArray(value) ? value : [value]
 }
 
-// Unique values, sorted alphabetically
-function unique(values: string[]) {
-  return [...new Set(values)].sort()
+// Unique non-empty values, sorted alphabetically
+function unique(values: (string | null | undefined)[]) {
+  return [...new Set(values.filter((value): value is string => Boolean(value)))].sort()
 }
 
 export default async function ShopCategoryPage({
@@ -36,12 +40,52 @@ export default async function ShopCategoryPage({
 
   const isCoffee = category === 'coffee'
   const title = isCoffee ? 'Coffee' : 'Tea'
-  const query = isCoffee ? coffeeListQuery : teaListQuery
 
-  const {data} = await sanityFetch({query})
+  // stega: false keeps the strings clean, so we can compare and filter by them
+  const [{data: productData}, {data: filterData}] = await Promise.all([
+    sanityFetch({query: isCoffee ? coffeeListQuery : teaListQuery, stega: false}),
+    sanityFetch({query: shopFiltersQuery, stega: false}),
+  ])
 
   // TODO: replace the cast with generated types
-  const allProducts = data as Product[]
+  const allProducts = productData as Product[]
+
+  // Safety net if the Shop filters document is missing or empty
+  const fallbackSettings: FilterSetting[] = [
+    {field: 'origin', label: 'Origin'},
+    {field: 'level', label: isCoffee ? 'Roast level' : 'Oxidation level'},
+    {field: 'inStock', label: 'Availability'},
+  ]
+
+  // Settings for this page from Studio, skipping half-filled or unknown rows
+  const savedSettings = ((isCoffee ? filterData?.coffee : filterData?.tea) ?? []).filter(
+    (setting): setting is FilterSetting =>
+      Boolean(setting.label) && knownFields.includes(setting.field as FilterField),
+  )
+  const settings = savedSettings.length > 0 ? savedSettings : fallbackSettings
+
+  // Each filter gets its own options, taken from the products
+  const originOptions: FilterOption[] = unique(allProducts.map((p) => p.origin)).map((value) => ({
+    label: value,
+    value,
+  }))
+  const levelOptions: FilterOption[] = unique(allProducts.map(getProductLevel)).map((value) => ({
+    label: value,
+    value,
+  }))
+  const inStockOptions: FilterOption[] = [{label: 'In stock only', value: 'true'}]
+
+  const optionsByField: Record<FilterField, FilterOption[]> = {
+    origin: originOptions,
+    level: levelOptions,
+    inStock: inStockOptions,
+  }
+
+  const groups: FilterGroup[] = settings.map((setting) => ({
+    key: setting.field,
+    label: setting.label,
+    options: optionsByField[setting.field],
+  }))
 
   // Selected filters from the URL
   const origins = toArray(filters.origin)
@@ -60,18 +104,14 @@ export default async function ShopCategoryPage({
     <main className="container py-12">
       <h1 className="mb-8 heading-display text-3xl md:text-4xl text-center">{title}</h1>
 
-      <div className="grid gap-10 lg:grid-cols-[220px_1fr]">
+      <div className="grid gap-10 md:grid-cols-[200px_1fr]">
         {/* useSearchParams in the filters needs a Suspense boundary */}
         <Suspense>
-          <ProductFilters
-            origins={unique(allProducts.map((p) => p.origin))}
-            levels={unique(allProducts.map(getProductLevel))}
-            levelLabel={isCoffee ? 'Roast level' : 'Oxidation level'}
-          />
+          <ProductFilters groups={groups} />
         </Suspense>
 
         {products.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}

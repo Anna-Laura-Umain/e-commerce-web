@@ -192,6 +192,7 @@ export const teaListQuery = defineQuery(`*[_type == "tea"] | order(name asc){
   available
 }`);
 
+
 export const productDetailQuery = defineQuery(`
   *[_type == $category && _id == $id][0]{
     _id,
@@ -218,3 +219,8 @@ export const productDetailQuery = defineQuery(`
 // export const teaFiltersQuery = defineQuery(` 
 //   "origins": array::unique(*[_type == "tea" && defined(origin)].origin),
 //   "levels": array::unique(*[_type === "tea" && defined(oxidationLevel)].oxidationLevel)`);
+
+export const shopFiltersQuery = defineQuery(`*[_type == "shopFilters" && _id == "shopFilters"][0]{
+  coffee[]{field, label},
+  tea[]{field, label}
+}`)
