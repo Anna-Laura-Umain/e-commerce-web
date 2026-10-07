@@ -6,11 +6,10 @@ import { Heart } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { AddToCartButton } from '@/components/AddToCartButton'
-import { useFavoriteStore } from '@/store/useFavoriteStore'
-import { useMounted } from '@/hooks/use-mounted'
 import { getProductDetail } from '@/lib/utils'
 import { FavoriteButton } from './FavoriteButton'
 import type { Product } from '@/types/product'
+
 
 type ProductCardProps = {
     product: Product
