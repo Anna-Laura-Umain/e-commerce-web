@@ -78,10 +78,7 @@ const brewingInstructions = [
 const teas = Array.from({ length: 20 }, (_, index) => {
   const product = faker.helpers.arrayElement(teaProducts)
   return {
-    //TODO: discuss if we want to use this id-based version or name-based version for the _id field. 
-    //The name-based version is more readable and easier to work with, 
-    //but the id-based version is more unique and less likely to cause conflicts.
-    _id: `tea-${index + 1}`,
+    _id: `tea-${product.name.toLowerCase().replaceAll(' ', '-')}-${index}`,
     name: `${faker.location.country()} ${product.name}`,
     origin: faker.location.country(),
     oxidationLevel: oxidationLevelsByTeaType[product.teaType as keyof typeof oxidationLevelsByTeaType],
