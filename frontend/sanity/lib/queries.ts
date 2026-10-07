@@ -177,3 +177,12 @@ export const productDetailQuery = defineQuery(`
     teaType
   }
 `)
+
+// array::unique removes duplications
+export const coffeeFiltersQuery = defineQuery(` 
+  "origins": array::unique(*[_type == "coffee" && defined(origin)].origin),
+  "levels": array::unique(*[_type === "coffee" && defined(roastLevel)].roastLevel)`)
+
+export const teaFiltersQuery = defineQuery(` 
+  "origins": array::unique(*[_type == "tea" && defined(origin)].origin),
+  "levels": array::unique(*[_type === "tea" && defined(oxidationLevel)].oxidationLevel)`)
