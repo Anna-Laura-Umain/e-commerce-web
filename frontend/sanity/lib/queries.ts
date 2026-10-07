@@ -140,34 +140,55 @@ export const homePageQuery =
   }
 }`);
 
-export const coffeeListQuery = defineQuery(`
-  *[_type == "coffee"
-  && (count($origins) == 0 || origin in $origins)
-  && (count($levels) == 0 || roastLevel in $levels)
-  && (!defined($inStock) || available == true)
-] 
-   | order(name asc){
-  _id,
-  name,
-  origin,
-  roastLevel,
-  flavorNotes,
-  price,
+// export const coffeeListQuery = defineQuery(`
+//   *[_type == "coffee"
+//   && (count($origins) == 0 || origin in $origins)
+//   && (count($levels) == 0 || roastLevel in $levels)
+//   && (!defined($inStock) || available == true)
+// ]
+//    | order(name asc){
+//   _id,
+//   name,
+//   origin,
+//   roastLevel,
+//   flavorNotes,
+//   price,
+//   available
+// }`);
+
+// export const teaListQuery = defineQuery(`
+//   *[_type == "tea"
+//   && (!defined($origin) == 0 || origin in $origins)
+//   && (!defined($level) == 0 || oxidationLevel in $levels)
+//   && (!defined($inStock) == 0 || available == true)]
+//   | order(name asc){
+//   _id,
+//   name,
+//   origin,
+//   oxidationLevel,
+//   flavorNotes,
+//   price,
+//   available
+// }`);
+
+export const coffeeListQuery =
+  defineQuery(`*[_type == "coffee"] | order(name asc){
+  _id, 
+  name, 
+  origin, 
+  roastLevel, 
+  flavorNotes, 
+  price, 
   available
 }`);
 
-export const teaListQuery = defineQuery(`
-  *[_type == "tea" 
-  && (!defined($origin) == 0 || origin in $origins)
-  && (!defined($level) == 0 || oxidationLevel in $levels)
-  && (!defined($inStock) == 0 || available == true)] 
-  | order(name asc){
-  _id,
-  name,
-  origin,
-  oxidationLevel,
-  flavorNotes,
-  price,
+export const teaListQuery = defineQuery(`*[_type == "tea"] | order(name asc){
+  _id, 
+  name, 
+  origin, 
+  oxidationLevel, 
+  flavorNotes, 
+  price, 
   available
 }`);
 
@@ -190,10 +211,10 @@ export const productDetailQuery = defineQuery(`
 `);
 
 // array::unique removes duplications
-export const coffeeFiltersQuery = defineQuery(` 
-  "origins": array::unique(*[_type == "coffee" && defined(origin)].origin),
-  "levels": array::unique(*[_type === "coffee" && defined(roastLevel)].roastLevel)`);
+// export const coffeeFiltersQuery = defineQuery(` 
+//   "origins": array::unique(*[_type == "coffee" && defined(origin)].origin),
+//   "levels": array::unique(*[_type === "coffee" && defined(roastLevel)].roastLevel)`);
 
-export const teaFiltersQuery = defineQuery(` 
-  "origins": array::unique(*[_type == "tea" && defined(origin)].origin),
-  "levels": array::unique(*[_type === "tea" && defined(oxidationLevel)].oxidationLevel)`);
+// export const teaFiltersQuery = defineQuery(` 
+//   "origins": array::unique(*[_type == "tea" && defined(origin)].origin),
+//   "levels": array::unique(*[_type === "tea" && defined(oxidationLevel)].oxidationLevel)`);
