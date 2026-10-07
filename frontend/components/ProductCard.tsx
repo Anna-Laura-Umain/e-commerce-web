@@ -2,22 +2,21 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Heart } from 'lucide-react'
+// import { Heart } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { AddToCartButton } from '@/components/AddToCartButton'
-import { getProductDetail } from '@/lib/utils'
+import { getProductDetail, getProductCategory } from '@/lib/utils'
 import { FavoriteButton } from './FavoriteButton'
 import type { Product } from '@/types/product'
 
 
 type ProductCardProps = {
     product: Product
-    category: string
 }
 
-export default function ProductCard({ product, category }: ProductCardProps) {
-    
+export default function ProductCard({ product }: ProductCardProps) {
+    const category = getProductCategory(product)
 
     return (
 

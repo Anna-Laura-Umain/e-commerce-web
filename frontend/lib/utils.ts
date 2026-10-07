@@ -10,3 +10,8 @@ export function getProductDetail(product: Product) {
 export function formatPrice(value: number) {
   return value.toLocaleString('en', {maximumFractionDigits: 2})
 }
+
+// Coffee has a roast level, tea doesn't
+export function getProductCategory(product: Product) {
+  return 'roastLevel' in product ? 'coffee' : 'tea'
+}

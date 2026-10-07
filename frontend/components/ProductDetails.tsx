@@ -6,6 +6,7 @@ import { FavoriteButton } from './FavoriteButton'
 
 type ProductDetailsProps = {
   product: Product
+  category: string
 }
 
 export default function ProductDetails({
