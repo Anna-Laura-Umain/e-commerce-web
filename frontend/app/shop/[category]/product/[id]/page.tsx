@@ -29,5 +29,5 @@ export default async function ProductDetailPage({
     notFound()
   }
 
-  return <ProductDetails product={product} />
+  return <ProductDetails  product={product} category={category}  />
 }
