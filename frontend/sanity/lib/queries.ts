@@ -224,3 +224,12 @@ export const shopFiltersQuery = defineQuery(`*[_type == "shopFilters" && _id == 
   coffee[]{field, label},
   tea[]{field, label}
 }`)
+
+export const checkoutProductsQuery = defineQuery(`*[
+  _type in ["coffee", "tea"] && _id in $ids
+]{
+  _id,
+  name,
+  price,
+  available
+}`)
