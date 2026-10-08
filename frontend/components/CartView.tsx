@@ -63,7 +63,7 @@ export function CartView() {
             </div>
 
             <p className="ml-auto text-right font-medium sm:ml-0 sm:w-24">
-              SEK {item.price * item.quantity}
+              SEK {formatPrice(item.price * item.quantity)}
             </p>
 
             <Button
