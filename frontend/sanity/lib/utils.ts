@@ -61,3 +61,24 @@ export function dataAttr(config: DataAttributeConfig) {
     baseUrl: studioUrl,
   }).combine(config)
 }
+
+type SanityHotspot = {x?: number; y?: number}
+type SanityCrop = {top?: number; bottom?: number; left?: number; right?: number}
+
+// sanity-image needs all values to be numbers, Sanity types mark them optional
+export function toHotspot(hotspot?: SanityHotspot) {
+  if (hotspot?.x === undefined || hotspot?.y === undefined) return undefined
+  return {x: hotspot.x, y: hotspot.y}
+}
+
+export function toCrop(crop?: SanityCrop) {
+  if (
+    crop?.top === undefined ||
+    crop?.bottom === undefined ||
+    crop?.left === undefined ||
+    crop?.right === undefined
+  ) {
+    return undefined
+  }
+  return {top: crop.top, bottom: crop.bottom, left: crop.left, right: crop.right}
+}

@@ -5,6 +5,8 @@ import PortableText from '@/components/PortableText'
 import Image from '@/components/SanityImage'
 import {stegaClean} from '@sanity/client/stega'
 import {ExtractPageBuilderType} from '@/sanity/lib/types'
+import { toCrop } from '@/sanity/lib/utils'
+
 
 type CtaProps = {
   block: ExtractPageBuilderType<'callToAction'>
@@ -59,7 +61,7 @@ export default function CTA({block}: CtaProps) {
               id={image.asset._ref}
               alt="Demo image"
               width={704}
-              crop={image.crop}
+              crop={toCrop(image.crop)}
               mode="cover"
               className="rounded-sm"
             />
