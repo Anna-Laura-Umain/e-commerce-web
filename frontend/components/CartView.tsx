@@ -5,7 +5,8 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useMounted } from '@/hooks/use-mounted'
 import { useCartStore } from '@/store/useCartStore'
-import {formatPrice} from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
+import { CheckoutButton } from '@/components/CheckoutButton'
 
 export function CartView() {
   const items = useCartStore((state) => state.items)
@@ -84,7 +85,8 @@ export function CartView() {
           <span>{formatPrice(subtotal)}</span>
           <span>SEK</span>
         </div>
-        <Button className="mt-6 w-full">Checkout</Button>
+        {/* <Button className="mt-6 w-full">Checkout</Button> */}
+        <CheckoutButton />
         <Button variant="ghost" className="mt-2 w-full" onClick={clear}>
           Clear cart
         </Button>
