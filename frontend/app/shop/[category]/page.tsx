@@ -1,15 +1,15 @@
-import {Suspense} from 'react'
-import {notFound} from 'next/navigation'
-import {sanityFetch} from '@/sanity/lib/live'
-import {coffeeListQuery, shopFiltersQuery, teaListQuery} from '@/sanity/lib/queries'
+import { Suspense } from 'react'
+import { notFound } from 'next/navigation'
+import { sanityFetch } from '@/sanity/lib/live'
+import { coffeeListQuery, shopFiltersQuery, teaListQuery } from '@/sanity/lib/queries'
 import ProductCard from '@/components/ProductCard'
-import ProductFilters, {type FilterGroup, type FilterOption} from '@/components/ProductFilters'
-import {getProductLevel} from '@/lib/utils'
-import type {Product} from '@/types/product'
+import { ProductFilters, type FilterGroup, type FilterOption } from '@/components/ProductFilters'
+import { getProductLevel } from '@/lib/utils'
+import type { Product } from '@/types/product'
 
 type SearchParams = Record<string, string | string[] | undefined>
 type FilterField = 'origin' | 'level' | 'inStock'
-type FilterSetting = {field: FilterField; label: string}
+type FilterSetting = { field: FilterField; label: string }
 
 const knownFields: FilterField[] = ['origin', 'level', 'inStock']
 
@@ -19,21 +19,24 @@ function toArray(value: string | string[] | undefined): string[] {
   return Array.isArray(value) ? value : [value]
 }
 
-// Unique non-empty values, sorted alphabetically
-function unique(values: (string | null | undefined)[]) {
-  return [...new Set(values.filter((value): value is string => Boolean(value)))].sort()
+// Unique non-empty values as filter options, A-Z sorted
+function toOptions(values: (string | null | undefined)[]): FilterOption[] {
+  const filled = values.filter((value): value is string => Boolean(value))
+  const uniqueSorted = [...new Set(filled)].sort()
+  return uniqueSorted.map((value) => ({ label: value, value }))
 }
 
 export default async function ShopCategoryPage({
   params,
   searchParams,
 }: {
-  params: Promise<{category: string}>
+  params: Promise<{ category: string }>
   searchParams: Promise<SearchParams>
 }) {
-  const {category} = await params
+  const { category } = await params
   const filters = await searchParams
 
+  // to discuss - Do we want to add the option to include other categories? Juice, for example? If so, we'll need to review the code and schemas.
   if (category !== 'coffee' && category !== 'tea') {
     notFound()
   }
@@ -42,19 +45,20 @@ export default async function ShopCategoryPage({
   const title = isCoffee ? 'Coffee' : 'Tea'
 
   // stega: false keeps the strings clean, so we can compare and filter by them
-  const [{data: productData}, {data: filterData}] = await Promise.all([
-    sanityFetch({query: isCoffee ? coffeeListQuery : teaListQuery, stega: false}),
-    sanityFetch({query: shopFiltersQuery, stega: false}),
+  const [{ data: productData }, { data: filterData }] = await Promise.all([
+    sanityFetch({ query: isCoffee ? coffeeListQuery : teaListQuery, stega: false }),
+    sanityFetch({ query: shopFiltersQuery, stega: false }),
   ])
 
   // TODO: replace the cast with generated types
   const allProducts = productData as Product[]
 
-  // Safety net if the Shop filters document is missing or empty
+  // deafault data for filters (if nothing added via Sanity)
+  // Keep in sync with studio/scripts/seed-shop-filters.ts
   const fallbackSettings: FilterSetting[] = [
-    {field: 'origin', label: 'Origin'},
-    {field: 'level', label: isCoffee ? 'Roast level' : 'Oxidation level'},
-    {field: 'inStock', label: 'Availability'},
+    { field: 'origin', label: 'Origin' },
+    { field: 'level', label: isCoffee ? 'Roast level' : 'Oxidation level' },
+    { field: 'inStock', label: 'Availability' },
   ]
 
   // Settings for this page from Studio, skipping half-filled or unknown rows
@@ -62,23 +66,14 @@ export default async function ShopCategoryPage({
     (setting): setting is FilterSetting =>
       Boolean(setting.label) && knownFields.includes(setting.field as FilterField),
   )
+  
   const settings = savedSettings.length > 0 ? savedSettings : fallbackSettings
 
   // Each filter gets its own options, taken from the products
-  const originOptions: FilterOption[] = unique(allProducts.map((p) => p.origin)).map((value) => ({
-    label: value,
-    value,
-  }))
-  const levelOptions: FilterOption[] = unique(allProducts.map(getProductLevel)).map((value) => ({
-    label: value,
-    value,
-  }))
-  const inStockOptions: FilterOption[] = [{label: 'In stock only', value: 'true'}]
-
   const optionsByField: Record<FilterField, FilterOption[]> = {
-    origin: originOptions,
-    level: levelOptions,
-    inStock: inStockOptions,
+    origin: toOptions(allProducts.map((p) => p.origin)),
+    level: toOptions(allProducts.map(getProductLevel)),
+    inStock: [{ label: 'In stock only', value: 'true' }],
   }
 
   const groups: FilterGroup[] = settings.map((setting) => ({
@@ -107,7 +102,7 @@ export default async function ShopCategoryPage({
       <div className="grid gap-10 md:grid-cols-[200px_1fr]">
         {/* useSearchParams in the filters needs a Suspense boundary */}
         <Suspense>
-          <ProductFilters groups={groups} />
+          <ProductFilters groups={groups} page={category} />
         </Suspense>
 
         {products.length > 0 ? (

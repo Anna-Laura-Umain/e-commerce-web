@@ -1,8 +1,9 @@
 'use client'
 
-import {useOptimistic, useTransition} from 'react'
-import {useRouter, useSearchParams} from 'next/navigation'
+import {useEffect, useOptimistic, useTransition} from 'react'
+import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {FilterCheckbox} from '@/components/FilterCheckbox'
+import {useFilterStore} from '@/store/useFilterStore'
 
 export type FilterOption = {
   label: string
@@ -17,18 +18,41 @@ export type FilterGroup = {
 
 type ProductFiltersProps = {
   groups: FilterGroup[]
+  page: string // which catalog the filters belong to, e.g. "coffee"
 }
 
-export default function ProductFilters({groups}: ProductFiltersProps) {
+export function ProductFilters({groups, page}: ProductFiltersProps) {
   const router = useRouter()
+  const pathname = usePathname()
   const searchParams = useSearchParams()
   const [isPending, startTransition] = useTransition()
+
+  const savedQuery = useFilterStore((state) => state.savedQueries[page] ?? '')
+  const saveQuery = useFilterStore((state) => state.saveQuery)
+
+  // Coming back to the page without filters in the URL: restore the last selection
+  useEffect(() => {
+    if (searchParams.toString() === '' && savedQuery !== '') {
+      router.replace(`?${savedQuery}`, {scroll: false})
+    }
+  }, [searchParams, savedQuery, router])
 
   // Shows the new selection right away, before the server has re-rendered the page
   const [optimisticQuery, setOptimisticQuery] = useOptimistic(searchParams.toString())
   const selected = new URLSearchParams(optimisticQuery)
+  const hasSelection = optimisticQuery !== ''
 
-  // Checks or unchecks one filter value in the URL, other filters stay as they are
+  // Saves the selection and puts it in the URL. An empty selection gives a clean URL.
+  function applyQuery(nextQuery: string) {
+    saveQuery(page, nextQuery)
+
+    startTransition(() => {
+      setOptimisticQuery(nextQuery)
+      router.replace(nextQuery ? `?${nextQuery}` : pathname, {scroll: false})
+    })
+  }
+
+  // Checks or unchecks one filter value, other filters stay as they are
   function toggle(key: string, value: string) {
     const params = new URLSearchParams(optimisticQuery)
 
@@ -38,12 +62,7 @@ export default function ProductFilters({groups}: ProductFiltersProps) {
       params.append(key, value)
     }
 
-    const nextQuery = params.toString()
-
-    startTransition(() => {
-      setOptimisticQuery(nextQuery)
-      router.replace(`?${nextQuery}`, {scroll: false})
-    })
+    applyQuery(params.toString())
   }
 
   return (
@@ -67,6 +86,16 @@ export default function ProductFilters({groups}: ProductFiltersProps) {
           </div>
         </fieldset>
       ))}
+
+      {hasSelection && (
+        <button
+          type="button"
+          onClick={() => applyQuery('')}
+          className="text-sm text-stone-600 underline underline-offset-4 hover:text-stone-900"
+        >
+          Clear all
+        </button>
+      )}
     </aside>
   )
 }
