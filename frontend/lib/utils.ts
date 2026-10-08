@@ -15,3 +15,8 @@ export function formatPrice(value: number) {
 export function getProductCategory(product: Product) {
   return 'roastLevel' in product ? 'coffee' : 'tea'
 }
+
+// Roast level for coffee, oxidation level for tea
+export function getProductLevel(product: Product) {
+  return 'roastLevel' in product ? product.roastLevel : product.oxidationLevel
+}

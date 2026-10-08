@@ -49,51 +49,6 @@ export type Tea = {
   teaType?: string
 }
 
-export type HomePage = {
-  _id: string
-  _type: 'homePage'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  hero?: {
-    eyebrow?: string
-    heading: string
-    text?: string
-    primaryButton?: {
-      label: string
-      href: string
-    }
-    secondaryButton?: {
-      label: string
-      href: string
-    }
-    image?: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt: string
-      _type: 'image'
-    }
-  }
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
-}
-
 export type Coffee = {
   _id: string
   _type: 'coffee'
@@ -110,6 +65,22 @@ export type Coffee = {
   processingMethod?: string
   brewingInstructions?: string
   roastLevel?: string
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
 }
 
 export type PageReference = {
@@ -215,6 +186,55 @@ export type Button = {
   _type: 'button'
   buttonText?: string
   link?: Link
+}
+
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  hero?: {
+    eyebrow?: string
+    heading: string
+    text?: string
+    primaryButton?: {
+      label: string
+      href: string
+    }
+    secondaryButton?: {
+      label: string
+      href: string
+    }
+    image?: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt: string
+      _type: 'image'
+    }
+  }
+}
+
+export type ShopFilters = {
+  _id: string
+  _type: 'shopFilters'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  coffee?: Array<{
+    field: 'origin' | 'level' | 'inStock'
+    label: string
+    _type: 'filterGroup'
+    _key: string
+  }>
+  tea?: Array<{
+    field: 'origin' | 'level' | 'inStock'
+    label: string
+    _type: 'filterGroup'
+    _key: string
+  }>
 }
 
 export type Settings = {
@@ -573,10 +593,9 @@ export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | Image1
   | Tea
-  | HomePage
+  | Coffee
   | SanityImageCrop
   | SanityImageHotspot
-  | Coffee
   | PageReference
   | PostReference
   | Link
@@ -585,6 +604,8 @@ export type AllSanitySchemaTypes =
   | BlockContentTextOnly
   | BlockContent
   | Button
+  | HomePage
+  | ShopFilters
   | Settings
   | Page
   | PersonReference

@@ -49,51 +49,6 @@ export type Tea = {
   teaType?: string
 }
 
-export type HomePage = {
-  _id: string
-  _type: 'homePage'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  hero?: {
-    eyebrow?: string
-    heading: string
-    text?: string
-    primaryButton?: {
-      label: string
-      href: string
-    }
-    secondaryButton?: {
-      label: string
-      href: string
-    }
-    image?: {
-      asset?: SanityImageAssetReference
-      media?: unknown
-      hotspot?: SanityImageHotspot
-      crop?: SanityImageCrop
-      alt: string
-      _type: 'image'
-    }
-  }
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top: number
-  bottom: number
-  left: number
-  right: number
-}
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x: number
-  y: number
-  height: number
-  width: number
-}
-
 export type Coffee = {
   _id: string
   _type: 'coffee'
@@ -110,6 +65,22 @@ export type Coffee = {
   processingMethod?: string
   brewingInstructions?: string
   roastLevel?: string
+}
+
+export type SanityImageCrop = {
+  _type: 'sanity.imageCrop'
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
+
+export type SanityImageHotspot = {
+  _type: 'sanity.imageHotspot'
+  x: number
+  y: number
+  height: number
+  width: number
 }
 
 export type PageReference = {
@@ -215,6 +186,55 @@ export type Button = {
   _type: 'button'
   buttonText?: string
   link?: Link
+}
+
+export type HomePage = {
+  _id: string
+  _type: 'homePage'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  hero?: {
+    eyebrow?: string
+    heading: string
+    text?: string
+    primaryButton?: {
+      label: string
+      href: string
+    }
+    secondaryButton?: {
+      label: string
+      href: string
+    }
+    image?: {
+      asset?: SanityImageAssetReference
+      media?: unknown
+      hotspot?: SanityImageHotspot
+      crop?: SanityImageCrop
+      alt: string
+      _type: 'image'
+    }
+  }
+}
+
+export type ShopFilters = {
+  _id: string
+  _type: 'shopFilters'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  coffee?: Array<{
+    field: 'origin' | 'level' | 'inStock'
+    label: string
+    _type: 'filterGroup'
+    _key: string
+  }>
+  tea?: Array<{
+    field: 'origin' | 'level' | 'inStock'
+    label: string
+    _type: 'filterGroup'
+    _key: string
+  }>
 }
 
 export type Settings = {
@@ -573,10 +593,9 @@ export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | Image1
   | Tea
-  | HomePage
+  | Coffee
   | SanityImageCrop
   | SanityImageHotspot
-  | Coffee
   | PageReference
   | PostReference
   | Link
@@ -585,6 +604,8 @@ export type AllSanitySchemaTypes =
   | BlockContentTextOnly
   | BlockContent
   | Button
+  | HomePage
+  | ShopFilters
   | Settings
   | Page
   | PersonReference
@@ -961,7 +982,7 @@ export type HomePageQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: coffeeListQuery
-// Query: *[_type == "coffee"] | order(name asc){  _id,  name,  origin,  roastLevel,  flavorNotes,  price,  available}
+// Query: *[_type == "coffee"] | order(name asc){  _id,   name,   origin,   roastLevel,   flavorNotes,   price,   available}
 export type CoffeeListQueryResult = Array<{
   _id: string
   name: string | null
@@ -974,7 +995,7 @@ export type CoffeeListQueryResult = Array<{
 
 // Source: sanity/lib/queries.ts
 // Variable: teaListQuery
-// Query: *[_type == "tea"] | order(name asc){  _id,  name,  origin,  oxidationLevel,  flavorNotes,  price,  available}
+// Query: *[_type == "tea"] | order(name asc){  _id,   name,   origin,   oxidationLevel,   flavorNotes,   price,   available}
 export type TeaListQueryResult = Array<{
   _id: string
   name: string | null
@@ -1147,6 +1168,21 @@ export type ProductDetailQueryResult =
     }
   | {
       _id: string
+      _type: 'shopFilters'
+      name: null
+      origin: null
+      flavorNotes: null
+      price: null
+      available: null
+      description: null
+      processingMethod: null
+      brewingInstructions: null
+      roastLevel: null
+      oxidationLevel: null
+      teaType: null
+    }
+  | {
+      _id: string
       _type: 'tea'
       name: string | null
       origin: string | null
@@ -1162,6 +1198,20 @@ export type ProductDetailQueryResult =
     }
   | null
 
+// Source: sanity/lib/queries.ts
+// Variable: shopFiltersQuery
+// Query: *[_type == "shopFilters" && _id == "shopFilters"][0]{  coffee[]{field, label},  tea[]{field, label}}
+export type ShopFiltersQueryResult = {
+  coffee: Array<{
+    field: 'inStock' | 'level' | 'origin'
+    label: string
+  }> | null
+  tea: Array<{
+    field: 'inStock' | 'level' | 'origin'
+    label: string
+  }> | null
+} | null
+
 // Query TypeMap
 import '@sanity/client'
 declare module '@sanity/client' {
@@ -1176,8 +1226,9 @@ declare module '@sanity/client' {
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
     '*[\n  _type in ["coffee", "tea"]\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
     '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    eyebrow,\n    heading,\n    text,\n    primaryButton,\n    secondaryButton,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
-    '*[_type == "coffee"] | order(name asc){\n  _id,\n  name,\n  origin,\n  roastLevel,\n  flavorNotes,\n  price,\n  available\n}': CoffeeListQueryResult
-    '*[_type == "tea"] | order(name asc){\n  _id,\n  name,\n  origin,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': TeaListQueryResult
+    '*[_type == "coffee"] | order(name asc){\n  _id, \n  name, \n  origin, \n  roastLevel, \n  flavorNotes, \n  price, \n  available\n}': CoffeeListQueryResult
+    '*[_type == "tea"] | order(name asc){\n  _id, \n  name, \n  origin, \n  oxidationLevel, \n  flavorNotes, \n  price, \n  available\n}': TeaListQueryResult
     '\n  *[_type == $category && _id == $id][0]{\n    _id,\n    _type,\n    name,\n    origin,\n    flavorNotes,\n    price,\n    available,\n    description,\n    processingMethod,\n    brewingInstructions,\n    roastLevel,\n    oxidationLevel,\n    teaType\n  }\n': ProductDetailQueryResult
+    '*[_type == "shopFilters" && _id == "shopFilters"][0]{\n  coffee[]{field, label},\n  tea[]{field, label}\n}': ShopFiltersQueryResult
   }
 }
