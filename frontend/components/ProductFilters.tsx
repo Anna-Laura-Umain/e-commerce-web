@@ -4,16 +4,11 @@ import {useEffect, useOptimistic, useTransition} from 'react'
 import {usePathname, useRouter, useSearchParams} from 'next/navigation'
 import {FilterCheckbox} from '@/components/FilterCheckbox'
 import {useFilterStore} from '@/store/useFilterStore'
+import type {FilterGroup} from '@/lib/filters'
 
 export type FilterOption = {
   label: string
   value: string
-}
-
-export type FilterGroup = {
-  key: string // name in the URL, e.g. "origin"
-  label: string // heading set by the editor in Studio
-  options: FilterOption[]
 }
 
 type ProductFiltersProps = {
