@@ -67,7 +67,7 @@ const coffees = coffeeProducts.map((product) => {
   
 
   return {
-    _id: `coffee-${product.name.toLowerCase().replaceAll(' ', '-')}}`,
+    _id: `coffee-${product.name.toLowerCase().replaceAll(' ', '-')}`,
     name: product.name,
     origin: product.origin,
     roastLevel: faker.helpers.arrayElement(roastLevels),
@@ -78,7 +78,7 @@ const coffees = coffeeProducts.map((product) => {
     price: faker.number.float({
       min: 10,
       max: 35,
-      fractionDigits: 2,
+      fractionDigits: 0,
     }),
     available: faker.datatype.boolean(),
     description: faker.helpers.arrayElement(descriptions),

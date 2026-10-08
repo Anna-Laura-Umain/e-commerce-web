@@ -3,63 +3,67 @@
     "_id": "coffee-colombian-supremo",
     "name": "Colombian Supremo",
     "origin": "Colombia",
-    "roastLevel": "Light",
+    "roastLevel": "Medium",
     "flavorNotes": [
-      "Caramel",
-      "Vanilla"
+      "Jasmine",
+      "Almond"
     ],
-    "price": 30.79,
+    "price": 24,
     "available": false,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Works well for espresso."
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Washed",
+    "brewingInstructions": "Recommended for French press."
   },
   {
     "_id": "coffee-ethiopian-yirgacheffe",
     "name": "Ethiopian Yirgacheffe",
     "origin": "Ethiopia",
-    "roastLevel": "Dark",
+    "roastLevel": "Medium",
     "flavorNotes": [
-      "Almond",
-      "Citrus"
+      "Citrus",
+      "Berry",
+      "Blueberry",
+      "Floral"
     ],
-    "price": 31.6,
-    "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Honey",
+    "price": 31,
+    "available": false,
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Natural",
     "brewingInstructions": "Best suited for pour-over."
   },
   {
     "_id": "coffee-kenyan-aa",
     "name": "Kenyan AA",
     "origin": "Kenya",
-    "roastLevel": "Medium",
+    "roastLevel": "Light",
     "flavorNotes": [
+      "Vanilla",
       "Jasmine",
-      "Berry"
+      "Caramel",
+      "Hazelnut"
     ],
-    "price": 22.53,
-    "available": false,
+    "price": 29,
+    "available": true,
     "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Washed",
-    "brewingInstructions": "Best suited for pour-over."
+    "processingMethod": "Honey",
+    "brewingInstructions": "Ideal for filter coffee."
   },
   {
     "_id": "coffee-guatemala-antigua",
     "name": "Guatemala Antigua",
     "origin": "Guatemala",
-    "roastLevel": "Light",
+    "roastLevel": "Medium",
     "flavorNotes": [
       "Hazelnut",
-      "Jasmine",
+      "Floral",
       "Citrus",
-      "Floral"
+      "Berry"
     ],
-    "price": 34.8,
+    "price": 19,
     "available": true,
     "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Works well for espresso."
+    "processingMethod": "Honey",
+    "brewingInstructions": "Ideal for filter coffee."
   },
   {
     "_id": "coffee-brazilian-santos",
@@ -68,48 +72,47 @@
     "roastLevel": "Dark",
     "flavorNotes": [
       "Vanilla",
-      "Hazelnut",
       "Caramel"
     ],
-    "price": 33.85,
-    "available": true,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Washed",
+    "price": 29,
+    "available": false,
+    "description": "A rich coffee with a full body and lingering finish.",
+    "processingMethod": "Honey",
     "brewingInstructions": "Best suited for pour-over."
   },
   {
     "_id": "coffee-costa-rica-tarrazu",
     "name": "Costa Rica Tarrazu",
     "origin": "Costa Rica",
-    "roastLevel": "Dark",
+    "roastLevel": "Light",
     "flavorNotes": [
-      "Caramel",
       "Hazelnut",
-      "Jasmine",
-      "Almond"
+      "Almond",
+      "Chocolate",
+      "Floral"
     ],
-    "price": 22.52,
+    "price": 28,
     "available": true,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Honey",
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Natural",
     "brewingInstructions": "Best suited for pour-over."
   },
   {
     "_id": "coffee-sumatra-mandheling",
     "name": "Sumatra Mandheling",
     "origin": "Indonesia",
-    "roastLevel": "Medium",
+    "roastLevel": "Dark",
     "flavorNotes": [
+      "Jasmine",
       "Blueberry",
-      "Berry",
-      "Citrus",
-      "Caramel"
+      "Caramel",
+      "Hazelnut"
     ],
-    "price": 27.75,
+    "price": 19,
     "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Recommended for French press."
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Washed",
+    "brewingInstructions": "Works well for espresso."
   },
   {
     "_id": "coffee-panama-boquete",
@@ -117,15 +120,15 @@
     "origin": "Panama",
     "roastLevel": "Light",
     "flavorNotes": [
-      "Citrus",
-      "Berry",
-      "Almond"
+      "Floral",
+      "Jasmine",
+      "Hazelnut"
     ],
-    "price": 20.82,
-    "available": false,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Best suited for pour-over."
+    "price": 27,
+    "available": true,
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Ideal for filter coffee."
   },
   {
     "_id": "coffee-rwanda-bourbon",
@@ -133,29 +136,30 @@
     "origin": "Rwanda",
     "roastLevel": "Light",
     "flavorNotes": [
-      "Caramel",
-      "Almond"
+      "Jasmine",
+      "Almond",
+      "Chocolate",
+      "Floral"
     ],
-    "price": 12.47,
-    "available": true,
+    "price": 35,
+    "available": false,
     "description": "A rich coffee with a full body and lingering finish.",
     "processingMethod": "Natural",
-    "brewingInstructions": "Ideal for filter coffee."
+    "brewingInstructions": "Works well for espresso."
   },
   {
     "_id": "coffee-peru-organic",
     "name": "Peru Organic",
     "origin": "Peru",
-    "roastLevel": "Medium",
+    "roastLevel": "Light",
     "flavorNotes": [
-      "Floral",
       "Caramel",
       "Jasmine"
     ],
-    "price": 28.76,
-    "available": true,
+    "price": 20,
+    "available": false,
     "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
+    "processingMethod": "Washed",
     "brewingInstructions": "Works well for espresso."
   },
   {
@@ -164,32 +168,32 @@
     "origin": "Mexico",
     "roastLevel": "Light",
     "flavorNotes": [
-      "Almond",
+      "Floral",
+      "Citrus",
       "Chocolate",
-      "Caramel",
-      "Blueberry"
+      "Almond"
     ],
-    "price": 26.03,
-    "available": true,
+    "price": 32,
+    "available": false,
     "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Washed",
-    "brewingInstructions": "Works well for espresso."
+    "processingMethod": "Honey",
+    "brewingInstructions": "Ideal for filter coffee."
   },
   {
     "_id": "coffee-honduras-marcala",
     "name": "Honduras Marcala",
     "origin": "Honduras",
-    "roastLevel": "Medium",
+    "roastLevel": "Light",
     "flavorNotes": [
-      "Almond",
+      "Jasmine",
+      "Citrus",
       "Chocolate",
-      "Vanilla",
-      "Blueberry"
+      "Vanilla"
     ],
-    "price": 10.51,
+    "price": 27,
     "available": false,
     "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Honey",
+    "processingMethod": "Natural",
     "brewingInstructions": "Recommended for French press."
   },
   {
@@ -198,30 +202,31 @@
     "origin": "El Salvador",
     "roastLevel": "Dark",
     "flavorNotes": [
-      "Caramel",
-      "Almond",
       "Hazelnut",
-      "Floral"
+      "Chocolate",
+      "Berry",
+      "Citrus"
     ],
-    "price": 29.6,
-    "available": true,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Honey",
-    "brewingInstructions": "Recommended for French press."
+    "price": 34,
+    "available": false,
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Washed",
+    "brewingInstructions": "Works well for espresso."
   },
   {
     "_id": "coffee-nicaragua-jinotega",
     "name": "Nicaragua Jinotega",
     "origin": "Nicaragua",
-    "roastLevel": "Light",
+    "roastLevel": "Dark",
     "flavorNotes": [
-      "Jasmine",
-      "Citrus",
-      "Berry"
+      "Almond",
+      "Berry",
+      "Floral",
+      "Citrus"
     ],
-    "price": 25.33,
+    "price": 30,
     "available": true,
-    "description": "A rich coffee with a full body and lingering finish.",
+    "description": "A balanced coffee with a smooth body and clean finish.",
     "processingMethod": "Natural",
     "brewingInstructions": "Works well for espresso."
   },
@@ -231,16 +236,15 @@
     "origin": "Tanzania",
     "roastLevel": "Dark",
     "flavorNotes": [
-      "Caramel",
-      "Citrus",
-      "Floral",
-      "Jasmine"
+      "Hazelnut",
+      "Chocolate",
+      "Berry"
     ],
-    "price": 12.32,
-    "available": true,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Ideal for filter coffee."
+    "price": 17,
+    "available": false,
+    "description": "A balanced coffee with a smooth body and clean finish.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Best suited for pour-over."
   },
   {
     "_id": "coffee-papua-new-guinea-sigri",
@@ -248,75 +252,78 @@
     "origin": "Papua New Guinea",
     "roastLevel": "Medium",
     "flavorNotes": [
-      "Chocolate",
-      "Vanilla"
+      "Berry",
+      "Almond",
+      "Blueberry"
     ],
-    "price": 31.77,
-    "available": true,
-    "description": "A balanced coffee with a smooth body and clean finish.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Works well for espresso."
+    "price": 20,
+    "available": false,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Honey",
+    "brewingInstructions": "Best suited for pour-over."
   },
   {
     "_id": "coffee-java-estate",
     "name": "Java Estate",
     "origin": "Indonesia",
-    "roastLevel": "Light",
+    "roastLevel": "Medium",
     "flavorNotes": [
+      "Blueberry",
       "Floral",
-      "Jasmine"
+      "Berry"
     ],
-    "price": 24.03,
-    "available": false,
-    "description": "A rich coffee with a full body and lingering finish.",
-    "processingMethod": "Natural",
+    "price": 28,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Honey",
     "brewingInstructions": "Works well for espresso."
   },
   {
     "_id": "coffee-burundi-kayanza",
     "name": "Burundi Kayanza",
     "origin": "Burundi",
-    "roastLevel": "Dark",
-    "flavorNotes": [
-      "Vanilla",
-      "Jasmine",
-      "Blueberry"
-    ],
-    "price": 24.5,
-    "available": true,
-    "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Natural",
-    "brewingInstructions": "Recommended for French press."
-  },
-  {
-    "_id": "coffee-bolivia-caranavi",
-    "name": "Bolivia Caranavi",
-    "origin": "Bolivia",
     "roastLevel": "Medium",
     "flavorNotes": [
+      "Chocolate",
       "Floral",
-      "Citrus"
+      "Caramel"
     ],
-    "price": 28.6,
-    "available": false,
+    "price": 34,
+    "available": true,
     "description": "A rich coffee with a full body and lingering finish.",
     "processingMethod": "Honey",
     "brewingInstructions": "Best suited for pour-over."
   },
   {
+    "_id": "coffee-bolivia-caranavi",
+    "name": "Bolivia Caranavi",
+    "origin": "Bolivia",
+    "roastLevel": "Light",
+    "flavorNotes": [
+      "Chocolate",
+      "Hazelnut",
+      "Caramel"
+    ],
+    "price": 18,
+    "available": true,
+    "description": "A bright and aromatic coffee with layered sweetness.",
+    "processingMethod": "Washed",
+    "brewingInstructions": "Recommended for French press."
+  },
+  {
     "_id": "coffee-india-monsooned-malabar",
     "name": "India Monsooned Malabar",
     "origin": "India",
-    "roastLevel": "Light",
+    "roastLevel": "Dark",
     "flavorNotes": [
-      "Vanilla",
-      "Almond",
-      "Floral"
+      "Hazelnut",
+      "Caramel",
+      "Vanilla"
     ],
-    "price": 33.63,
+    "price": 10,
     "available": true,
     "description": "A bright and aromatic coffee with layered sweetness.",
-    "processingMethod": "Honey",
+    "processingMethod": "Natural",
     "brewingInstructions": "Recommended for French press."
   }
 ]
