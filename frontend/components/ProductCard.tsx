@@ -20,7 +20,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     return (
 
-        <Card className="relative mx-auto max-w-72 overflow-hidden pt-0 h-fit">
+        <Card className="relative mx-auto h-full w-full max-w-72 overflow-hidden pt-0">
             {/* TODO: use the product image from Sanity */}
             <Link href={`/shop/${category}/product/${product._id}`}>
                 <Image
@@ -35,8 +35,8 @@ export default function ProductCard({ product }: ProductCardProps) {
 
                 <CardHeader className="space-y-4 p-2">
                     <div className="flex items-start justify-between gap-4">
-                        <CardTitle className="text-base font-semibold leading-tight">{product.name}</CardTitle>
-                        <Badge variant="secondary">{getProductDetail(product)}</Badge>
+                        <CardTitle className="min-w-0 flex-1 line-clamp-2 min-h-12 text-base font-semibold leading-6">{product.name}</CardTitle>
+                        <Badge className="shrink-0" variant="secondary">{getProductDetail(product)}</Badge>
                     </div>
 
                     <div className="space-y-1">
@@ -68,7 +68,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
 
 
-            <CardFooter>
+            <CardFooter className="mt-auto">
                 <AddToCartButton
                     id={product._id}
                     name={product.name}
