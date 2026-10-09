@@ -33,10 +33,10 @@ export async function POST(request: Request) {
     const lineItems = []
     for (const item of items) {
       const product = products.find((p) => p._id === item.id)
+      // Convert SEK to öre once; reject missing, non-finite or non-positive amounts.
+      const unitAmount = typeof product?.price === 'number' ? Math.round(product.price * 100) : NaN
       if (!product || !product.available || !product.name ||
-        typeof product.price !== 'number' || !Number.isFinite(product.price) ||
-        product.price <= 0 || !Number.isSafeInteger(Math.round(product.price * 100)) ||
-        Math.round(product.price * 100) < 1) {
+        !Number.isSafeInteger(unitAmount) || unitAmount < 1) {
         // Never start payment for only part of the customer's requested cart.
         return NextResponse.json({
           error: 'A product is unavailable or has an invalid price. Please update your cart.',
@@ -47,8 +47,7 @@ export async function POST(request: Request) {
         quantity: item.quantity,
         price_data: {
           currency: 'sek',
-          // Stripe accepts SEK amounts in öre (1 SEK = 100 öre).
-          unit_amount: Math.round(product.price * 100),
+          unit_amount: unitAmount,
           product_data: {name: product.name},
         },
       })

@@ -15,5 +15,5 @@ export default async function ProductPage({params}: {
   const product = data as Product | null
   if (!product) notFound()
 
-  return <ProductDetails product={product} category={category} />
+  return <ProductDetails product={product} />
 }
