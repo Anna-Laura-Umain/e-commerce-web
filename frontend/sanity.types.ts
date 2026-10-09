@@ -765,19 +765,12 @@ export type GetPageQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: sitemapData
-// Query: *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
-export type SitemapDataResult = Array<
-  | {
-      slug: string | null
-      _type: 'page'
-      _updatedAt: string
-    }
-  | {
-      slug: string | null
-      _type: 'post'
-      _updatedAt: string
-    }
->
+// Query: *[_type == "page" && defined(slug.current)] | order(_type asc) {    "slug": slug.current,    _type,    _updatedAt,  }
+export type SitemapDataResult = Array<{
+  slug: string | null
+  _type: 'page'
+  _updatedAt: string
+}>
 
 // Source: sanity/lib/queries.ts
 // Variable: pagesSlugs
@@ -785,32 +778,6 @@ export type SitemapDataResult = Array<
 export type PagesSlugsResult = Array<{
   slug: string | null
 }>
-
-// Source: sanity/lib/queries.ts
-// Variable: productQuery
-// Query: *[  _type in ["coffee", "tea"]  && slug.current == $slug][0]{  _id,  name,  origin,  roastLevel,  oxidationLevel,  flavorNotes,  price,  available}
-export type ProductQueryResult =
-  | {
-      _id: string
-      name: string | null
-      origin: string | null
-      roastLevel: string | null
-      oxidationLevel: null
-      flavorNotes: Array<string> | null
-      price: number | null
-      available: boolean | null
-    }
-  | {
-      _id: string
-      name: string | null
-      origin: string | null
-      roastLevel: null
-      oxidationLevel: string | null
-      flavorNotes: Array<string> | null
-      price: number | null
-      available: boolean | null
-    }
-  | null
 
 // Source: sanity/lib/queries.ts
 // Variable: homePageQuery
@@ -846,55 +813,42 @@ export type HomePageQueryResult = {
 
 // Source: sanity/lib/queries.ts
 // Variable: coffeeListQuery
-// Query: *[_type == "coffee"] | order(name asc){  _id,   name,   origin,   roastLevel,   flavorNotes,   price,   available}
+// Query: *[_type == "coffee"] | order(name asc){  _id,  _type,  name,  origin,  roastLevel,  "flavorNotes": coalesce(flavorNotes, []),  price,  available}
 export type CoffeeListQueryResult = Array<{
   _id: string
+  _type: 'coffee'
   name: string | null
   origin: string | null
   roastLevel: string | null
-  flavorNotes: Array<string> | null
+  flavorNotes: Array<string> | Array<never>
   price: number | null
   available: boolean | null
 }>
 
 // Source: sanity/lib/queries.ts
 // Variable: teaListQuery
-// Query: *[_type == "tea"] | order(name asc){  _id,   name,   origin,   oxidationLevel,   flavorNotes,   price,   available}
+// Query: *[_type == "tea"] | order(name asc){  _id,  _type,  name,  origin,  oxidationLevel,  "flavorNotes": coalesce(flavorNotes, []),  price,  available}
 export type TeaListQueryResult = Array<{
   _id: string
+  _type: 'tea'
   name: string | null
   origin: string | null
   oxidationLevel: string | null
-  flavorNotes: Array<string> | null
+  flavorNotes: Array<string> | Array<never>
   price: number | null
   available: boolean | null
 }>
 
 // Source: sanity/lib/queries.ts
 // Variable: productDetailQuery
-// Query: *[_type == $category && _id == $id][0]{    _id,    _type,    name,    origin,    flavorNotes,    price,    available,    description,    processingMethod,    brewingInstructions,    roastLevel,    oxidationLevel,    teaType  }
+// Query: *[_type in ["coffee", "tea"] && _type == $category && _id == $id][0]{    _id,    _type,    name,    origin,    "flavorNotes": coalesce(flavorNotes, []),    price,    available,    description,    processingMethod,    brewingInstructions,    roastLevel,    oxidationLevel,    teaType  }
 export type ProductDetailQueryResult =
-  | {
-      _id: string
-      _type: 'assist.instruction.context'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
   | {
       _id: string
       _type: 'coffee'
       name: string | null
       origin: string | null
-      flavorNotes: Array<string> | null
+      flavorNotes: Array<string> | Array<never>
       price: number | null
       available: boolean | null
       description: string | null
@@ -906,142 +860,37 @@ export type ProductDetailQueryResult =
     }
   | {
       _id: string
-      _type: 'homePage'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
-  | {
-      _id: string
-      _type: 'page'
+      _type: 'tea'
       name: string | null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
-  | {
-      _id: string
-      _type: 'person'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
-  | {
-      _id: string
-      _type: 'post'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
-  | {
-      _id: string
-      _type: 'sanity.fileAsset'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
+      origin: string | null
+      flavorNotes: Array<string> | Array<never>
+      price: number | null
+      available: boolean | null
       description: string | null
-      processingMethod: null
-      brewingInstructions: null
+      processingMethod: string | null
+      brewingInstructions: string | null
       roastLevel: null
-      oxidationLevel: null
-      teaType: null
+      oxidationLevel: string | null
+      teaType: string | null
     }
+  | null
+
+// Source: sanity/lib/queries.ts
+// Variable: productQuery
+// Query: *[_type in ["coffee", "tea"] && _type == $category && slug.current == $slug][0]{    _id,    _type,    name,    origin,    "flavorNotes": coalesce(flavorNotes, []),    price,    available,    description,    processingMethod,    brewingInstructions,    roastLevel,    oxidationLevel,    teaType  }
+export type ProductQueryResult =
   | {
       _id: string
-      _type: 'sanity.imageAsset'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
+      _type: 'coffee'
+      name: string | null
+      origin: string | null
+      flavorNotes: Array<string> | Array<never>
+      price: number | null
+      available: boolean | null
       description: string | null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
-  | {
-      _id: string
-      _type: 'settings'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: Array<{
-        children?: Array<{
-          marks?: Array<string>
-          text?: string
-          _type: 'span'
-          _key: string
-        }>
-        style?: 'normal'
-        listItem?: never
-        markDefs?: Array<{
-          linkType?: 'href' | 'page' | 'post'
-          href?: string
-          page?: PageReference
-          post?: PostReference
-          openInNewTab?: boolean
-          _type: 'link'
-          _key: string
-        }>
-        level?: number
-        _type: 'block'
-        _key: string
-      }> | null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
-      oxidationLevel: null
-      teaType: null
-    }
-  | {
-      _id: string
-      _type: 'shopFilters'
-      name: null
-      origin: null
-      flavorNotes: null
-      price: null
-      available: null
-      description: null
-      processingMethod: null
-      brewingInstructions: null
-      roastLevel: null
+      processingMethod: string | null
+      brewingInstructions: string | null
+      roastLevel: string | null
       oxidationLevel: null
       teaType: null
     }
@@ -1050,7 +899,7 @@ export type ProductDetailQueryResult =
       _type: 'tea'
       name: string | null
       origin: string | null
-      flavorNotes: Array<string> | null
+      flavorNotes: Array<string> | Array<never>
       price: number | null
       available: boolean | null
       description: string | null
@@ -1092,13 +941,13 @@ declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == "settings"][0] {\n  ...,\n  navigation[]->{\n    _id,\n    name,\n    "slug": slug.current\n  }\n}': SettingsQueryResult
     '\n  *[_type == \'page\' && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    slug,\n    heading,\n    subheading,\n    "pageBuilder": pageBuilder[]{\n      ...,\n      _type == "callToAction" => {\n        ...,\n        button {\n          ...,\n          \n  link {\n      ...,\n      \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n      }\n\n        }\n      },\n      _type == "infoSection" => {\n        content[]{\n          ...,\n          markDefs[]{\n            ...,\n            \n  _type == "link" => {\n    "page": page->slug.current,\n    "post": post->slug.current\n  }\n\n          }\n        }\n      },\n    },\n  }\n': GetPageQueryResult
-    '\n  *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
+    '\n  *[_type == "page" && defined(slug.current)] | order(_type asc) {\n    "slug": slug.current,\n    _type,\n    _updatedAt,\n  }\n': SitemapDataResult
     '\n  *[_type == "page" && defined(slug.current)]\n  {"slug": slug.current}\n': PagesSlugsResult
-    '*[\n  _type in ["coffee", "tea"]\n  && slug.current == $slug\n][0]{\n  _id,\n  name,\n  origin,\n  roastLevel,\n  oxidationLevel,\n  flavorNotes,\n  price,\n  available\n}': ProductQueryResult
     '*[_type == "homePage" && _id == "homePage"][0]{\n  hero{\n    eyebrow,\n    heading,\n    text,\n    primaryButton,\n    secondaryButton,\n    image{\n      ...,\n      alt,\n      asset->{\n        _id,\n        metadata { lqip }\n      }\n    }\n  }\n}': HomePageQueryResult
-    '*[_type == "coffee"] | order(name asc){\n  _id, \n  name, \n  origin, \n  roastLevel, \n  flavorNotes, \n  price, \n  available\n}': CoffeeListQueryResult
-    '*[_type == "tea"] | order(name asc){\n  _id, \n  name, \n  origin, \n  oxidationLevel, \n  flavorNotes, \n  price, \n  available\n}': TeaListQueryResult
-    '\n  *[_type == $category && _id == $id][0]{\n    _id,\n    _type,\n    name,\n    origin,\n    flavorNotes,\n    price,\n    available,\n    description,\n    processingMethod,\n    brewingInstructions,\n    roastLevel,\n    oxidationLevel,\n    teaType\n  }\n': ProductDetailQueryResult
+    '*[_type == "coffee"] | order(name asc){\n  _id,\n  _type,\n  name,\n  origin,\n  roastLevel,\n  "flavorNotes": coalesce(flavorNotes, []),\n  price,\n  available\n}': CoffeeListQueryResult
+    '*[_type == "tea"] | order(name asc){\n  _id,\n  _type,\n  name,\n  origin,\n  oxidationLevel,\n  "flavorNotes": coalesce(flavorNotes, []),\n  price,\n  available\n}': TeaListQueryResult
+    '\n  *[_type in ["coffee", "tea"] && _type == $category && _id == $id][0]{\n    _id,\n    _type,\n    name,\n    origin,\n    "flavorNotes": coalesce(flavorNotes, []),\n    price,\n    available,\n    description,\n    processingMethod,\n    brewingInstructions,\n    roastLevel,\n    oxidationLevel,\n    teaType\n  }\n': ProductDetailQueryResult
+    '\n  *[_type in ["coffee", "tea"] && _type == $category && slug.current == $slug][0]{\n    _id,\n    _type,\n    name,\n    origin,\n    "flavorNotes": coalesce(flavorNotes, []),\n    price,\n    available,\n    description,\n    processingMethod,\n    brewingInstructions,\n    roastLevel,\n    oxidationLevel,\n    teaType\n  }\n': ProductQueryResult
     '*[_type == "shopFilters" && _id == "shopFilters"][0]{\n  coffee[]{field, label},\n  tea[]{field, label}\n}': ShopFiltersQueryResult
     '*[\n  _type in ["coffee", "tea"] && _id in $ids\n]{\n  _id,\n  name,\n  price,\n  available\n}': CheckoutProductsQueryResult
   }

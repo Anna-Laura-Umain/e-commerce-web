@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-// import { Heart } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { AddToCartButton } from '@/components/AddToCartButton'
@@ -51,7 +50,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                         </div>
 
                         <ul className="flex flex-wrap gap-4">
-                            {product.flavorNotes.map((note) => (
+                            {(product.flavorNotes ?? []).map((note) => (
                                 <li key={note} className="rounded-full bg-muted px-2 py-1 text-xs">
                                     {note}
                                 </li>

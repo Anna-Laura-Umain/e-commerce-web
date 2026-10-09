@@ -1,5 +1,6 @@
 'use client'
 
+import {useMounted} from '@/hooks/use-mounted'
 import {Button} from '@/components/ui/button'
 import {useCartStore} from '@/store/useCartStore'
 
@@ -16,7 +17,8 @@ export function AddToCartButton({id, name, price, available, className}: AddToCa
   const addItem = useCartStore((state) => state.addItem)
   const items = useCartStore((state) => state.items)
 
-  const added = items.some((item) => item.id === id)
+  const mounted = useMounted()
+  const added = mounted && items.some((item) => item.id === id)
 
   function handleClick() {
     if (!added){

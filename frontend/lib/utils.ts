@@ -1,22 +1,24 @@
-export { cn } from "cn"
+export {cn} from 'cn'
 import type {Product} from '@/types/product'
 
-// Coffee shows roast level, tea shows oxidation level
+export function getProductCategory(product: Product) {
+  // Favorites saved before _type was queried still need to resolve correctly.
+  return product._type ?? ('roastLevel' in product && product.roastLevel ? 'coffee' : 'tea')
+}
+
+export function getProductLevel(product: Product) {
+  if (getProductCategory(product) === 'coffee') {
+    return ('roastLevel' in product && product.roastLevel) || ''
+  }
+  return ('oxidationLevel' in product && product.oxidationLevel) || ''
+}
+
 export function getProductDetail(product: Product) {
-  if ('roastLevel' in product) return `${product.roastLevel} roast`
-  return `${product.oxidationLevel} oxidation`
+  const level = getProductLevel(product)
+  if (!level) return ''
+  return `${level} ${getProductCategory(product) === 'coffee' ? 'roast' : 'oxidation'}`
 }
 
 export function formatPrice(value: number) {
-  return value.toLocaleString('en', {maximumFractionDigits: 0})
-}
-
-// Coffee has a roast level, tea doesn't
-export function getProductCategory(product: Product) {
-  return 'roastLevel' in product ? 'coffee' : 'tea'
-}
-
-// Roast level for coffee, oxidation level for tea
-export function getProductLevel(product: Product) {
-  return 'roastLevel' in product ? product.roastLevel : product.oxidationLevel
+  return value.toLocaleString('en', {maximumFractionDigits: 2})
 }

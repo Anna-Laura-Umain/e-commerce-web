@@ -65,19 +65,19 @@ export default function ProductDetails({
 
           
           <div className="flex flex-wrap gap-2">
-            {'roastLevel' in product && (
+            {'roastLevel' in product && product.roastLevel && (
               <Badge variant="secondary">
                 {product.roastLevel} roast
               </Badge>
             )}
 
-            {'teaType' in product && (
+            {'teaType' in product && product.teaType && (
               <Badge variant="secondary">
                 {product.teaType}
               </Badge>
             )}
 
-            {'oxidationLevel' in product && (
+            {'oxidationLevel' in product && product.oxidationLevel && (
               <Badge variant="secondary">
                 {product.oxidationLevel} oxidation
               </Badge>
@@ -91,7 +91,7 @@ export default function ProductDetails({
             </h2>
 
             <ul className="flex flex-wrap gap-2">
-              {product.flavorNotes.map((note) => (
+              {(product.flavorNotes ?? []).map((note) => (
                 <li
                   key={note}
                   className="rounded-full bg-muted px-3 py-1.5 text-sm"

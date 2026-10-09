@@ -80,13 +80,11 @@ export function CartView() {
       </ul>
 
       <aside className="h-fit rounded-lg border p-6">
-        <div></div>
         <div className="flex justify-between text-lg font-semibold">
           <span>Subtotal</span>
           <span>{formatPrice(subtotal)}</span>
           <span>SEK</span>
         </div>
-        {/* <Button className="mt-6 w-full">Checkout</Button> */}
         <CheckoutButton />
         <Button variant="ghost" className="mt-2 w-full" onClick={clear}>
           Clear cart
