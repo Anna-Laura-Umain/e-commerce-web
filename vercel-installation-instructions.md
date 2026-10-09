@@ -47,15 +47,7 @@ npm run dev
 
 Sign in to the Studio with the same account you used during the Vercel/Sanity setup.
 
-## Step 5. Import sample data (optional)
-
-To get started quickly with pre-built content, run:
-
-```shell
-npm run import-sample-data
-```
-
-## Step 6. Deploy Sanity Studio
+## Step 5. Deploy Sanity Studio
 
 Deploy the Studio so your team can access it online:
 
@@ -67,7 +59,7 @@ You will be prompted to choose a hostname (e.g., `your-project.sanity.studio`).
 
 After deploying, update the `NEXT_PUBLIC_SANITY_STUDIO_URL` environment variable in your Vercel project settings to point to your deployed Studio URL (e.g., `https://your-project.sanity.studio`).
 
-## Step 7. Invite collaborators (optional)
+## Step 6. Invite collaborators (optional)
 
 Visit [sanity.io/manage](https://www.sanity.io/manage), select your project, and click **"Invite project members"** to collaborate with your team.
 
