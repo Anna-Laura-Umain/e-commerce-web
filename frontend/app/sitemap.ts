@@ -1,61 +1,34 @@
-import {MetadataRoute} from 'next'
+import type {MetadataRoute} from 'next'
+import {headers} from 'next/headers'
 import {sanityFetch} from '@/sanity/lib/live'
 import {sitemapData} from '@/sanity/lib/queries'
-import {headers} from 'next/headers'
 
 /**
- * This file creates a sitemap (sitemap.xml) for the application. Learn more about sitemaps in Next.js here: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
- * Be sure to update the `changeFrequency` and `priority` values to match your application's content.
+ * Creates sitemap.xml for search engines.
+ * Learn more: https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
  */
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const allPostsAndPages = await sanityFetch({
-    query: sitemapData,
-  })
-  const headersList = await headers()
-  const sitemap: MetadataRoute.Sitemap = []
-  const domain: string = headersList.get('host') as string
-  sitemap.push({
-    url: domain as string,
-    lastModified: new Date(),
-    priority: 1,
-    changeFrequency: 'monthly',
-  })
+  const {data: pages} = await sanityFetch({query: sitemapData, stega: false})
 
-  if (allPostsAndPages != null && allPostsAndPages.data.length != 0) {
-    let priority: number
-    let changeFrequency:
-      | 'monthly'
-      | 'always'
-      | 'hourly'
-      | 'daily'
-      | 'weekly'
-      | 'yearly'
-      | 'never'
-      | undefined
-    let url: string
+  // Search engines need full URLs, including the protocol
+  const host = (await headers()).get('host') ?? 'localhost:3000'
+  const protocol = host.startsWith('localhost') ? 'http' : 'https'
+  const domain = `${protocol}://${host}`
 
-    for (const p of allPostsAndPages.data) {
-      switch (p._type) {
-        case 'page':
-          priority = 0.8
-          changeFrequency = 'monthly'
-          url = `${domain}/${p.slug}`
-          break
-        case 'post':
-          priority = 0.5
-          changeFrequency = 'never'
-          url = `${domain}/posts/${p.slug}`
-          break
-      }
-      sitemap.push({
-        lastModified: p._updatedAt || new Date(),
-        priority,
-        changeFrequency,
-        url,
-      })
-    }
-  }
+  // Pages defined in code
+  const shopRoutes: MetadataRoute.Sitemap = [
+    {url: domain, lastModified: new Date(), changeFrequency: 'monthly', priority: 1},
+    {url: `${domain}/shop/coffee`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9},
+    {url: `${domain}/shop/tea`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9},
+  ]
 
-  return sitemap
+  // Pages created by editors in Studio, e.g. About
+  const editorPages: MetadataRoute.Sitemap = (pages ?? []).map((page) => ({
+    url: `${domain}/${page.slug}`,
+    lastModified: page._updatedAt ? new Date(page._updatedAt) : new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  return [...shopRoutes, ...editorPages]
 }

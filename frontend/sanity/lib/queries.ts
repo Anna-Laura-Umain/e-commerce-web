@@ -12,7 +12,6 @@ export const settingsQuery = defineQuery(`*[_type == "settings"][0] {
 const linkReference = /* groq */ `
   _type == "link" => {
     "page": page->slug.current,
-    "post": post->slug.current
   }
 `;
 
@@ -54,10 +53,9 @@ export const getPageQuery = defineQuery(`
 `);
 
 export const sitemapData = defineQuery(`
-  *[_type == "page" || _type == "post" && defined(slug.current)] | order(_type asc) {
+  *[_type == "page" && defined(slug.current)] {
     "slug": slug.current,
-    _type,
-    _updatedAt,
+    _updatedAt
   }
 `);
 
