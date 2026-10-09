@@ -1,3 +1,5 @@
+> Historical upstream template documentation. For this shop, follow the [project README](../README.md). The blog sample archive and `import-sample-data` command have been removed.
+
 # Clean Next.js + Sanity app
 
 This template includes a [Next.js](https://nextjs.org/) app with a [Sanity Studio](https://www.sanity.io/) – an open-source React application that connects to your Sanity project’s hosted dataset. The Studio is configured locally and can then be deployed for content collaboration.
