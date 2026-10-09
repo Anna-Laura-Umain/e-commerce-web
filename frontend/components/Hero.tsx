@@ -3,29 +3,10 @@ import {ArrowRight} from 'lucide-react'
 import SanityImage from '@/components/SanityImage'
 import {DefaultHeroImage} from '@/components/DefaultHeroImage'
 import type {HomePageQueryResult} from '@/sanity.types'
+import {toCrop, toHotspot} from '@/sanity/lib/utils'
 
 type HeroProps = {
   hero: NonNullable<HomePageQueryResult>['hero']
-}
-
-type SanityHotspot = {x?: number; y?: number}
-type SanityCrop = {top?: number; bottom?: number; left?: number; right?: number}
-
-function toHotspot(hotspot?: SanityHotspot) {
-  if (hotspot?.x === undefined || hotspot?.y === undefined) return undefined
-  return {x: hotspot.x, y: hotspot.y}
-}
-
-function toCrop(crop?: SanityCrop) {
-  if (
-    crop?.top === undefined ||
-    crop?.bottom === undefined ||
-    crop?.left === undefined ||
-    crop?.right === undefined
-  ) {
-    return undefined
-  }
-  return {top: crop.top, bottom: crop.bottom, left: crop.left, right: crop.right}
 }
 
 export default function Hero({hero}: HeroProps) {

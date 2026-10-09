@@ -5,7 +5,8 @@ import { Minus, Plus, Trash2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useMounted } from '@/hooks/use-mounted'
 import { useCartStore } from '@/store/useCartStore'
-import {formatPrice} from '@/lib/utils'
+import { formatPrice } from '@/lib/utils'
+import { CheckoutButton } from '@/components/CheckoutButton'
 
 export function CartView() {
   const items = useCartStore((state) => state.items)
@@ -79,15 +80,22 @@ export function CartView() {
       </ul>
 
       <aside className="h-fit rounded-lg border p-6">
+        <div></div>
         <div className="flex justify-between text-lg font-semibold">
           <span>Subtotal</span>
           <span>{formatPrice(subtotal)}</span>
           <span>SEK</span>
         </div>
-        <Button className="mt-6 w-full">Checkout</Button>
+        {/* <Button className="mt-6 w-full">Checkout</Button> */}
+        <CheckoutButton />
         <Button variant="ghost" className="mt-2 w-full" onClick={clear}>
           Clear cart
         </Button>
+        {/* Demo store: Stripe runs in test mode */}
+        <p className="mt-4 rounded-md bg-amber-50 p-3 text-left text-xs leading-relaxed text-amber-900">
+          Test mode: to test payment use card{' '}
+          <span className="font-mono">4242 4242 4242 4242</span>, any future date and any CVC.
+        </p>
       </aside>
     </div>
   )

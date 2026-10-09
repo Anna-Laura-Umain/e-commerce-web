@@ -8,6 +8,12 @@ async function seedShopFilters() {
     _type: "shopFilters",
     coffee: [
       {
+        _key: "inStock",
+        _type: "filterGroup",
+        field: "inStock",
+        label: "Availability",
+      },
+      {
         _key: "origin",
         _type: "filterGroup",
         field: "origin",
@@ -19,14 +25,14 @@ async function seedShopFilters() {
         field: "level",
         label: "Roast level",
       },
+    ],
+    tea: [
       {
         _key: "inStock",
         _type: "filterGroup",
         field: "inStock",
         label: "Availability",
       },
-    ],
-    tea: [
       {
         _key: "origin",
         _type: "filterGroup",
@@ -39,12 +45,7 @@ async function seedShopFilters() {
         field: "level",
         label: "Oxidation level",
       },
-      {
-        _key: "inStock",
-        _type: "filterGroup",
-        field: "inStock",
-        label: "Availability",
-      },
+      
     ],
   });
   console.log("Shop filters are ready");
