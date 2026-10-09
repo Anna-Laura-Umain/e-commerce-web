@@ -55,7 +55,7 @@ export default async function ShopCategoryPage({
         </Suspense>
 
         {products.length > 0 ? (
-          <div className="grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="grid auto-rows-fr gap-6 lg:grid-cols-2 xl:grid-cols-3">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}
