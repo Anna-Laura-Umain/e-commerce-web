@@ -45,17 +45,23 @@ export default async function ShopCategoryPage({
   const products = filterProducts(allProducts, readFilters(await searchParams))
 
   return (
-    <main className="container py-12">
-      <h1 className="mb-8 heading-display text-3xl md:text-4xl text-center">{title}</h1>
+    <main className="container py-10 sm:py-14">
+      <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-stone-200 pb-6">
+        <div>
+          <p className="mb-2 text-xs font-medium uppercase tracking-[0.2em] text-stone-500">The collection</p>
+          <h1 className="heading-display text-4xl tracking-tight text-stone-900 sm:text-5xl">{title}</h1>
+        </div>
+        <p className="text-sm text-stone-500">{products.length} {products.length === 1 ? 'product' : 'products'}</p>
+      </div>
 
-      <div className="grid gap-10 md:grid-cols-[200px_1fr]">
+      <div className="grid items-start gap-8 md:grid-cols-[180px_minmax(0,1fr)] lg:gap-10">
         {/* useSearchParams in the filters needs a Suspense boundary */}
         <Suspense>
           <ProductFilters groups={groups} page={category} />
         </Suspense>
 
         {products.length > 0 ? (
-          <div className="grid auto-rows-fr gap-6 lg:grid-cols-2 xl:grid-cols-3">
+          <div className="grid min-w-0 auto-rows-fr gap-5 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
             {products.map((product) => (
               <ProductCard key={product._id} product={product} />
             ))}
