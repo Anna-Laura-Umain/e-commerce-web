@@ -12,7 +12,7 @@ export default function FavoritesPage() {
 
   return (
     <main className="container py-12">
-      <h1 className="heading-display mb-8 text-center text-4xl">Favorites</h1>
+      <h1 className="heading-display mb-8 border-b border-stone-200 pb-6 text-4xl tracking-tight text-stone-900">Favorites</h1>
 
       {mounted && favorites.length === 0 && (
         <div className="flex flex-col items-center gap-4 py-16 text-center">
@@ -27,7 +27,7 @@ export default function FavoritesPage() {
       )}
 
       {mounted && favorites.length > 0 && (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-fr items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {favorites.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}

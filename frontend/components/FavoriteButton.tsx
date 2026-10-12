@@ -31,16 +31,17 @@ export function FavoriteButton({
   return (
     <button
       type="button"
-      className={`rounded-full bg-white p-2 shadow ${className}`}
+      className={`flex size-11 items-center justify-center rounded-full bg-white/95 shadow-sm transition-colors hover:bg-stone-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-800 ${className}`}
+      aria-pressed={showAsFavorite}
       aria-label={
         showAsFavorite
-          ? 'Remove from favorites'
-          : 'Add to favorites'
+          ? `Remove ${product.name} from favorites`
+          : `Add ${product.name} to favorites`
       }
       onClick={() => toggleFavorite(product)}
     >
       <Heart
-        className={`h-6 w-6 ${
+        className={`size-5 ${
           showAsFavorite
             ? 'fill-red-500 text-red-500'
             : 'text-black'
